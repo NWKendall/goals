@@ -1,25 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
+import Header from "./components/header/header.js";
+import Navbar from "./components/navbar/navbar.jsx";
+import Mantra from "./components/mantra/mantra.jsx";
+import Rules from "./components/rules/rules.jsx"
+import Testcomp from "./components/test.js";
+import AppPage from "./components/appPage/appPage.js";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <AppPage />
+      <Switch>
+        <Route exact path="/" />
+        <Route path="/mantra" component={Mantra} />
+        <Route path="/rules" component={Rules} />
+        <Route path="/sto" component={Testcomp} />
+        <Route path="/lto" component={Testcomp} />
+        <Route path="/schedule" component={Testcomp} />
+      </Switch>
+    </Router>
   );
 }
 
