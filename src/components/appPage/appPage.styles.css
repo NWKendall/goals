@@ -1,0 +1,5 @@
+.contentContainer {
+    grid-column: 3 / -1 ;
+    border: 1px solid green;
+    background-color: red;
+}

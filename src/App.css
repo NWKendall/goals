@@ -1,16 +1,8 @@
 .appContainer {
-  background-color: #B91432;
+  background-color: #white;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-gap: 2%;
   width: 90%;
   margin: auto;
-}
-
-.navBarContainer {
-    width: "30%";
-    border: "1px solid green";
-    background-color: "red";
-    border: 1px solid green;
-
 }

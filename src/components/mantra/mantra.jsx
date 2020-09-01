@@ -1,5 +1,5 @@
 import React from "react";
-import { mantraData } from "./data.js";
+import { mantraData } from "../data.js";
 
 const Mantra = () => {
   return (

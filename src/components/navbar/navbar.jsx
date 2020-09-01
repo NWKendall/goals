@@ -4,8 +4,8 @@ import "./navbar.styles.css";
 
 const Navbar = () => {
   return (
-    <div className="navContainer">
-      <ul >
+    <div className="navBarContainer">
+      <ul>
         <li className="navItem">
           <Link to="/">Home</Link>
         </li>

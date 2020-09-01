@@ -1,5 +1,5 @@
 import React from "react";
-import { rulesData } from "./data.js";
+import { rulesData } from "../data.js";
 
 
 const Rules = () => {

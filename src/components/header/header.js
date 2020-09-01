@@ -1,8 +1,8 @@
 import React from 'react'
-
+import './header.styles.css';
 const Header = () => {
     return (
-        <div>
+        <div className="headerStyle">
             <p>Rules, Mantra, Goals!</p>
         </div>
     )

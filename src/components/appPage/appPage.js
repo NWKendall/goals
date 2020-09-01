@@ -1,7 +1,7 @@
 import React from "react";
-import '../App.css';
-import Header from "../header/header.js";
-import Navbar from "../navbar/navbar.jsx";
+import { Route, Switch } from "react-router-dom";
+
+import './appPage.styles.css';
 import Mantra from "../mantra/mantra.jsx";
 import Rules from "../rules/rules.jsx"
 import Testcomp from "../test.js";
@@ -9,9 +9,15 @@ import Testcomp from "../test.js";
 
 function AppPage() {
   return (
-      <div className="">
-        <Header />
-        <Navbar className="navBarContainer"/>
+      <div className="contentContainer">
+        <Switch>
+          <Route exact path="/" />
+          <Route path="/mantra" component={Mantra} />
+          <Route path="/rules" component={Rules} />
+          <Route path="/sto" component={Testcomp} />
+          <Route path="/lto" component={Testcomp} />
+          <Route path="/schedule" component={Testcomp} />
+      </Switch>
       </div>
   );
 }

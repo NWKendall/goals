@@ -1,0 +1,8 @@
+.headerStyle {
+    grid-column: 1 / -1 ;
+    background-color: white;
+    display: flex;
+    grid-template-columns: repeat(12, 1fr);
+    border: 1px dashed pink;
+    justify-content: center;
+}
