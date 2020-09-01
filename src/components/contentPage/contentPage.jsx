@@ -1,13 +1,13 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 
-import './appPage.styles.css';
+import './contentPage.styles.css';
 import Mantra from "../mantra/mantra.jsx";
 import Rules from "../rules/rules.jsx"
 import Testcomp from "../test.js";
 
 
-function AppPage() {
+function ContentPage() {
   return (
       <div className="contentContainer">
         <Switch>
@@ -22,4 +22,4 @@ function AppPage() {
   );
 }
 
-export default AppPage;
+export default ContentPage;

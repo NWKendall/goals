@@ -3,7 +3,7 @@ import './header.styles.css';
 const Header = () => {
     return (
         <div className="headerStyle">
-            <p>Rules, Mantra, Goals!</p>
+            <h1>Rules, Mantra, Goals!</h1>
         </div>
     )
 }

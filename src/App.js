@@ -2,19 +2,19 @@ import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import './App.css';
 import Header from "./components/header/header.js";
-import AppPage from "./components/appPage/appPage.js";
+import ContentPage from "./components/contentPage/contentPage.jsx";
 import Navbar from "./components/navbar/navbar";
 
 
 function App() {
   return (
-    <div className="appContainer">
-      <Router>
+    <Router>
+      <div className="appContainer">
         <Header />
         <Navbar />
-        <AppPage />
-      </Router>
-    </div>
+        <ContentPage />
+      </div>
+    </Router>
   );
 }
 
