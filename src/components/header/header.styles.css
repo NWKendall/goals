@@ -1,8 +1,10 @@
 .headerStyle {
     grid-column: 1 / -1 ;
     grid-row: 0/1;
-    background-color: white;
+    background-color: rgb(26,29,33);
+    border: 5px solid #19171D;
     display: flex;
-    border: 1px dashed pink;
+    color: whitesmoke;
     justify-content: center;
+    /* border: 1px dashed pink; */
 }

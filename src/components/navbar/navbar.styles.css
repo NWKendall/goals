@@ -1,8 +1,6 @@
 .navBarContainer {
     grid-column: 1 / 3 ;
     grid-row: 2/-1;
-    border: 3px solid midnightblue;
-    /* background-color: rgb(42, 42, 156); */
     display: grid;
 }
 
@@ -13,17 +11,24 @@
     display: grid;
     align-items: center;
     justify-content: center;
-    border: 1px solid blueviolet;
+    background-color: rgb(26,29,33);
+    border: 5px solid #19171D;
 
 }
-div ul li::before{
-    color: white;
 
-}
 .navItem {
-    color: white;
     list-style-type: none;
-    text-decoration-line: none;
+    text-decoration: none;
     font-size: 1.5rem;
     /* border: 1px solid blueviolet; */
 }
+
+.nevItem ::before {
+    color: whitesmoke;
+}
+
+.selectedLink {
+    color: whitesmoke
+}
+
+

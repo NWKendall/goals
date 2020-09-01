@@ -1,7 +1,8 @@
 .contentContainer {
     grid-column: 3 / -1 ;
     grid-row: 2/-1;
-    border: 1px solid green;
-    background-color: pink;
+    background-color: rgb(26,29,33);
+    border: 5px solid #19171D;
+    color: whitesmoke;
     padding: 2%;
 }

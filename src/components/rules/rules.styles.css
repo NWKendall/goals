@@ -1,0 +1,14 @@
+ol li {
+    font-size: 2rem;
+}
+
+ol ul {
+    padding-inline-start: 0;
+}
+
+ol ul li {
+    padding-inline-start: 1em;
+    list-style-type: none;
+
+
+}

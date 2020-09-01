@@ -5,6 +5,8 @@ import './contentPage.styles.css';
 import Mantra from "../mantra/mantra.jsx";
 import Rules from "../rules/rules.jsx"
 import Testcomp from "../test.js";
+import LTObjectives from "../lto/lto";
+import STObjectives from "../sto/sto";
 
 
 function ContentPage() {
@@ -14,8 +16,8 @@ function ContentPage() {
           <Route exact path="/" />
           <Route path="/mantra" component={Mantra} />
           <Route path="/rules" component={Rules} />
-          <Route path="/sto" component={Testcomp} />
-          <Route path="/lto" component={Testcomp} />
+          <Route path="/sto" component={STObjectives} />
+          <Route path="/lto" component={LTObjectives} />
           <Route path="/schedule" component={Testcomp} />
       </Switch>
       </div>
