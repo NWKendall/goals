@@ -49,12 +49,11 @@ const Scheduler = () => {
             <h2>
                 Today's Score:{" "}
                 {percent % 2 !== 0 ? percent.toFixed(1)
-                : percent.toFixed(0)}{" "}
-                %
+                : percent.toFixed(0)}%
             </h2>
             <input type="submit" />
         </form>
-        <div>
+        <div className="otherStyle">
             asdasd
         </div>
     </div>
