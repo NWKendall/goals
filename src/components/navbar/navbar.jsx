@@ -6,33 +6,33 @@ const Navbar = () => {
   return (
     <div className="navBarContainer">
       <ul className="navBar">
-        <li className="navItem">
-          <NavLink activeClassName="selectedLink" to="/" exact>
+        <li className="NavLi">
+          <NavLink className="navItem" activeClassName="selectedLink" to="/" exact>
             Home
           </NavLink>
         </li>
-        <li className="navItem">
-          <NavLink activeClassName="selectedLink" to="/rules" exact>
+        <li className="NavLi">
+          <NavLink className="navItem" activeClassName="selectedLink" to="/rules" exact>
             Rules
           </NavLink>
         </li>
-        <li className="navItem">
-          <NavLink activeClassName="selectedLink" to="/mantra" exact>
+        <li className="NavLi">
+          <NavLink className="navItem" activeClassName="selectedLink" to="/mantra" exact>
             Mantra
           </NavLink>
         </li>
-        <li className="navItem">
-          <NavLink activeClassName="selectedLink" to="/sto" exact>
+        <li className="NavLi">
+          <NavLink className="navItem" activeClassName="selectedLink" to="/sto" exact>
             STOs
           </NavLink>
         </li>
-        <li className="navItem">
-          <NavLink activeClassName="selectedLink" to="lto" exact>
+        <li className="NavLi">
+          <NavLink className="navItem" activeClassName="selectedLink" to="lto" exact>
             LTOs
           </NavLink>
         </li>
-        <li className="navItem">
-          <NavLink activeClassName="selectedLink" to="schedule" exact>
+        <li className="NavLi">
+          <NavLink className="navItem" activeClassName="selectedLink" to="schedule" exact>
             Schedule
           </NavLink>
         </li>
