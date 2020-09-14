@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { scheduleData } from '../data.js';
+import './scheduler.styles.css';
 
 const Scheduler = () => {
   const { register, handleSubmit, watch, errors } = useForm();
@@ -10,7 +11,9 @@ const Scheduler = () => {
   });
 
   const percent = (state.score / state.checkBoxes.length) * 100;
-  const onSubmit = (data) => console.log(data, state.score);
+
+  // add api call to BE
+  const onSubmit = (data) => alert(`Send todays score of ${percent}% somewhere!`);
 
   const handleCheckBoxes = (e) => {
     if (!!e.target.checked) {
@@ -27,29 +30,34 @@ const Scheduler = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <ul style={{ display: "flex", border: "1px pink solid" }}>
-        {state.checkBoxes.map((box, i) => (
-          <li key={i}>
-            <label>{box.name}</label>
-            <input
-              type="checkbox"
-              name={box.name}
-              ref={register}
-              onChange={(e) => handleCheckBoxes(e)}
-            />
-          </li>
-        ))}
-      </ul>
-      <h2>
-        Today's Score:{" "}
-        {percent === 0 || percent === 100
-          ? percent.toFixed(0)
-          : percent.toFixed(1)}{" "}
-        %
-      </h2>
-      <input type="submit" />
-    </form>
+    <div className="container">
+        <form className="formStyle" onSubmit={handleSubmit(onSubmit)}>
+            <ul className="ulStyle">
+                {state.checkBoxes.map((box, i) => (
+                <li key={i} className="liStyle">
+                    <label>{box.name}</label>
+                    <input
+                        className="checkBoxStyle"
+                        type="checkbox"
+                        name={box.name}
+                        ref={register}
+                        onChange={(e) => handleCheckBoxes(e)}
+                    />
+                </li>
+                ))}
+            </ul>
+            <h2>
+                Today's Score:{" "}
+                {percent % 2 !== 0 ? percent.toFixed(1)
+                : percent.toFixed(0)}{" "}
+                %
+            </h2>
+            <input type="submit" />
+        </form>
+        <div>
+            asdasd
+        </div>
+    </div>
   );
 };
 

@@ -1,16 +1,15 @@
 .navBarContainer {
     grid-column: 1 / 3 ;
-    grid-row: 2/-1;
+    grid-row: 2/5;
     display: grid;
 }
 
 .navBar {   
     margin-block-start: 0;
     margin-block-end: 0;
-    padding-inline-start: 0;
+    padding-inline-start: 1.5em;
     display: grid;
     align-items: center;
-    justify-content: center;
     background-color: rgb(26,29,33);
     border: 5px solid #19171D;
 
@@ -18,6 +17,7 @@
 
 .NavLi {
     list-style-type: none;
+
 
 }
 

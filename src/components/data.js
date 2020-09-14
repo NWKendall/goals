@@ -97,11 +97,15 @@ export const ltoData = {
 
 export const scheduleData = [
   {
-    name: "awake",
+    name: "Awake",
     checked: false,
   },
   {
-    name: "stretch",
+    name: "Stretch",
+    checked: false,
+  },
+  {
+    name: "Exercise",
     checked: false,
   },
   {

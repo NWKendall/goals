@@ -2,25 +2,22 @@
 ## Ideas
 
 - schedule
- - daily routine (checkbox)
- - chores / things to do (checkbox)
+ - daily routine (checkbox) ✅
+ - chores / things to do (checkbox) 
+
+- include context
 - timer that will calculate productivity for the day
+    - resets at end of day
+- Date
+
+## Bugs
+- Mantra oiption has different styles ✅
+    - re format so options are in top left of screen, alligned left ✅
 
 
-- reset
 
-Date
 
-activity    time    checkbox
-1
-2
-3
-4
-5
-6
-7
 
-score       %
 
 slack pallette 
 
