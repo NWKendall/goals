@@ -1,46 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { scheduleData } from '../data.js';
 
 const Scheduler = () => {
   const { register, handleSubmit, watch, errors } = useForm();
   let [state, setState] = useState({
-    checkBoxes: [
-      {
-        name: "awake",
-        checked: false,
-      },
-      {
-        name: "stretch",
-        checked: false,
-      },
-      {
-        name: "Mantra & Meditate",
-        checked: false,
-      },
-      {
-        name: "Study 1",
-        checked: false,
-      },
-      {
-        name: "30 mins Piano / Guitar",
-        checked: false,
-      },
-      {
-        name: "Study 2",
-        checked: false,
-      },
-      {
-        name: "Reading 30 mins",
-        checked: false,
-      },
-    ],
+    checkBoxes: scheduleData,
     score: 0,
   });
 
   const percent = (state.score / state.checkBoxes.length) * 100;
   const onSubmit = (data) => console.log(data, state.score);
 
-  const handleChanges = (e) => {
+  const handleCheckBoxes = (e) => {
     if (!!e.target.checked) {
       setState({
         ...state,
@@ -54,19 +26,17 @@ const Scheduler = () => {
     }
   };
 
-  //   useEffect(() => {}, [state]);
-  console.log(state.score);
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <ul style={{ display: "flex", border: "1px pink solid" }}>
-        {state.checkBoxes.map((box) => (
-          <li style={{ display: "flex", border: "1px green solid" }}>
+        {state.checkBoxes.map((box, i) => (
+          <li key={i}>
             <label>{box.name}</label>
             <input
               type="checkbox"
               name={box.name}
               ref={register}
-              onChange={(e) => handleChanges(e)}
+              onChange={(e) => handleCheckBoxes(e)}
             />
           </li>
         ))}

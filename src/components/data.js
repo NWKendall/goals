@@ -94,3 +94,34 @@ export const ltoData = {
     "learn Piano"
 ]
 }
+
+export const scheduleData = [
+  {
+    name: "awake",
+    checked: false,
+  },
+  {
+    name: "stretch",
+    checked: false,
+  },
+  {
+    name: "Mantra & Meditate",
+    checked: false,
+  },
+  {
+    name: "Study 1",
+    checked: false,
+  },
+  {
+    name: "30 mins Piano / Guitar",
+    checked: false,
+  },
+  {
+    name: "Study 2",
+    checked: false,
+  },
+  {
+    name: "Reading 30 mins",
+    checked: false,
+  },
+]
