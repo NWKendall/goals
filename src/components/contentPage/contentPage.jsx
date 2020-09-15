@@ -7,13 +7,14 @@ import Rules from "../rules/rules.jsx"
 import LTObjectives from "../lto/lto";
 import STObjectives from "../sto/sto";
 import Scheduler from "../scheduler/scheduler";
+import Home from "../home/home";
 
 
 function ContentPage() {
   return (
       <div className="contentContainer">
         <Switch>
-          <Route exact path="/" />
+          <Route exact path="/" component={Home}/>
           <Route path="/mantra" component={Mantra} />
           <Route path="/rules" component={Rules} />
           <Route path="/sto" component={STObjectives} />

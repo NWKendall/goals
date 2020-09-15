@@ -5,7 +5,7 @@
  - daily routine (checkbox) ✅
  - chores / things to do (checkbox) 
 
-- include context
+- include context ✅
 - timer that will calculate productivity for the day
     - resets at end of day
 - Date

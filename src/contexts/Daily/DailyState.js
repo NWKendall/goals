@@ -46,7 +46,6 @@ const DailyState = (props) => {
     const storedState = localStorage.getItem("StoredState");
     return storedState ? JSON.parse(storedState) : initialState;
   });
-  // const [state2, setState2] = useState(state)
 
   const scoreIncrease = (data) => {
     dispatch({ type: SCORE_INCREASE, payload: data });
@@ -56,12 +55,9 @@ const DailyState = (props) => {
     dispatch({ type: SCORE_DECREASE, payload: data });
   };
 
-  // useEffect(() => {
-  //   localStorage.getItem("StoredState");
-  // }, [])
-
   useEffect(() => {
     localStorage.setItem("StoredState", JSON.stringify(state));
+
   }, [state]);
 
   return (
