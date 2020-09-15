@@ -1,4 +1,2 @@
-export const GET_ACTIVITIES = "GET_ACTIVITIES";
-export const GET_SCORE = "GET_SCORE";
 export const SCORE_INCREASE = "SCORE_INCREASE";
 export const SCORE_DECREASE = "SCORE_DECREASE"; 

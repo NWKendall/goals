@@ -1,8 +1,7 @@
 import React, { useReducer } from "react";
 import DailyContext from "./DailyContext.js";
-import DailyReducer from "./DailyContext.js";
-
-import { GET_ACTIVITIES, GET_SCORE, SCORE_INCREASE, SCORE_DECREASE, SET_ACTIVITIES} from '../../types.js';
+import DailyReducer from "./DailyReducer.js";
+import { SCORE_INCREASE, SCORE_DECREASE } from '../../types.js';
 
 const DailyState = (props) => {
   let initialState = {
@@ -45,16 +44,21 @@ const DailyState = (props) => {
 
   const [state, dispatch] = useReducer(DailyReducer, initialState);
 
-  const getActivities = () => {
-      dispatch({ type: GET_ACTIVITIES, payload: initialState.daily})
+  const scoreIncrease = (data) => {
+    dispatch({ type: SCORE_INCREASE, payload: data });
   }
 
+  const scoreDecrease = (data) => {
+    dispatch({ type: SCORE_DECREASE, payload: data });
+  }
+  console.log(state)
   return (
     <DailyContext.Provider 
         value={{ 
-            daily: state.daily, 
+            daily: state.daily,
             score: state.score,
-            getActivities
+            scoreIncrease,
+            scoreDecrease
         }}>
       {props.children}
     </DailyContext.Provider>
