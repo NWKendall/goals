@@ -7,17 +7,12 @@ const Scheduler = () => {
   const { register, handleSubmit } = useForm();
   const {daily, score, scoreIncrease, scoreDecrease} = useContext(DailyContext);
 
-  // const [checkBoxes, setCheckBoxes] = useState({
-  //   name: "",
-  //   checked: false
-  // })
-
-
   let percent = (score / daily.length) * 100;
 
   // add api call to BE
-  const onSubmit = (data) =>
-    alert(`Send todays score of ${percent}% somewhere!`);
+  function onSubmit() {
+    return alert(`Send todays score of ${percent}% somewhere!`);
+  }
 
   const handleCheckBoxes = (e) => {
     if(e.target.checked) {
@@ -38,6 +33,7 @@ const Scheduler = () => {
                 className="checkBoxStyle"
                 type="checkbox"
                 name={box.name}
+                checked={box.checked}
                 ref={register}
                 onChange={(e) => handleCheckBoxes(e)}
               />
@@ -56,19 +52,3 @@ const Scheduler = () => {
 };
 
 export default Scheduler;
-
-// needs to reset every 24 hours
-
-// const handleCheckBoxes = (e) => {
-//   if (!!e.target.checked) {
-//     setState({
-//       ...state,
-//       score: state.score + 1,
-//     });
-//   } else {
-//     setState({
-//       ...state,
-//       score: state.score - 1,
-//     });
-//   }
-// };

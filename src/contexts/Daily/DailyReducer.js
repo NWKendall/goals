@@ -1,6 +1,7 @@
 import {  SCORE_INCREASE, SCORE_DECREASE } from '../../types.js';
 
 export default (state, action) => {
+    
     const { payload, type } = action;
 
     switch(type) {  

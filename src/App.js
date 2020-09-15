@@ -5,10 +5,8 @@ import Header from "./components/header/header.js";
 import ContentPage from "./components/contentPage/contentPage.jsx";
 import Navbar from "./components/navbar/navbar";
 import DailyState from "./contexts/Daily/DailyState";
+
 function App() {
-
-
-
   return (
     <DailyState>
       <Router>
