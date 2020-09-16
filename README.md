@@ -12,8 +12,10 @@
 - header
     - logo
 
-- timer that will calculate productivity for the day
-    - resets at end of day
+- timer that will calculate productivity for the day ✅
+    - include miliseconds
+    - resets at end of day (after 24 houra)
+    - need count down
 
 - dashboard
     - basic styling and functionality ✅
