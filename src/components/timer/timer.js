@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./timer.styles.css";
 
 const Timer = () => {
-  const [seconds, setSeconds] = useState(0);
+  const [seconds, setSeconds] = useState(58);
   const [isActive, setIsActive] = useState(false);
 
+  let secs = seconds.toFixed(0).slice(-2)
+  const minutes = useRef(0);
+  const hours = useRef(0);
   function toggle() {
     setIsActive(!isActive);
   }
@@ -20,6 +23,15 @@ const Timer = () => {
       interval = setInterval(() => {
         setSeconds((seconds) => seconds + 1);
       }, 1000);
+      if(seconds === 60) {
+          minutes.current++
+          setSeconds(0)
+          if(minutes.current === 60) {
+              minutes.current = 0
+            hours.current++
+      }
+    }
+    
     } else if (!isActive && seconds !== 0) {
       clearInterval(interval);
     }
@@ -29,7 +41,7 @@ const Timer = () => {
   return (
     <div className="stopwatch">
       <div style={{ color: "white", textAlign: "center" }}>Stopwatch</div>
-      <p>{seconds} </p>
+      <p> {hours.current} : {minutes.current} : {secs}</p>
       {!isActive && seconds === 0 ? (
         <button onClick={() => toggle()}>Start</button>
       ) : isActive && seconds > 0 ? (
