@@ -3,16 +3,29 @@
 
 - schedule
  - daily routine (checkbox) ✅
+    - CRUD activities 
  - chores / things to do (checkbox) 
 
 - include context ✅
+- Date ✅
+
+- header
+    - logo
+
 - timer that will calculate productivity for the day
     - resets at end of day
-- Date
+
+- dashboard
+    - basic styling and functionality ✅
+    - needs BE get request
+    - graphs 😃
+
+
+
 
 ## Bugs
-- Mantra oiption has different styles ✅
-    - re format so options are in top left of screen, alligned left ✅
+- Mantra oiption has different styles
+    - re format so options are in top left of screen, alligned left 
 
 
 

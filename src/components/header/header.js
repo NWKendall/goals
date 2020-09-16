@@ -1,14 +1,14 @@
 import React from 'react'
+import moment from 'moment';
 import './header.styles.css';
-const Header = () => {
-    let today = String(new Date()).split(" ")
 
-    console.log(today[0])
-    let dateString = `${today[0]} ${today[1]} ${today[2]} ${today[3]}`
+const Header = () => {
+    let today = moment().format('MMMM Do YYYY')    
+
     return (
         <div className="headerStyle">
             <h1>Rules, Mantra, Goals!</h1>
-            <h4>{dateString}</h4>
+            <h4>{today}</h4>
         </div>
     )
 }

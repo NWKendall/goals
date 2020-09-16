@@ -1,37 +1,63 @@
 .cardDisplay {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(1, 1fr);
-    border: 1px solid pink;
+    grid-template-rows: 150px;
+    grid-gap: 5px;
+    /* border: 1px solid pink; */
 }
+
+
+
+/* homecard */
+
 .scoreCard {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    /* grid-template-rows: repeat(1, 1fr); */
-    border: 1px solid pink;
+    display: flex;
+    flex-direction: column;   
+    border: 1px solid rgb(209,210,211);
+    text-align: center;
+}
+
+.dateStyle {
+    /* grid-column: 1 / 6; */
+    padding-left: .3em;
+    text-align: center;
+    /* border: 1px solid pink; */
+
 }
 
 .buttonStyle {
-    grid-column: 6/ 6;
-}
-
-.dailyScores {
-    display: grid;
-    border: 1px solid pink;
-}
-.dateStyle {
-    grid-column: 1/ 5;
+    /* grid-column: 1/ 6; */
+    /* border: 1px solid pink; */
+    background-color: blueviolet;
+    cursor: pointer;
 }
 
 .scoreStyle {
-    grid-column: 1/ -1;
-
+    grid-column: 1/6;    
     grid-row: 2/ 2;
-    border: 1px solid pink;
+    justify-content: center;
+    /* border: 1px solid pink; */
+    
+}
 
 
+
+/* Sub map components */
+.dailyScores {
+    /* display: grid;
+    grid-column: 1/-1; */
+    /* border: 1px solid pink; */
+}
+
+.activityRow {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    padding: 0 0.2em 0 0.2em;
+    border: 1px solid rgb(209,210,211);
 }
 
 div div p {
     font-size: 0.8rem;
+
 }

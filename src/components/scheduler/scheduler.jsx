@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
+import moment from 'moment';
 import DailyContext from "../../contexts/Daily/DailyContext.js";
 import "./scheduler.styles.css";
 import { scoreHistory } from '../data.js';
@@ -13,10 +14,10 @@ const Scheduler = () => {
 
   // add api call to BE
   function onSubmit(daily) {
-    let date = new Date()
+    let date = moment().format('L')
     let todayScore = {daily, score, date}
     scoreHistory.push(todayScore)
-    console.log("SH", scoreHistory)
+    console.log("Score History Push", scoreHistory)
     // return alert(`Send todays score of ${percent}% somewhere!`);
   }
 

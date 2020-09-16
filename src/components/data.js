@@ -138,80 +138,80 @@ export const scheduleData = [
 ];
 
 export const scoreHistory = [
-  {
-    daily: [
-      {
-        name: "Awake",
-        checked: false,
-      },
-      {
-        name: "Stretch",
-        checked: false,
-      },
-      {
-        name: "Exercise",
-        checked: false,
-      },
-      {
-        name: "Mantra & Meditate",
-        checked: false,
-      },
-      {
-        name: "Study 1",
-        checked: true,
-      },
-      {
-        name: "30 mins Piano / Guitar",
-        checked: true,
-      },
-      {
-        name: "Study 2",
-        checked: true,
-      },
-      {
-        name: "Reading 30 mins",
-        checked: true,
-      },
-    ],
-    score: 4,
-    date: moment().format('L'),
-  },
-  {
-    daily: [
-      {
-        name: "Awake",
-        checked: false,
-      },
-      {
-        name: "Stretch",
-        checked: false,
-      },
-      {
-        name: "Exercise",
-        checked: false,
-      },
-      {
-        name: "Mantra & Meditate",
-        checked: false,
-      },
-      {
-        name: "Study 1",
-        checked: true,
-      },
-      {
-        name: "30 mins Piano / Guitar",
-        checked: true,
-      },
-      {
-        name: "Study 2",
-        checked: true,
-      },
-      {
-        name: "Reading 30 mins",
-        checked: true,
-      },
-    ],
-    score: 4,
-    date: moment().format('L')
-  },
+  // {
+  //   daily: [
+  //     {
+  //       name: "Awake",
+  //       checked: false,
+  //     },
+  //     {
+  //       name: "Stretch",
+  //       checked: false,
+  //     },
+  //     {
+  //       name: "Exercise",
+  //       checked: false,
+  //     },
+  //     {
+  //       name: "Mantra & Meditate",
+  //       checked: false,
+  //     },
+  //     {
+  //       name: "Study 1",
+  //       checked: true,
+  //     },
+  //     {
+  //       name: "30 mins Piano / Guitar",
+  //       checked: true,
+  //     },
+  //     {
+  //       name: "Study 2",
+  //       checked: true,
+  //     },
+  //     {
+  //       name: "Reading 30 mins",
+  //       checked: true,
+  //     },
+  //   ],
+  //   score: 4,
+  //   date: moment().format('L'),
+  // },
+  // {
+  //   daily: [
+  //     {
+  //       name: "Awake",
+  //       checked: false,
+  //     },
+  //     {
+  //       name: "Stretch",
+  //       checked: false,
+  //     },
+  //     {
+  //       name: "Exercise",
+  //       checked: false,
+  //     },
+  //     {
+  //       name: "Mantra & Meditate",
+  //       checked: false,
+  //     },
+  //     {
+  //       name: "Study 1",
+  //       checked: true,
+  //     },
+  //     {
+  //       name: "30 mins Piano / Guitar",
+  //       checked: true,
+  //     },
+  //     {
+  //       name: "Study 2",
+  //       checked: true,
+  //     },
+  //     {
+  //       name: "Reading 30 mins",
+  //       checked: true,
+  //     },
+  //   ],
+  //   score: 4,
+  //   date: moment().format('L')
+  // },
 ];

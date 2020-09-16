@@ -1,29 +1,35 @@
-import React from 'react';
-import moment from 'moment';
-import './home.styles.css';
+import React, { useState } from "react";
+import "./home.styles.css";
 
-const DayScoreCard = ({data, key}) => {
-    const { score, date, daily } = data;
+const DayScoreCard = (props) => {
+//   const { score, date, daily } = data;
 
+  console.log("dayScoreCard", props)
 
-    // let altDate = JSON.parse(date)
-    // console.log("!", altDate)
+  const [toggleScore, setToggleScore] = useState(false);
 
+  return (
+    <div key={props.index} className="scoreCard">
+      <h4 className="dateStyle">{String(props.data.date)}</h4>
+      <h3 className="scoreStyle">Score: {((props.data.score / 8) * 100).toFixed(1)}%</h3>
+      <div
+        onClick={() => setToggleScore(!toggleScore)}
+        className="buttonStyle"
+      >
+        See Individual Scores
+      </div>
+      <div >
+        {toggleScore
+          ? Object.entries(props.data.daily).map((activity, i) => (
+              <div key={i} className="activityRow">
+                <p>{activity[0]}</p>
+                <p>{activity[1] ? `✅` : `❌`}</p>
+              </div>
+            ))
+          : null}
+      </div>
+    </div>
+  );
+};
 
-
-    return (
-        <div className="scoreCard">
-            <h4 className="dateStyle">{date}</h4>
-            <button className="buttonStyle">V</button>
-            <h3 className="scoreStyle">Score: {score}</h3>
-                {/* {daily.map(activity => (
-                    <div className="dailyScores">
-                        <p>{activity.name}</p>
-                        <p>{activity.checked ? `✅` : `❌`}</p>
-                    </div>
-                ))} */}
-        </div>
-    )
-}
-
-export default DayScoreCard
+export default DayScoreCard;
