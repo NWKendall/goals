@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import DailyContext from "../../contexts/Daily/DailyContext.js";
 import "./scheduler.styles.css";
+import { scoreHistory } from '../data.js';
+
 
 const Scheduler = () => {
   const { register, handleSubmit } = useForm();
@@ -10,8 +12,12 @@ const Scheduler = () => {
   let percent = (score / daily.length) * 100;
 
   // add api call to BE
-  function onSubmit() {
-    return alert(`Send todays score of ${percent}% somewhere!`);
+  function onSubmit(daily) {
+    let date = new Date()
+    let todayScore = {daily, score, date}
+    scoreHistory.push(todayScore)
+    console.log("SH", scoreHistory)
+    // return alert(`Send todays score of ${percent}% somewhere!`);
   }
 
   const handleCheckBoxes = (e) => {
