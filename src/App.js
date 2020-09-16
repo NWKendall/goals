@@ -4,6 +4,7 @@ import "./App.css";
 import Header from "./components/header/header.js";
 import ContentPage from "./components/contentPage/contentPage.jsx";
 import Navbar from "./components/navbar/navbar";
+import Timer from "./components/timer/timer";
 import DailyState from "./contexts/Daily/DailyState";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <div className="appContainer">
           <Header />
           <Navbar />
+          <Timer />
           <ContentPage />
         </div>
       </Router>
