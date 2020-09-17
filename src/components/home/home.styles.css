@@ -13,7 +13,9 @@
 .scoreCard {
     display: flex;
     flex-direction: column;   
-    border: 1px solid rgb(209,210,211);
+    border: 1px solid #106ba3;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgb(12, 12, 12);
     text-align: center;
 }
 
@@ -26,9 +28,12 @@
 }
 
 .buttonStyle {
-    /* grid-column: 1/ 6; */
-    /* border: 1px solid pink; */
-    background-color: blueviolet;
+    background-color: #106ba3;
+    outline: none;
+    border: solid 1px transparent;
+    border-radius: 4px;
+    color: whitesmoke;
+    font-size: 1rem;
     cursor: pointer;
 }
 

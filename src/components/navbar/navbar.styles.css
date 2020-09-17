@@ -17,18 +17,17 @@
 
 .NavLi {
     list-style-type: none;
-
-
 }
 
 .navItem {
     text-decoration: none;
     font-size: 1.5rem;
+    color: #106ba3;
     /* border: 1px solid blueviolet; */
 }
 
 .nevItem ::before {
-    color: whitesmoke;
+    color: #106ba3;
 }
 
 .selectedLink {

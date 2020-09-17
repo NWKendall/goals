@@ -63,21 +63,20 @@ const Timer = () => {
     secs = ("0" + timer.seconds).slice(-2);
 
   return (
-    <div className="stopwatch">
-      <div style={{ color: "white", textAlign: "center" }}>Stopwatch</div>
-      <p>
-        {" "}
+    <div className="stopwatchContainer">
+      <h4 className="title">Stopwatch⏱</h4>
+      <p className="timerDisplay">
         {hrs} : {mins} : {secs}
       </p>
       {!isActive && timer.seconds === 0 ? (
-        <button onClick={() => toggle()}>Start</button>
+        <button className="btnStyle" onClick={() => toggle()}>Start</button>
       ) : isActive ? (
-        <button onClick={() => toggle()}>Stop</button>
+        <button className="btnStyle" onClick={() => toggle()}>Stop</button>
       ) : !isActive && timer.seconds > 0 ? (
-        <button onClick={() => toggle()}>Resume</button>
+        <button className="btnStyle" onClick={() => toggle()}>Resume</button>
       ) : null}
 
-      <button onClick={() => reset()}>Reset</button>
+      <button className="btnStyle" onClick={() => reset()}>Reset</button>
     </div>
   );
 };

@@ -4,18 +4,19 @@
 - schedule
  - daily routine (checkbox) ✅
     - CRUD activities 
- - chores / things to do (checkbox) 
+ - chores / things to do (checkbox) <---------- 3
 
 - include context ✅
 - Date ✅
 
 - header
-    - logo
+    - logo / icon
+    - weather
 
 - timer that will calculate productivity for the day ✅
     - include miliseconds
-    - resets at end of day (after 24 houra)
-    - need count down
+    - resets local storage at end of day (after 24 hours) <---------- 1
+    - need count down <---------- 2
 
 - dashboard
     - basic styling and functionality ✅
