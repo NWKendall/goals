@@ -15,7 +15,7 @@
 
 - timer that will calculate productivity for the day ✅
     - include miliseconds
-    - resets local storage at end of day (after 24 hours) <---------- 1
+    - resets local storage at end of day (after 24 hours) <---------- 1 ✅
     - need count down <---------- 2
 
 - dashboard
@@ -40,7 +40,9 @@ slack pallette
 rgb(209,210,211)    light green grey
 rgb(26,29,33)       background
 #19171D             border
-
+                    whitesmoke
+#106ba3             light gry blue
+#202b33             gun metal
 
 
 

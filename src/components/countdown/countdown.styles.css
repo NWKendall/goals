@@ -1,0 +1,70 @@
+.countDownContainer {
+    grid-column: 2 / 3;
+    grid-row: 5 / 7;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 5px solid #19171D;
+
+
+}
+
+.cdtitle {
+    color: whitesmoke;
+    /* border: 1px solid pink; */
+}
+
+.cdDisplay {
+    color: whitesmoke;
+    text-align: center;
+    font-size: 1.3rem;
+
+}
+
+.cdbtnStyle {
+    width: 75%;    
+    background-color: #202b33;
+    outline: none;
+    border: solid 1px transparent;
+    border-radius: 4px;
+    padding: 0.8em 1.6em;
+    color: whitesmoke;
+    font-size: 1rem;
+    margin: 2.5px 5px;
+    cursor: pointer;
+   
+    
+}
+.cdbtnStyle:hover {
+    background-color: #106ba3;
+    border: solid 1px transparent;
+    color: #202b33;
+
+}
+
+.cdFormStyle {
+    display: grid;
+    border: 1px solid pink;
+    z-index: 9999;
+
+}
+
+.cdLabelStyle {
+    color: whitesmoke;
+    display: grid;
+    flex-direction: column;
+    border: 1px solid pink;
+}
+
+.inputStyle {
+    width: 50%;
+    border: 1px solid blue;
+
+}
+
+.cdSubmitStyle {
+    width: 100%;
+    border: 1px solid pink;
+
+}
