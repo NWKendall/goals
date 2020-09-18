@@ -28,7 +28,7 @@
 }
 
 .otherStyle {
-    background-color: green;
+    background-color: var(--button-hover-color);
     grid-column: 4 / -1;
 
 }

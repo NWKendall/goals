@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import alarm from './alarm.mp3';
-
+import alarm from "./alarm.mp3";
 import "./countdown.styles.css";
 
 const CountDown = () => {
@@ -111,7 +110,7 @@ const CountDown = () => {
         {timeForm ? (
           <form className="cdFormStyle" onSubmit={handleSubmit(onSubmit)}>
             <label className="cdLabelStyle">
-              H
+              h
               <input
                 type="number"
                 className="inputStyle"
@@ -123,7 +122,7 @@ const CountDown = () => {
               />
             </label>
             <label className="cdLabelStyle">
-              M
+              m
               <input
                 type="number"
                 className="inputStyle"
@@ -135,7 +134,7 @@ const CountDown = () => {
               />
             </label>
             <label className="cdLabelStyle">
-              S
+              s
               <input
                 type="number"
                 className="inputStyle"

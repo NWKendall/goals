@@ -1,8 +1,8 @@
 .appContainer {
-  background-color: rgb(26,29,33);
+  background-color: var(--main-bg-color);
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(8, 1fr);
+  grid-template-rows: repeat(10, 1fr);
   /* grid-gap: 2px; */
   margin: auto;
 }

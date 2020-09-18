@@ -1,6 +1,6 @@
 .navBarContainer {
     grid-column: 1 / 3 ;
-    grid-row: 2/5;
+    grid-row: 2 / 5;
     display: grid;
 }
 
@@ -10,8 +10,8 @@
     padding-inline-start: 1.5em;
     display: grid;
     align-items: center;
-    background-color: rgb(26,29,33);
-    border: 5px solid #19171D;
+    background-color: var(--main-bg-color);
+    border: 5px solid var(--border-color);
 
 }
 
@@ -22,16 +22,16 @@
 .navItem {
     text-decoration: none;
     font-size: 1.5rem;
-    color: #106ba3;
+    color: var(--button-hover-color);
     /* border: 1px solid blueviolet; */
 }
 
 .nevItem ::before {
-    color: #106ba3;
+    color: var(--button-hover-color);
 }
 
 .selectedLink {
-    color: whitesmoke
+    color: var(--text-color)
 }
 
 

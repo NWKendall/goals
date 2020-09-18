@@ -3,7 +3,7 @@
     grid-column: 2 / 2;
     grid-row: 5 / 7;
     align-items: center;
-    border: 2.5px solid #19171D;
+    border: 2.5px solid var(--border-color);
 }
 
 .cdtitle {
@@ -20,7 +20,7 @@
 }
 
 .cdbtnStyle {
-    background-color: #202b33;
+    background-color: var(--button-bg-color);
     outline: none;
     border: solid 1px transparent;
     border-radius: 4px;
@@ -31,9 +31,9 @@
     cursor: pointer;
 }
 .cdbtnStyle:hover {
-    background-color: #106ba3;
+    background-color: var(--button-hover-color);
     border: solid 1px transparent;
-    color: #202b33
+    color: var(--button-bg-color)
 }
 
 /* Drop down not working proper */
@@ -41,9 +41,8 @@
     display: flex;
     position: absolute;
     left: 14.5em;
-    background-color: #202b33;
-    border: 5px solid #19171D;
-
+    background-color: var(--button-bg-color);
+    border: 5px solid var(--border-color);
     flex-direction: column;
     justify-content: center;
     margin-top: 0.5em;;
@@ -52,7 +51,7 @@
 }
 
 .cdLabelStyle {
-    color: whitesmoke;
+    color:  var(--text-color);
     display: flex;
     flex-direction: column;
     align-items: center;
