@@ -8,5 +8,8 @@ describe("server", function() {
     it("should use the testing environment", function() {
         expect(process.env.DB_ENV).not.toBe("development");
       });
+    it("should use the testing environment", function() {
+    expect(process.env.DB_ENV).not.toBe("production");
+    });
   });
 });

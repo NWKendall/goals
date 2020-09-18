@@ -30,7 +30,6 @@ describe("Activities Test Suite", function () {
 
   describe("Activities - POST Request Tests", function () {
     it("POST request return a status 201", async function () {
-
       let activity = {
         awake: true,
         stretch: true,
@@ -40,7 +39,7 @@ describe("Activities Test Suite", function () {
         music: true,
         study2: true,
         reading: true,
-        weight: 150
+        weight: 150,
       };
 
       const response = await request(server)
@@ -48,9 +47,13 @@ describe("Activities Test Suite", function () {
         .send(activity)
         .expect("Content-Type", /json/)
         .set("Accept", "application/json");
-                
-        await expect(response.status).toEqual(201);
-        
+
+      await expect(response.status).toEqual(201);
     });
+    it("Checks for amount of users in database", async function () {
+        const testDB = await db("activities");
+  
+        await expect(testDB).toHaveLength(1);
+      });
   });
 });
