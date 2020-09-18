@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import alarm from './alarm.mp3';
 
 import "./countdown.styles.css";
 
 const CountDown = () => {
   const [input, setInput] = useState(0);
-  const [form, showForm] = useState(false);
+  const [timeForm, setTimeForm] = useState(false);
+
+  const playAudio = new Audio(alarm);
 
   const [timer, setTimer] = useState({
     seconds: 0,
@@ -46,7 +49,7 @@ const CountDown = () => {
         });
       }
 
-      if (timer.seconds === 0 && timer.minutes > 0 && timer.hours > 0 ) {
+      if (timer.seconds === 0 && timer.minutes > 0 && timer.hours > 0) {
         setTimer({
           ...timer,
           seconds: 60,
@@ -54,15 +57,17 @@ const CountDown = () => {
           hours: timer.hours - 1,
         });
       }
+
       if (timer.seconds === 0 && timer.minutes === 0 && timer.hours === 0) {
-        toggle();
+        setIsActive(false);
+        playAudio.play();
       }
     } else if (isActive && timer.seconds !== 0) {
       clearInterval(interval);
     }
 
     return () => clearInterval(interval);
-  }, [isActive, timer.seconds]);
+  }, [isActive, timer]);
 
   const onSubmit = (data) => {
     setTimer({
@@ -71,7 +76,7 @@ const CountDown = () => {
       minutes: Number(data.minsInput) || 0,
       hours: Number(data.hoursInput) || 0,
     });
-    showForm(false);
+    setTimeForm(false);
   };
 
   let hrs = ("0" + timer.hours).slice(-2),
@@ -80,11 +85,11 @@ const CountDown = () => {
 
   return (
     <div className="countDownContainer">
-        <h4 className="cdtitle">CountDown⏱</h4>
-        <p className="cdDisplay">
-          {hrs} : {mins} : {secs}
-        </p>
-        <div style={{display: "flex"}}>
+      <h4 className="cdtitle">CountDown⏱</h4>
+      <p className="cdDisplay">
+        {hrs} : {mins} : {secs}
+      </p>
+      <div style={{ display: "flex" }}>
         {!isActive ? (
           <button className="cdbtnStyle" onClick={() => toggle()}>
             Start
@@ -98,55 +103,59 @@ const CountDown = () => {
         <button className="cdbtnStyle" onClick={() => reset()}>
           Reset
         </button>
-        </div>
-        <button className="cdbtnStyle" onClick={() => showForm(!form)}>
-          Time?
-        </button>
-        <div>
-          {form ? (
-            <form className="cdFormStyle" onSubmit={handleSubmit(onSubmit)}>
-              <label className="cdLabelStyle">
-                H
-                <input
-                  type="number"
-                  className="inputStyle"
-                  name="hoursInput"
-                  ref={register}
-                  onChange={(e) => setInput(e)}
-                  min="0"
-                  max="24"
-                />
-              </label>
-              <label className="cdLabelStyle">
-                M
-                <input
-                  type="number"
-                  className="inputStyle"
-                  name="minsInput"
-                  ref={register}
-                  onChange={(e) => setInput(e)}
-                  min="0"
-                  max="59"
-                />
-              </label>
-              <label className="cdLabelStyle">
-                S
-                <input
-                  type="number"
-                  className="inputStyle"
-                  name="secsInput"
-                  ref={register}
-                  onChange={(e) => setInput(e)}
-                  min="0"
-                  max="60"
-                />
-              </label>
-              <button type="submit" style={{backgroundColor: "#106ba3"}} className="cdbtnStyle">
-                Submit
-              </button>
-            </form>
-          ) : null}
-        </div>
+      </div>
+      <button className="cdbtnStyle" onClick={() => setTimeForm(!timeForm)}>
+        Time?
+      </button>
+      <div>
+        {timeForm ? (
+          <form className="cdFormStyle" onSubmit={handleSubmit(onSubmit)}>
+            <label className="cdLabelStyle">
+              H
+              <input
+                type="number"
+                className="inputStyle"
+                name="hoursInput"
+                ref={register}
+                onChange={(e) => setInput(e)}
+                min="0"
+                max="24"
+              />
+            </label>
+            <label className="cdLabelStyle">
+              M
+              <input
+                type="number"
+                className="inputStyle"
+                name="minsInput"
+                ref={register}
+                onChange={(e) => setInput(e)}
+                min="0"
+                max="59"
+              />
+            </label>
+            <label className="cdLabelStyle">
+              S
+              <input
+                type="number"
+                className="inputStyle"
+                name="secsInput"
+                ref={register}
+                onChange={(e) => setInput(e)}
+                min="0"
+                max="60"
+              />
+            </label>
+            <button
+              type="submit"
+              style={{ backgroundColor: "#106ba3" }}
+              className="cdbtnStyle"
+            >
+              Submit
+            </button>
+          </form>
+        ) : null}
+      </div>
     </div>
   );
 };
