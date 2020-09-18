@@ -24,23 +24,6 @@ module.exports = {
       directory: "./database/seeds"
     }
   },
-
-  staging: {
-    client: 'pg',
-    connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      directory: "./database/migrations",
-      tableName: 'knex_migrations'
-    }
-  },
   testing: {
     client: 'pg',
     useNullAsDefault: true,
@@ -49,7 +32,7 @@ module.exports = {
       port: "5432",
       user: "postgres",
       password: process.env.DB_PASSWORD,
-      database: 'templateDB'
+      database: 'templateDB_test'
     },
     pool: {
       min: 2,
@@ -63,17 +46,16 @@ module.exports = {
       directory: "./database/seeds"
     }
   },
-
   production: {
-    client: 'postgresql',
-    connection: process.env.DATABASE_URL,
+    client: 'pg',
+    connection: '',
     pool: {
       min: 2,
       max: 10
     },
     migrations: {
       directory: "./database/migrations",
-      tableName: 'knex_migrations'
+      tableName: "knex_migrations"
     },
     seeds: {
       directory: "./database/seeds"
