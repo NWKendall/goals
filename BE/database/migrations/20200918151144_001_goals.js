@@ -2,7 +2,7 @@ exports.up = function (knex) {
   return knex.schema
     .createTable("activities", (tbl) => {
       tbl.increments();
-      tbl.integer("weight");
+      tbl.integer("weight").notNullable();
       tbl.date("date");
       tbl.boolean("awake").defaultTo(false);
       tbl.boolean("stretch").defaultTo(false);

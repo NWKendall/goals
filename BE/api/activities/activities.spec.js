@@ -8,6 +8,63 @@ describe("Activities Test Suite", function () {
     await db("activities").del();
   });
 
+  describe("Activities - POST Request Tests", function () {
+    it("POST request return a status 201", async function () {
+      let activity = {
+        awake: true,
+        stretch: true,
+        exercise: true,
+        mantra: true,
+        study1: true,
+        music: true,
+        study2: true,
+        reading: true,
+        weight: 150,
+      };
+
+      const response = await request(server)
+        .post("/api/goals/activities")
+        .send(activity)
+        .expect("Content-Type", /json/)
+        .set("Accept", "application/json");
+
+      await expect(response.status).toEqual(201);
+    });
+
+    it("incomplete POST request return a status 500", async function () {
+      let activity = {
+        awake: "",
+        stretch: "",
+        exercise: "",
+        mantra: "",
+        study1: "",
+        music: "",
+        study2: "",
+        reading: "",
+        weight: "150",
+      };
+      const response = await request(server)
+        .post("/api/goals/activities")
+        .send(activity)
+        .expect("Content-Type", /json/)
+        .set("Accept", "application/json");
+
+      await expect(response.status).toEqual(500);
+    });
+
+    it("empty POST request return a status 500", async function () {
+      let activity = {};
+      const response = await request(server)
+        .post("/api/goals/activities")
+        .send(activity)
+        .expect("Content-Type", /json/)
+        .set("Accept", "application/json");
+
+      await expect(response.status).toEqual(500);
+    });
+
+    
+  });
 
   describe("Activities - GET Request Tests", function () {
     it("GET request return a status 200", function () {
@@ -31,47 +88,12 @@ describe("Activities Test Suite", function () {
           expect(res.type).toMatch(/json/);
         });
     });
-  });
-
-  describe("Activities - POST Request Tests", function () {
-    it("POST request return a status 201", async function () {
-      let activity = {};
-
-      const response = await request(server)
-        .post("/api/goals/activities")
-        .send(activity)
-        .expect("Content-Type", /json/)
-        .set("Accept", "application/json");
-
-      await expect(response.status).toEqual(201);
-    });
-
-    it("incomplete POST request return a status 500", async function () {
-      let activity = {
-        awake: "",
-        stretch: "",
-        exercise: "",
-        mantra: "",
-        study1: "",
-        music: "",
-        study2: "",
-        reading: "",
-        weight: "150",
-      };
-
-      const response = await request(server)
-        .post("/api/goals/activities")
-        .send(activity)
-        .expect("Content-Type", /json/)
-        .set("Accept", "application/json");
-
-      await expect(response.status).toEqual(500);
-    });
-
     it("Checks for amount of activities in database", async function () {
-        const testDB = await db("activities");
-  
-        await expect(testDB).toHaveLength(1);
-      });
+      const testDB = await db("activities");
+
+      await expect(testDB).toHaveLength(1);
+    });
   });
+
+  
 });
