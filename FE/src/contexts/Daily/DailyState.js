@@ -1,10 +1,12 @@
 import React, { useEffect, useReducer } from "react";
+import moment from 'moment';
 import DailyContext from "./DailyContext.js";
 import DailyReducer from "./DailyReducer.js";
 import { SCORE_INCREASE, SCORE_DECREASE } from "../../types.js";
 
 const DailyState = (props) => {
   let initialState = {
+    date: moment().format('L'),
     daily: [
       {
         name: "Awake",
@@ -40,6 +42,24 @@ const DailyState = (props) => {
       },
     ],
     score: 0,
+    fitness: {
+      weight: 100,
+      run: {
+        distance: 0,
+        time: 0,
+      },
+      pushups: {
+        variation: "Normal",
+        sets: 0,
+        reps: 0
+      },
+      pullups: {
+        variation: "",
+        sets: 0,
+        reps: 0
+      },
+    }
+    
   };
 
   let [state, dispatch] = useReducer(DailyReducer, initialState, () => {
@@ -65,6 +85,7 @@ const DailyState = (props) => {
       value={{
         daily: state.daily,
         score: state.score,
+        fitness: state.fitness,
         scoreIncrease,
         scoreDecrease,
       }}

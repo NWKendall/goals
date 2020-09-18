@@ -2,11 +2,12 @@ import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
 import Header from "./components/header/header.js";
-import ContentPage from "./components/contentPage/contentPage.jsx";
+import ContentPage  from "./components/contentPage/contentPage.js";
 import Navbar from "./components/navbar/navbar";
 import Timer from "./components/timer/timer";
 import DailyState from "./contexts/Daily/DailyState";
 import CountDown from "./components/countdown/countdown.js";
+import FitnessStats from "./components/fitnessStats/fitnessStats.js";
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
           <Navbar />
           <Timer />
           <CountDown />
+          <FitnessStats />
           <ContentPage />
         </div>
       </Router>

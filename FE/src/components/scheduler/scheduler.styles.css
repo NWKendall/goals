@@ -23,8 +23,11 @@
 
 .checkBoxStyle {
     width: 1.3rem;
-    height: 1.3rem
+    height: 1.3rem;
+    cursor: pointer;
 }
+
+
 
 .otherStyle {
     background-color: var(--button-hover-color);
