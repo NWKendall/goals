@@ -18,6 +18,9 @@ exports.up = function (knex) {
       tbl.boolean("music").defaultTo(false);
       tbl.boolean("study2").defaultTo(false);
       tbl.boolean("reading").defaultTo(false);
+      tbl.timestamp("created_at").defaultTo(knex.fn.now());
+      tbl.timestamp("modified_at");
+      tbl.timestamp("deleted_at");
       tbl
         .integer("day_id")
         .unsigned()
@@ -26,9 +29,6 @@ exports.up = function (knex) {
         .inTable("main")
         .onUpdate("CASCADE")
         .onDelete("RESTRICT");
-      tbl.timestamp("created_at").defaultTo(knex.fn.now());
-      tbl.timestamp("modified_at");
-      tbl.timestamp("deleted_at");
     })
     .createTable("fitness", (tbl) => {
       tbl.increments();
@@ -47,9 +47,6 @@ exports.up = function (knex) {
         .inTable("main")
         .onUpdate("CASCADE")
         .onDelete("RESTRICT");
-      tbl.timestamp("created_at").defaultTo(knex.fn.now());
-      tbl.timestamp("modified_at");
-      tbl.timestamp("deleted_at");
     })
     .createTable("running", (tbl) => {
       tbl.increments();
@@ -66,9 +63,6 @@ exports.up = function (knex) {
         .inTable("main")
         .onUpdate("CASCADE")
         .onDelete("RESTRICT");
-      tbl.timestamp("created_at").defaultTo(knex.fn.now());
-      tbl.timestamp("modified_at");
-      tbl.timestamp("deleted_at");
     });
 };
 
