@@ -8,7 +8,7 @@ import { scoreHistory } from '../data.js';
 
 const Scheduler = () => {
   const { register, handleSubmit } = useForm();
-  const {daily, score, scoreIncrease, scoreDecrease} = useContext(DailyContext);
+  const {daily, score, scoreIncrease, scoreDecrease,} = useContext(DailyContext);
 
   let percent = (score / daily.length) * 100;
 
@@ -20,7 +20,6 @@ const Scheduler = () => {
     console.log("Score History Push", scoreHistory)
     // return alert(`Send todays score of ${percent}% somewhere!`);
   }
-
   const handleCheckBoxes = (e) => {
     if(e.target.checked) {
       scoreIncrease(e.target.name)

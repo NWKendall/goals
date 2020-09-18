@@ -88,7 +88,7 @@ const CountDown = () => {
       <p className="cdDisplay">
         {hrs} : {mins} : {secs}
       </p>
-      <div style={{ display: "flex" }}>
+      <div className="buttonDiv">
         {!isActive ? (
           <button className="cdbtnStyle" onClick={() => toggle()}>
             Start

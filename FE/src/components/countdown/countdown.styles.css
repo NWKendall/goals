@@ -7,27 +7,31 @@
 }
 
 .cdtitle {
-    color: whitesmoke;
+    color: var(--text-color);
     text-align: center;
     margin-bottom: 0;
 }
 
 .cdDisplay {
-    color: whitesmoke;
+    color: var(--text-color);
     text-align: center;
     font-size: 1.3rem;
-
 }
 
+.buttonDiv {
+    display: flex;
+    justify-content: center;
+}
 .cdbtnStyle {
     background-color: var(--button-bg-color);
     outline: none;
     border: solid 1px transparent;
     border-radius: 4px;
-    padding: 0.8em 1.6em;
-    color: whitesmoke;
+    padding: 0.8em;
+    width: 100%;
+    color: var(--text-color);
     font-size: 1rem;
-    margin: 2.5px 5px;
+    margin: 2.5px;
     cursor: pointer;
 }
 .cdbtnStyle:hover {
