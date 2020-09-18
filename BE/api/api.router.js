@@ -9,8 +9,8 @@ router.get("/", (req, res) => {
     
 })
 
-router.use("/fitness", fitnessRouter)
 router.use("/activities", activitiesRouter)
+router.use("/fitness", fitnessRouter)
 router.use("/running", runningRouter)
 
 module.exports = router
