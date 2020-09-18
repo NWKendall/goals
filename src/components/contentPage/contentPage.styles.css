@@ -1,6 +1,6 @@
 .contentContainer {
-    grid-column: 3 / -1 ;
-    grid-row: 2/-1;
+    grid-column: 3 / 11 ;
+    grid-row: 2 / -1;
     background-color: var(--main-bg-color);
     border: 5px solid var(--border-color);
     color: var(--text-color);

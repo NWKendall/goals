@@ -6,7 +6,6 @@
 
 .formStyle {
     grid-column: 1/4;
-
 }
 
 .ulStyle {
@@ -30,5 +29,4 @@
 .otherStyle {
     background-color: var(--button-hover-color);
     grid-column: 4 / -1;
-
 }

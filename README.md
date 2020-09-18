@@ -12,10 +12,10 @@
 - header
     - logo / icon
     - weather
-    - restyle
-    
+    - restyle ✅
+
  - navbar
-    - restyle
+    - restyle ✅
 
 - timer that will calculate productivity for the day ✅
     - include miliseconds
