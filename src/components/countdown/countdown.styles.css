@@ -1,0 +1,63 @@
+.countDownContainer {
+    display: grid;
+    grid-column: 2 / 2;
+    grid-row: 5 / 7;
+    align-items: center;
+    border: 2.5px solid var(--border-color);
+}
+
+.cdtitle {
+    color: whitesmoke;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.cdDisplay {
+    color: whitesmoke;
+    text-align: center;
+    font-size: 1.3rem;
+
+}
+
+.cdbtnStyle {
+    background-color: var(--button-bg-color);
+    outline: none;
+    border: solid 1px transparent;
+    border-radius: 4px;
+    padding: 0.8em 1.6em;
+    color: whitesmoke;
+    font-size: 1rem;
+    margin: 2.5px 5px;
+    cursor: pointer;
+}
+.cdbtnStyle:hover {
+    background-color: var(--button-hover-color);
+    border: solid 1px transparent;
+    color: var(--button-bg-color)
+}
+
+/* Drop down not working proper */
+.cdFormStyle {
+    display: flex;
+    position: absolute;
+    left: 14.5em;
+    background-color: var(--button-bg-color);
+    border: 5px solid var(--border-color);
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 0.5em;;
+
+    /* border: 1px solid pink; */
+}
+
+.cdLabelStyle {
+    color:  var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputStyle {
+    width: 60%;
+}
+

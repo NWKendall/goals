@@ -1,44 +1,38 @@
 .stopwatchContainer {
+    display: grid;
     grid-column: 1 / 1;
     grid-row: 5 / 7;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
     align-items: center;
-    border: 5px solid #19171D;
-
-
+    border: 2.5px solid var(--border-color);
 }
 
 .title {
-    color: whitesmoke;
-    /* border: 1px solid pink; */
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 0;
 }
 
 .timerDisplay {
-    color: whitesmoke;
+    color: var(--text-color);
     text-align: center;
     font-size: 1.3rem;
-
+    /* border: 1px solid pink; */
 }
 
 .btnStyle {
-    width: 75%;    
-    background-color: #202b33;
+    background-color: var(--button-bg-color);
     outline: none;
     border: solid 1px transparent;
     border-radius: 4px;
     padding: 0.8em 1.6em;
-    color: whitesmoke;
+    color: var(--text-color);
     font-size: 1rem;
     margin: 2.5px 5px;
-    cursor: pointer;
-   
-    
+    cursor: pointer;    
 }
-.btnStyle:hover {
-    background-color: #106ba3;
-    border: solid 1px transparent;
-    color: #202b33;
 
+.btnStyle:hover {
+    background-color: var(--button-hover-color);
+    border: solid 1px transparent;
+    color: var(--button-bg-color);
 }

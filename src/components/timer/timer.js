@@ -64,20 +64,28 @@ const Timer = () => {
 
   return (
     <div className="stopwatchContainer">
-      <h4 className="title">Stopwatch⏱</h4>
-      <p className="timerDisplay">
-        {hrs} : {mins} : {secs}
-      </p>
-      {!isActive && timer.seconds === 0 ? (
-        <button className="btnStyle" onClick={() => toggle()}>Start</button>
-      ) : isActive ? (
-        <button className="btnStyle" onClick={() => toggle()}>Stop</button>
-      ) : !isActive && timer.seconds > 0 ? (
-        <button className="btnStyle" onClick={() => toggle()}>Resume</button>
-      ) : null}
+        <h4 className="title">Stopwatch⏱</h4>
+        <p className="timerDisplay">
+          {hrs} : {mins} : {secs}
+        </p>
+        {!isActive && timer.seconds === 0 ? (
+          <button className="btnStyle" onClick={() => toggle()}>
+            Start
+          </button>
+        ) : isActive ? (
+          <button className="btnStyle" onClick={() => toggle()}>
+            Stop
+          </button>
+        ) : !isActive && timer.seconds > 0 ? (
+          <button className="btnStyle" onClick={() => toggle()}>
+            Resume
+          </button>
+        ) : null}
 
-      <button className="btnStyle" onClick={() => reset()}>Reset</button>
-    </div>
+        <button className="btnStyle" onClick={() => reset()}>
+          Reset
+        </button>
+      </div>
   );
 };
 

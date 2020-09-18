@@ -13,26 +13,23 @@
 .scoreCard {
     display: flex;
     flex-direction: column;   
-    border: 1px solid #106ba3;
+    border: 1px solid var(--button-hover-color);
     border-radius: 10px;
-    box-shadow: 0 3px 6px rgb(12, 12, 12);
+    box-shadow: 0 3px 6px var(--main-bg-color);
     text-align: center;
 }
 
 .dateStyle {
-    /* grid-column: 1 / 6; */
     padding-left: .3em;
     text-align: center;
-    /* border: 1px solid pink; */
-
 }
 
 .buttonStyle {
-    background-color: #106ba3;
+    background-color: var(--button-hover-color);
     outline: none;
     border: solid 1px transparent;
     border-radius: 4px;
-    color: whitesmoke;
+    color: var(--text-color);
     font-size: 1rem;
     cursor: pointer;
 }
@@ -64,5 +61,4 @@
 
 div div p {
     font-size: 0.8rem;
-
 }
