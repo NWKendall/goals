@@ -3,6 +3,7 @@ const router = require("express").Router()
 const fitnessRouter = require("./fitness/fitness.router.js");
 const activitiesRouter = require("./activities/activities.router.js");
 const runningRouter = require("./running/running.router.js");
+const usersRouter = require("./users/users.router.js");
 const stoRouter = require("./sto/sto.router.js");
 const ltoRouter = require("./lto/lto.router.js");
 
@@ -11,6 +12,7 @@ router.get("/", (req, res) => {
     
 })
 
+router.use("/users", usersRouter)
 router.use("/activities", activitiesRouter)
 router.use("/fitness", fitnessRouter)
 router.use("/running", runningRouter)
