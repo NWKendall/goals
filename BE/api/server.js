@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 const express = require("express");
-const globalMiddleWare = require("./globalMiddleware");
+const globalMiddleWare = require("./middleware/globalMiddleware");
 const apiRouter = require("./api.router.js");
 
 const server = express()

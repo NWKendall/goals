@@ -10,7 +10,7 @@ module.exports = {
       port: "5432",
       user: "postgres",
       password: process.env.DB_PASSWORD,
-      database: 'templateDB'
+      database: 'goalsDB'
     },
     pool: {
       min: 2,
@@ -32,7 +32,7 @@ module.exports = {
       port: "5432",
       user: "postgres",
       password: process.env.DB_PASSWORD,
-      database: 'templateDB_test'
+      database: 'goalsDB_test'
     },
     pool: {
       min: 2,
