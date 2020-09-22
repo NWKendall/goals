@@ -5,30 +5,33 @@ module.exports = async (req, res, next) => {
   const emailRegEx = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/gim;
   const passwordRegEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
   const emailExist = await UsersDB.getUserByEmail(email);
+  const errorMessages = [];
 
-  if (!email)
-    return res
-      .status(400)
-      .json({ errorMessage: "No email provided in request body." });
+  let count = 0;
 
-  if (!emailRegEx.test(email))
-    return res.status(400).json({ errorMessage: "Not a valid email address." });
+  if (!email) errorMessages.push("No email provided in request body.");
 
-  if (!emailExist)
-    return res
-      .status(400)
-      .json({ errorMessage: "Email provided is not registered on database. You can use this email to register an account." });
+  count++;
 
-  if (!password)
-    return res
-      .status(400)
-      .json({ errorMessage: "No password provided in request body." });
+  if (!emailRegEx.test(email)) errorMessages.push("Not a valid email address.");
+
+  count++;
+
+  if (!password) errorMessages.push("No password provided in request body.");
+
+  count++;
 
   if (!passwordRegEx.test(password))
-    return res.status(400).json({
-      errorMessage:
-        "Password must contain: 8 characters minimum, one uppercase, one lowercase, 1 digit and 1 special character.",
-    });
+    errorMessages.push(
+      "Password must contain: 8 characters minimum, one uppercase, one lowercase, 1 digit and 1 special character."
+    );
 
-  next();
+  count++;
+
+  if(errorMessages.length)
+    return res.status(400).json({ errorMessages });
+  else if (count === 4 && emailExist) 
+    next()
+  else return res.status(500).json(({ name, code, message, stack }))
+  
 };

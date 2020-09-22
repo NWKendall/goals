@@ -1,5 +1,4 @@
 const UsersDB = require("../auth/auth.model.js");
-const RolesDB = require("../roles/roles.model.js");
 
 module.exports = async(req, res, next) => {
   const emailRegEx = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/gim;

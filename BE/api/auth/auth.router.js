@@ -5,7 +5,7 @@ const generateToken = require("./generateToken.js");
 const registerValidation = require("../middleware/loginValidation.js");
 const loginValidation = require("../middleware/loginValidation.js");
 
-router.post("/register", (req, res) => {
+router.post("/register", registerValidation, (req, res) => {
   let { first_name, last_name, password, email } = req.body;
   let hash = bcrypt.hashSync(password, 12);
   password = hash;
@@ -26,9 +26,6 @@ router.post("/login", loginValidation, (req, res) => {
   UsersDB.getUserByEmail(email)
     .then(async (user) => {
       if (user && bcrypt.compareSync(password, user.password)) {
-        let roles = await UsersDB.getAllUserRoles(user.id);
-
-        user.roles = roles.map((role) => role.name);
         const token = generateToken(user);
         res.status(200).json({ message: `Welcome ${user.first_name}!`, token });
       } else {
