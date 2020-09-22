@@ -57,5 +57,4 @@ exports.down = function (knex) {
         .dropTableIfExists("running")
         .dropTableIfExists("fitness")
         .dropTableIfExists("activities")
-        .dropTableIfExists("main")
 };
