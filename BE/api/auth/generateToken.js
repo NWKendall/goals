@@ -5,7 +5,6 @@ function generateToken(user){
     const payload = {
         subject: user.id,
         first_name: user.first_name,
-        role: user.roles
     }
 
     const options = {

@@ -1,9 +1,9 @@
 const UsersDB = require("../auth/auth.model.js");
+const regex = require("../../utils/regex.js");
 
 module.exports = async (req, res, next) => {
   const { email, password } = req.body;
-  const emailRegEx = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/gim;
-  const passwordRegEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+ 
   const emailExist = await UsersDB.getUserByEmail(email);
   const errorMessages = [];
 
@@ -13,7 +13,7 @@ module.exports = async (req, res, next) => {
 
   count++;
 
-  if (!emailRegEx.test(email)) errorMessages.push("Not a valid email address.");
+  if (!regex.emailRegEx.test(email)) errorMessages.push("Not a valid email address.");
 
   count++;
 
@@ -21,7 +21,7 @@ module.exports = async (req, res, next) => {
 
   count++;
 
-  if (!passwordRegEx.test(password))
+  if (!regex.passwordRegEx.test(password))
     errorMessages.push(
       "Password must contain: 8 characters minimum, one uppercase, one lowercase, 1 digit and 1 special character."
     );
@@ -32,6 +32,6 @@ module.exports = async (req, res, next) => {
     return res.status(400).json({ errorMessages });
   else if (count === 4 && emailExist) 
     next()
-  else return res.status(500).json(({ name, code, message, stack }))
+  else return res.status(500).json({error: "Something went wrong"})
   
 };
