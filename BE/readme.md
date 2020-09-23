@@ -1,11 +1,14 @@
 # BE WIKI
 
 ## TODO 
-- integrate authorization
-    - redisgn tables
-    - middleware
+- integrate authorization ✅
+    - redisgn tables ✅
+
+- tests
+    - auth
 
 - middleware
+    - put request for credentials updates ✅
     - check for empty objects in activities POST
 
 - tables
@@ -25,5 +28,3 @@
         - Relationship & Travel
         - Personal
 
-- auth
-    - put request for credentials updates <-------

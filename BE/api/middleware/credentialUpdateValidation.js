@@ -18,19 +18,17 @@ module.exports = async (req, res, next) => {
     }
     if (key === "email") {
       if (!value) errorMessages.push("No email provided.");
+      else if (value === user.email) errorMessages.push("No changes to email");
       else {
-        if (value === user.email) errorMessages.push("No changes to email");
-        if (value !== user.email) {
-          // check to make sure if email is different, not already used
-          if (!regex.emailRegEx.test(value))
-            errorMessages.push("Please provide a valid email address.");
-
-          const emailCheck = await UsersDB.getUserByEmail(value);
-          if (emailCheck)
-            res.status(400).json({
-              errorMessage: "Email already used, please choose another",
-            });
-        }
+        if (!regex.emailRegEx.test(value))
+        errorMessages.push("Please provide a valid email address.");
+        
+        // check to make sure if email is different, not already used
+        const emailCheck = await UsersDB.getUserByEmail(value);
+        if (emailCheck)
+          res.status(400).json({
+            errorMessage: "Email already used, please choose another",
+          });
       }
     }
 
@@ -44,6 +42,6 @@ module.exports = async (req, res, next) => {
   }
 
   if (errorMessages.length > 2) return res.status(400).json({ errorMessages });
-  
+
   next();
 };

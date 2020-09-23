@@ -38,14 +38,13 @@ router.post("/login", loginValidation, (req, res) => {
     });
 });
 
-// need middleware that checks for changes
 router.put("/update/:id", updateValidation, (req, res) => {
   let id = parseInt(req.params.id);
   let hash = bcrypt.hashSync(req.body.password, 12);
   req.body.password = hash;
   let changes = { ...req.body };
 
-  UsersDB.editCredentials(id, changes)
+  UsersDB.editUserCredentials(id, changes)
     .then(async (user) => {
       res
         .status(200)

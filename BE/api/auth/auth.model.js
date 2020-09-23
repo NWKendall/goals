@@ -6,7 +6,7 @@ module.exports = {
   registerUser,
   getUser,
   getUserByEmail,
-  editCredentials,
+  editUserCredentials,
 };
 
 function getAllUsers() {
@@ -31,7 +31,7 @@ function getUserByEmail(email) {
   return db("users").where({ email }).first();
 }
 
-async function editCredentials(id, changes) {
+async function editUserCredentials(id, changes) {
   await db("users")
     .where({ id })
     .update({ modified_at: new Date(), ...changes});
