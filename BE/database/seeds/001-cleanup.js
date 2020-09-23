@@ -9,7 +9,5 @@ exports.seed = async knex => {
             ignoreTables: ['knex_migrations', 'knex_migrations_lock']
           });
     }
-    await knex("running").delete()
-    await knex("fitness").delete()
-    await knex("activities").delete()
+    
 }

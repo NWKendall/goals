@@ -11,7 +11,7 @@ module.exports = async (req, res, next) => {
     if (key === "email") {
       const emailDuplicate = await UsersDB.getUserByEmail(value);
       if (!value) errorMessages.push("No email provided.");
-      if (!regex.emailRegEx.test(value))
+      else if (!regex.emailRegEx.test(value))
         errorMessages.push("Please provide a valid email address.");
       if (emailDuplicate)
         errorMessages.push(

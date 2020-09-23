@@ -75,7 +75,6 @@ exports.down = function (knex) {
     .dropTableIfExists("lto")
     .dropTableIfExists("sto")
     .dropTableIfExists("objective_types")
-
     .dropTableIfExists("users");
 };
 
