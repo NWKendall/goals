@@ -2,9 +2,9 @@ const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const UsersDB = require("./auth.model.js");
 const generateToken = require("./generateToken.js");
-const registerValidation = require("../middleware/registerValidation.js");
-const loginValidation = require("../middleware/loginValidation.js");
-const updateValidation = require("../middleware/credentialUpdateValidation.js")
+const registerValidation = require("./middleware/registerValidation.mw.js");
+const loginValidation = require("./middleware/loginValidation.mw.js");
+const updateValidation = require("./middleware/credentialUpdateValidation.mw.js")
 
 router.post("/register", registerValidation, (req, res) => {
   let { first_name, last_name, password, email } = req.body;

@@ -1,8 +1,8 @@
 require("dotenv").config();
 
 const express = require("express");
-const globalMiddleWare = require("./middleware/globalMiddleware");
-const authorizedMW = require("./middleware/authorized.mw.js");
+const globalMiddleWare = require("./global-middleware/globalMiddleware.mw.js");
+const authorizedMW = require("./global-middleware/authorized.mw.js");
 
 const authRouter = require("./auth/auth.router.js");
 const apiRouter = require("./api.router.js");

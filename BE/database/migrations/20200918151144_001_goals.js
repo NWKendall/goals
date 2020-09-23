@@ -17,6 +17,7 @@ exports.up = function (knex) {
       tbl.timestamp("created_at").defaultTo(knex.fn.now());
       tbl.timestamp("modified_at");
       tbl.timestamp("deleted_at");
+      // figure out if I need a user_id column and link it accordingly. I could just have an int value given from the decoded token rather than linking via a foriegn key
     })
     .createTable("sto", (tbl) => {
       tbl.increments();

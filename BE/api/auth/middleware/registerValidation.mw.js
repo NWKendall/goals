@@ -1,5 +1,5 @@
-const UsersDB = require("../auth/auth.model.js");
-const regex = require("../../utils/regex.js");
+const UsersDB = require("../auth.model.js");
+const regex = require("./regex.js");
 
 module.exports = async (req, res, next) => {
   
