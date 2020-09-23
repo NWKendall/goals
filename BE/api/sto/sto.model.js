@@ -10,29 +10,29 @@ module.exports = {
 };
 
 function getAllObjectives() {
-  return db("lto");
+  return db("sto");
 }
 
 function getObjectiveById(id) {
-  return db("lto").where({ id }).first();
+  return db("sto").where({ id }).first();
 }
 
 function getAllUserObjectives(id) {
-  return db("lto").where("lto.user_id", id);
+  return db("sto").where("sto.user_id", id);
 }
 
-async function addObjective(lto) {
-  const newLTO = await db("lto")
+async function addObjective(sto) {
+  const newSto = await db("sto")
     .join("objective_types as o", "o.id", "l.type_id")
     .join("users", "users.id", "l.user_id")
-    .insert(lto, "lto.id");
+    .insert(sto, "sto.id");
 
-  const id = parseInt(newLTO);
+  const id = parseInt(newSto);
   return getObjectiveById(id);
 }
 
 async function editObjective(id, changes) {
-  await db("lto")
+  await db("sto")
     .where({ id })
     .update({ modified_at: new Date(), ...changes });
 
@@ -40,5 +40,5 @@ async function editObjective(id, changes) {
 }
 
 function deleteObjective(id) {
-  return db("lto").where({ id }).delete();
+  return db("sto").where({ id }).delete();
 }
