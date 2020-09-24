@@ -71,8 +71,7 @@ exports.up = function (knex) {
     })
     .createTable("dates", (tbl) => {
       tbl.increments();
-      tbl.string("name", 255).notNullable().index();
-      tbl.date("date");
+      tbl.date("date").notNullable().index();
       tbl.timestamp("created_at").defaultTo(knex.fn.now());
       tbl.timestamp("modified_at");
       tbl.timestamp("deleted_at");
@@ -102,6 +101,14 @@ exports.up = function (knex) {
       tbl.timestamp("created_at").defaultTo(knex.fn.now());
       tbl.timestamp("modified_at");
       tbl.timestamp("deleted_at");
+      tbl
+        .integer("date_id")
+        .unsigned()
+        .notNullable()
+        .references("id")
+        .inTable("dates")
+        .onUpdate("CASCADE")
+        .onDelete("RESTRICT");
     });
   // when tasks is working, add exercise and cardio tables
 };

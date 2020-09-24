@@ -6,6 +6,7 @@ const runningRouter = require("./running/running.router.js");
 const objTypesRouter = require("./objective_types/objectiveTypes.router.js")
 const stoRouter = require("./sto/sto.router.js");
 const ltoRouter = require("./lto/lto.router.js");
+const datesRouter = require("./dates/dates.router.js");
 
 router.get("/", (req, res) => {
   res.status(200).json({ router: "WORKING" });
@@ -17,5 +18,6 @@ router.use("/fitness", fitnessRouter);
 router.use("/running", runningRouter);
 router.use("/sto", stoRouter);
 router.use("/lto", ltoRouter);
+router.use("/dates", datesRouter);
 
 module.exports = router;
