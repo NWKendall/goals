@@ -21,7 +21,7 @@ router.get("/my", (req, res) => {
     .catch(({ name, code, message, stack }) => {
       res.status(500).json({ name, code, message, stack });
     });
-})
+});
 
 router.get("/:id", (req, res) => {
   const id = parseInt(req.params.id);
@@ -35,7 +35,7 @@ router.get("/:id", (req, res) => {
 
 router.post("/", uniqueCheck, (req, res) => {
   const user_id = parseInt(req.decodedToken.subject);
-  const newObjective = { ...req.body, created_by: user_id }  
+  const newObjective = { ...req.body, created_by: user_id };
   objTypesDB
     .addObjectiveType(newObjective)
     .then((type) => res.status(201).json(type))
@@ -45,24 +45,24 @@ router.post("/", uniqueCheck, (req, res) => {
 });
 
 router.put("/:id", permission, uniqueCheck, (req, res) => {
-    const id = parseInt(req.params.id);
-    const changes = { ...req.body }
-    objTypesDB
-      .editObjectiveType(id, changes)
-      .then((type) => res.status(200).json(type))
-      .catch(({ name, code, message, stack }) => {
-        res.status(500).json({ name, code, message, stack });
-      });
-  });
+  const id = parseInt(req.params.id);
+  const changes = { ...req.body };
+  objTypesDB
+    .editObjectiveType(id, changes)
+    .then((type) => res.status(200).json(type))
+    .catch(({ name, code, message, stack }) => {
+      res.status(500).json({ name, code, message, stack });
+    });
+});
 
-  router.delete("/:id", permission, (req, res) => {
-    const id = parseInt(req.params.id);
-    objTypesDB
-      .deleteObjectiveType(id)
-      .then((type) => res.status(200).json(type))
-      .catch(({ name, code, message, stack }) => {
-        res.status(500).json({ name, code, message, stack });
-      });
-  });
+router.delete("/:id", permission, (req, res) => {
+  const id = parseInt(req.params.id);
+  objTypesDB
+    .deleteObjectiveType(id)
+    .then((type) => res.status(200).json(type))
+    .catch(({ name, code, message, stack }) => {
+      res.status(500).json({ name, code, message, stack });
+    });
+});
 
 module.exports = router;

@@ -1,6 +1,11 @@
 # README
 ## Ideas
 
+- login / register
+    - route
+    - logout button
+- actions
+    - handle all the BE calls and state
 - schedule
  - daily routine (checkbox) ✅
     - CRUD activities 

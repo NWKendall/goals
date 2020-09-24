@@ -14,11 +14,10 @@ exports.up = function (knex) {
       tbl.increments();
       tbl.string("name", 255).notNullable().index();
       tbl.string("description", 255);
-      tbl.integer("created_by").index()
+      tbl.integer("created_by").index();
       tbl.timestamp("created_at").defaultTo(knex.fn.now());
       tbl.timestamp("modified_at");
       tbl.timestamp("deleted_at");
-      // figure out if I need a user_id column and link it accordingly. I could just have an int value given from the decoded token rather than linking via a foriegn key
     })
     .createTable("sto", (tbl) => {
       tbl.increments();
@@ -69,11 +68,49 @@ exports.up = function (knex) {
         .inTable("objective_types")
         .onUpdate("CASCADE")
         .onDelete("RESTRICT");
+    })
+    .createTable("dates", (tbl) => {
+      tbl.increments();
+      tbl.string("name", 255).notNullable().index();
+      tbl.date("date");
+      tbl.timestamp("created_at").defaultTo(knex.fn.now());
+      tbl.timestamp("modified_at");
+      tbl.timestamp("deleted_at");
+    })
+    .createTable("users_dates", (tbl) => {
+      tbl
+        .integer("user_id")
+        .unsigned()
+        .notNullable()
+        .references("id")
+        .inTable("users")
+        .onUpdate("CASCADE")
+        .onDelete("RESTRICT");
+      tbl
+        .integer("date_id")
+        .unsigned()
+        .notNullable()
+        .references("id")
+        .inTable("dates")
+        .onUpdate("CASCADE")
+        .onDelete("RESTRICT");
+    })
+    .createTable("tasks", (tbl) => {
+      tbl.increments();
+      tbl.string("name", 255).notNullable().index();
+      tbl.boolean("completed").defaultTo(false);
+      tbl.timestamp("created_at").defaultTo(knex.fn.now());
+      tbl.timestamp("modified_at");
+      tbl.timestamp("deleted_at");
     });
+  // when tasks is working, add exercise and cardio tables
 };
 
 exports.down = function (knex) {
   return knex.schema
+    .dropTableIfExists("tasks")
+    .dropTableIfExists("users_dates")
+    .dropTableIfExists("dates")
     .dropTableIfExists("lto")
     .dropTableIfExists("sto")
     .dropTableIfExists("objective_types")
