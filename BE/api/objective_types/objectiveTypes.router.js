@@ -13,6 +13,16 @@ router.get("/", (req, res) => {
     });
 });
 
+router.get("/my", (req, res) => {
+  const user_id = parseInt(req.decodedToken.subject);
+  objTypesDB
+    .getMyObjectiveTypes(user_id)
+    .then((types) => res.status(200).json(types))
+    .catch(({ name, code, message, stack }) => {
+      res.status(500).json({ name, code, message, stack });
+    });
+})
+
 router.get("/:id", (req, res) => {
   const id = parseInt(req.params.id);
   objTypesDB

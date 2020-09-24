@@ -4,6 +4,7 @@ module.exports = {
   getObjectiveTypes,
   getObjectiveTypeById,
   getObjectiveTypeByName,
+  getMyObjectiveTypes,
   addObjectiveType,
   editObjectiveType,
   deleteObjectiveType
@@ -20,6 +21,10 @@ function getObjectiveTypeById(id) {
 function getObjectiveTypeByName(name) {
     return db("objective_types").where({ name }).first();
   }
+
+function getMyObjectiveTypes(user_id) {
+  return db("objective_types").where("created_by", user_id);
+}
 
 async function addObjectiveType(obj) {
   const newObjType = await db("objective_types").insert(obj, "id");
