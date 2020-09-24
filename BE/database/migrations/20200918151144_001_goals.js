@@ -71,26 +71,16 @@ exports.up = function (knex) {
     })
     .createTable("dates", (tbl) => {
       tbl.increments();
-      tbl.date("date").notNullable().index();
+      tbl.date("date").notNullable().index();      
       tbl.timestamp("created_at").defaultTo(knex.fn.now());
       tbl.timestamp("modified_at");
       tbl.timestamp("deleted_at");
-    })
-    .createTable("users_dates", (tbl) => {
       tbl
         .integer("user_id")
         .unsigned()
         .notNullable()
         .references("id")
         .inTable("users")
-        .onUpdate("CASCADE")
-        .onDelete("RESTRICT");
-      tbl
-        .integer("date_id")
-        .unsigned()
-        .notNullable()
-        .references("id")
-        .inTable("dates")
         .onUpdate("CASCADE")
         .onDelete("RESTRICT");
     })

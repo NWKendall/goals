@@ -1,30 +1,33 @@
 const db = require("../../database/connection.js");
 
 module.exports = {
-    getAllUserDates,
-    getDatebyId,
-    addDate,
-    getUserTasks
+  getDates,
+  getAllUserDates,
+  getDatebyId,
+  addDate,
+  getUserDailyTasks,
+};
 
+function getDates() {
+  return db("dates");
 }
-
 function getAllUserDates(id) {
-    return db("dates as d").join("users_dates as ud", "ud.date_id", "d.id").where("ud.user_id", id);
-
+  return db("dates").where("user_id", id);
 }
 
-function getDatebyId(id){
-    return db("dates").where({ id }).first();
+function getDatebyId(id) {
+  return db("dates").where({ id }).first();
 }
-
-
 
 async function addDate(date) {
-    const newDate = await db("dates").insert(date, "id");
+  const newDate = await db("dates").insert(date, "id");
 
-    return getDatebyId(newDate)
+  const id = parseInt(newDate);
+  return getDatebyId(id);
 }
 
-function getUserTasks(id) {
-    return getAllUserDates(id).join("tasks as t", "t.date_id", "d.id" )
+
+function getUserDailyTasks(user_id, date) {
+  console.log(id)
+  return db("dates as d").join("tasks as t", "t.date_id", "dates.id").where({"d.user_id": user_id, "d.date": date});
 }

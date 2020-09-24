@@ -28,3 +28,6 @@
         - Relationship & Travel
         - Personal
 
+## Open Source
+1. focus on projects you personally use / interested in
+2. quality of documentation, labes identifying first timers
