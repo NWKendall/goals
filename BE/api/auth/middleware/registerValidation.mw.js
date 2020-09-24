@@ -28,7 +28,7 @@ module.exports = async (req, res, next) => {
     }
   }
 
-  if (errorMessages.length) return res.status(400).json({ errorMessages });
+  if (errorMessages.length) return res.status(400).json({ errorMessages, MW: "registerValidation" });
 
   next();
 };

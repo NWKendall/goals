@@ -45,7 +45,7 @@ router.put("/update/:id", updateValidation, (req, res) => {
   let changes = { ...req.body };
 
   UsersDB.editUserCredentials(id, changes)
-    .then(async (user) => {
+    .then((user) => {
       res
         .status(200)
         .json({ message: ` ${user.first_name}'s credentials updated.` });

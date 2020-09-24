@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const objTypesDB = require("./objectiveTypes.model.js");
 
-const nameCheckMW = require("./middleware/uniqueObjType.mw.js");
-const permissionMW = require("./middleware/authorize.mw.js");
+const uniqueCheck = require("./middleware/uniqueCheck.mw.js");
+const permission = require("./middleware/permissions.mw.js");
 
 router.get("/", (req, res) => {
   objTypesDB
@@ -23,16 +23,18 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.post("/", nameCheckMW, (req, res) => {
-    objTypesDB
-    .addObjectiveType(req.body)
-    .then((type) => res.status(200).json(type))
+router.post("/", uniqueCheck, (req, res) => {
+  const user_id = parseInt(req.decodedToken.subject);
+  const newObjective = { ...req.body, created_by: user_id }  
+  objTypesDB
+    .addObjectiveType(newObjective)
+    .then((type) => res.status(201).json(type))
     .catch(({ name, code, message, stack }) => {
       res.status(500).json({ name, code, message, stack });
     });
 });
 
-router.put("/:id", (req, res) => {
+router.put("/:id", permission, uniqueCheck, (req, res) => {
     const id = parseInt(req.params.id);
     const changes = { ...req.body }
     objTypesDB
@@ -43,7 +45,7 @@ router.put("/:id", (req, res) => {
       });
   });
 
-  router.delete("/:id", (req, res) => {
+  router.delete("/:id", permission, (req, res) => {
     const id = parseInt(req.params.id);
     objTypesDB
       .deleteObjectiveType(id)

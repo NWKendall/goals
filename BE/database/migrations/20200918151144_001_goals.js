@@ -14,6 +14,7 @@ exports.up = function (knex) {
       tbl.increments();
       tbl.string("name", 255).notNullable().index();
       tbl.string("description", 255);
+      tbl.integer("created_by").index()
       tbl.timestamp("created_at").defaultTo(knex.fn.now());
       tbl.timestamp("modified_at");
       tbl.timestamp("deleted_at");

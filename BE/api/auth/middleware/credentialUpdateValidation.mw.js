@@ -28,6 +28,7 @@ module.exports = async (req, res, next) => {
         if (emailCheck)
           res.status(400).json({
             errorMessage: "Email already used, please choose another",
+            MW: "updateValidation"
           });
       }
     }
@@ -41,7 +42,8 @@ module.exports = async (req, res, next) => {
     }
   }
 
-  if (errorMessages.length > 2) return res.status(400).json({ errorMessages });
+  if (errorMessages.length > 2) return res.status(400).json({ errorMessages,
+    MW: "updateValidation" });
 
   next();
 };
