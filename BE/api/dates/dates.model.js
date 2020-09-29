@@ -5,7 +5,6 @@ module.exports = {
   getAllUserDates,
   getDatebyId,
   addDate,
-  getUserDailyTasks,
 };
 
 function getDates() {
@@ -27,7 +26,4 @@ async function addDate(date) {
 }
 
 
-function getUserDailyTasks(user_id, date) {
-  console.log(id)
-  return db("dates as d").join("tasks as t", "t.date_id", "dates.id").where({"d.user_id": user_id, "d.date": date});
-}
+

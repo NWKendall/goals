@@ -48,8 +48,9 @@ router.get("/:id", (req, res) => {
 });
 
 
-router.get("/test", (req, res) => {
+router.get("/tasks", (req, res) => {
   const user_id = parseInt(req.decodedToken.subject);
+  const date_id = { ...req.body, date_id: date_id }
   datesDB
     .getUserDailyTasks(user_id)
     .then((dates) => {
