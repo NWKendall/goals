@@ -18,7 +18,7 @@ function getObjectiveById(id) {
 }
 
 function getAllUserObjectives(id) {
-  return db("sto").where("sto.user_id", id);
+  return db("sto").where("user_id", id);
 }
 
 async function addObjective(sto) {

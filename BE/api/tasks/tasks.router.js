@@ -1,10 +1,6 @@
 const router = require("express").Router();
 const tasksDB = require("./tasks.model.js");
 
-// add new task to date
-// move to dates?
-// dates as it's own apirouter??
-
 router.post("/:id", (req, res) => {
   const date_id = parseInt(req.params.id);
   const newTask = { ...req.body, date_id: date_id };
@@ -44,30 +40,24 @@ router.get("/:id", (req, res) => {
 });
 
 // get all user tasks
-router.get("/my", (req, res) => {
+router.get("/all/my", (req, res) => {
   const user_id = parseInt(req.decodedToken.subject);
   tasksDB
     .getAllUserTasks(user_id)
-    .then((tasks) => {
-      res.status(200).json(tasks);
-    })
+    .then((tasks) => res.status(200).json(tasks))
     .catch(({ name, code, message, stack }) => {
       res.status(500).json({ name, code, message, stack });
     });
 });
 
-// // get all tasks by date
-// router.get("/:id/bla", (req, res) => {
-//   const user_id = parseInt(req.decodedToken.subject);
-//   const date_id = parseInt(req.params.id);
-//   tasksDB
-//     .getTasksByDate(user_id, date_id)
-//     .then((dates) => {
-//       res.status(200).json(dates);
-//     })
-//     .catch(({ name, code, message, stack }) => {
-//       res.status(500).json({ name, code, message, stack });
-//     });
-// });
+router.get("/all/today", (req, res) => {
+  const today  = "";
+  tasksDB
+    .getAllUserTasks(today)
+    .then((tasks) => res.status(200).json(tasks))
+    .catch(({ name, code, message, stack }) => {
+      res.status(500).json({ name, code, message, stack });
+    });
+});
 
 module.exports = router;

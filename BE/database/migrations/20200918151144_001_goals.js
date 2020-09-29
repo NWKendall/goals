@@ -114,22 +114,6 @@ exports.down = function (knex) {
     .dropTableIfExists("users");
 };
 
-// .createTable("activities", (tbl) => {
-//   tbl.increments();
-//   tbl.integer("weight").notNullable();
-//   tbl.date("date");
-//   tbl.boolean("awake").defaultTo(false);
-//   tbl.boolean("stretch").defaultTo(false);
-//   tbl.boolean("exercise").defaultTo(false);
-//   tbl.boolean("mantra").defaultTo(false);
-//   tbl.boolean("study1").defaultTo(false);
-//   tbl.boolean("music").defaultTo(false);
-//   tbl.boolean("study2").defaultTo(false);
-//   tbl.boolean("reading").defaultTo(false);
-//   tbl.timestamp("created_at").defaultTo(knex.fn.now());
-//   tbl.timestamp("modified_at");
-//   tbl.timestamp("deleted_at");
-// })
 // .createTable("fitness", (tbl) => {
 //   tbl.increments();
 //   tbl.string("exercise", 255);
