@@ -26,9 +26,9 @@ router.get("/", (req, res) => {
 });
 
 router.get("/my", (req, res) => {
-  const id = parseInt(req.decodedToken.subject);
+  const userId = parseInt(req.decodedToken.subject);
   datesDB
-    .getAllUserDates(id)
+    .getAllUserDates(userId)
     .then((types) => res.status(200).json(types))
     .catch(({ name, code, message, stack }) => {
       res.status(500).json({ name, code, message, stack });

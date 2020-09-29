@@ -10,8 +10,8 @@ router.post("/:id", (req, res) => {
   const newTask = { ...req.body, date_id: date_id };
   tasksDB
     .addTask(newTask)
-    .then((dates) => {
-      res.status(200).json(dates);
+    .then((task) => {
+      res.status(201).json(task);
     })
     .catch(({ name, code, message, stack }) => {
       res.status(500).json({ name, code, message, stack });
@@ -22,8 +22,8 @@ router.post("/:id", (req, res) => {
 router.get("/", (req, res) => {
   tasksDB
     .getAllTasks()
-    .then((dates) => {
-      res.status(200).json(dates);
+    .then((tasks) => {
+      res.status(200).json(tasks);
     })
     .catch(({ name, code, message, stack }) => {
       res.status(500).json({ name, code, message, stack });
@@ -35,8 +35,8 @@ router.get("/:id", (req, res) => {
   const task_id = parseInt(req.params.id);
   tasksDB
     .getTaskById(task_id)
-    .then((dates) => {
-      res.status(200).json(dates);
+    .then((task) => {
+      res.status(200).json(task);
     })
     .catch(({ name, code, message, stack }) => {
       res.status(500).json({ name, code, message, stack });
@@ -46,17 +46,15 @@ router.get("/:id", (req, res) => {
 // get all user tasks
 router.get("/my", (req, res) => {
   const user_id = parseInt(req.decodedToken.subject);
-  let date = 2020-09-29;
   tasksDB
-    .getAllUserTasks(user_id, date)
-    .then((dates) => {
-      res.status(200).json(dates);
+    .getAllUserTasks(user_id)
+    .then((tasks) => {
+      res.status(200).json(tasks);
     })
     .catch(({ name, code, message, stack }) => {
       res.status(500).json({ name, code, message, stack });
     });
 });
-
 
 // // get all tasks by date
 // router.get("/:id/bla", (req, res) => {
@@ -71,6 +69,5 @@ router.get("/my", (req, res) => {
 //       res.status(500).json({ name, code, message, stack });
 //     });
 // });
-
 
 module.exports = router;
