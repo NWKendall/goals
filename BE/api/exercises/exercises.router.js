@@ -6,8 +6,8 @@ router.post("/:id", (req, res) => {
   const newExercise = { ...req.body, date_id: date_id };
   exercisesDB
     .addExercise(newExercise)
-    .then((task) => {
-      res.status(201).json(task);
+    .then((exercise) => {
+      res.status(201).json(exercise);
     })
     .catch(({ name, code, message, stack }) => {
       res.status(500).json({ name, code, message, stack });
@@ -17,8 +17,8 @@ router.post("/:id", (req, res) => {
 router.get("/", (req, res) => {
   exercisesDB
     .getAllExercises()
-    .then((tasks) => {
-      res.status(200).json(tasks);
+    .then((exercises) => {
+      res.status(200).json(exercises);
     })
     .catch(({ name, code, message, stack }) => {
       res.status(500).json({ name, code, message, stack });
@@ -29,8 +29,8 @@ router.get("/:id", (req, res) => {
   const exercise_id = parseInt(req.params.id);
   exercisesDB
     .getExerciseById(exercise_id)
-    .then((task) => {
-      res.status(200).json(task);
+    .then((exercise) => {
+      res.status(200).json(exercise);
     })
     .catch(({ name, code, message, stack }) => {
       res.status(500).json({ name, code, message, stack });
@@ -41,7 +41,7 @@ router.get("/all/my", (req, res) => {
   const user_id = parseInt(req.decodedToken.subject);
   exercisesDB
     .getAllUserExercises(user_id)
-    .then((tasks) => res.status(200).json(tasks))
+    .then((exercises) => res.status(200).json(exercises))
     .catch(({ name, code, message, stack }) => {
       res.status(500).json({ name, code, message, stack });
     });
@@ -53,7 +53,7 @@ router.get("/today/my", (req, res) => {
   const todayAsString = today.toDateString();
   exercisesDB
     .getUserDailyExercises(user_id, todayAsString)
-    .then((tasks) => res.status(200).json(tasks))
+    .then((exercises) => res.status(200).json(exercises))
     .catch(({ name, code, message, stack }) => {
       res.status(500).json({ name, code, message, stack });
     });
@@ -64,8 +64,8 @@ router.put("/:id", (req, res) => {
   const changes = { ...req.body };
   exercisesDB
     .editExercise(exercise_id, changes)
-    .then((task) => {
-      res.status(200).json(task);
+    .then((exercise) => {
+      res.status(200).json(exercise);
     })
     .catch(({ name, code, message, stack }) => {
       res.status(500).json({ name, code, message, stack });
@@ -76,7 +76,7 @@ router.delete("/:id", (req, res) => {
   const exercise_id = parseInt(req.params.id);
   exercisesDB
     .deleteExercise(exercise_id)
-    .then((type) => res.status(200).json(type))
+    .then((exercise) => res.status(200).json(exercise))
     .catch(({ name, code, message, stack }) => {
       res.status(500).json({ name, code, message, stack });
     });

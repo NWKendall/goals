@@ -76,7 +76,7 @@ router.delete("/:id", (req, res) => {
   const task_id = parseInt(req.params.id);
   tasksDB
     .deleteTask(task_id)
-    .then((type) => res.status(200).json(type))
+    .then((task) => res.status(200).json(task))
     .catch(({ name, code, message, stack }) => {
       res.status(500).json({ name, code, message, stack });
     });

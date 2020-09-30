@@ -4,6 +4,17 @@ const objTypesDB = require("./objectiveTypes.model.js");
 const uniqueCheck = require("./middleware/uniqueCheck.mw.js");
 const permission = require("./middleware/permissions.mw.js");
 
+router.post("/", uniqueCheck, (req, res) => {
+  const user_id = parseInt(req.decodedToken.subject);
+  const newObjective = { ...req.body, created_by: user_id };
+  objTypesDB
+    .addObjectiveType(newObjective)
+    .then((type) => res.status(201).json(type))
+    .catch(({ name, code, message, stack }) => {
+      res.status(500).json({ name, code, message, stack });
+    });
+});
+
 router.get("/", (req, res) => {
   objTypesDB
     .getObjectiveTypes()
@@ -26,19 +37,8 @@ router.get("/my", (req, res) => {
 router.get("/:id", (req, res) => {
   const id = parseInt(req.params.id);
   objTypesDB
-    .getObjectiveType(id)
+    .getObjectiveTypeById(id)
     .then((type) => res.status(200).json(type))
-    .catch(({ name, code, message, stack }) => {
-      res.status(500).json({ name, code, message, stack });
-    });
-});
-
-router.post("/", uniqueCheck, (req, res) => {
-  const user_id = parseInt(req.decodedToken.subject);
-  const newObjective = { ...req.body, created_by: user_id };
-  objTypesDB
-    .addObjectiveType(newObjective)
-    .then((type) => res.status(201).json(type))
     .catch(({ name, code, message, stack }) => {
       res.status(500).json({ name, code, message, stack });
     });

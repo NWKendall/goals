@@ -29,7 +29,7 @@ router.get("/my", (req, res) => {
   const userId = parseInt(req.decodedToken.subject);
   datesDB
     .getAllUserDates(userId)
-    .then((types) => res.status(200).json(types))
+    .then((dates) => res.status(200).json(dates))
     .catch(({ name, code, message, stack }) => {
       res.status(500).json({ name, code, message, stack });
     });
@@ -52,7 +52,7 @@ router.put("/:id", (req, res) => {
   const changes = { ...req.body };
   datesDB
     .editDate(id, changes)
-    .then((ltos) => res.status(200).json(ltos))
+    .then((date) => res.status(200).json(date))
     .catch(({ name, code, message, stack }) => {
       res.status(500).json({ name, code, message, stack });
     });
@@ -62,7 +62,7 @@ router.delete("/:id", (req, res) => {
   const id = parseInt(req.params.id);
   datesDB
     .deleteDate(id)
-    .then((ltos) => res.status(200).json(ltos))
+    .then((date) => res.status(200).json(date))
     .catch(({ name, code, message, stack }) => {
       res.status(500).json({ name, code, message, stack });
     });

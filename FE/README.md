@@ -1,6 +1,9 @@
 # README
 ## Ideas
 
+- ___need to get Date_id every day, store it so it can be used for api calls___
+
+
 - login / register
     - route
     - logout button
