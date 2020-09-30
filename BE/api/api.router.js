@@ -7,8 +7,8 @@ const datesRouter = require("./dates/dates.router.js");
 
 const tasksRouter = require("./tasks/tasks.router.js");
 
-const fitnessRouter = require("./fitness/fitness.router.js");
-const runningRouter = require("./running/running.router.js");
+const cardioRouter = require("./cardio/cardio.router.js");
+const strengthRouter = require("./strength/strength.router.js");
 
 router.get("/", (req, res) => {
   res.status(200).json({ router: "WORKING" });
@@ -22,7 +22,7 @@ router.use("/dates", datesRouter);
 
 router.use("/tasks", tasksRouter);
 
-router.use("/fitness", fitnessRouter);
-router.use("/running", runningRouter);
+router.use("/cardio", cardioRouter);
+router.use("/strength", strengthRouter);
 
 module.exports = router;

@@ -1,11 +1,11 @@
 const router = require("express").Router();
-const tasksDB = require("./tasks.model.js");
+const cardioDB = require("./cardio.model.js");
 
 router.post("/:id", (req, res) => {
   const date_id = parseInt(req.params.id);
   const newTask = { ...req.body, date_id: date_id };
-  tasksDB
-    .addTask(newTask)
+  cardioDB
+    .addCardio(newTask)
     .then((task) => {
       res.status(201).json(task);
     })
@@ -15,8 +15,8 @@ router.post("/:id", (req, res) => {
 });
 
 router.get("/", (req, res) => {
-  tasksDB
-    .getAllTasks()
+  cardioDB
+    .getAllCardios()
     .then((tasks) => {
       res.status(200).json(tasks);
     })
@@ -27,8 +27,8 @@ router.get("/", (req, res) => {
 
 router.get("/:id", (req, res) => {
   const task_id = parseInt(req.params.id);
-  tasksDB
-    .getTaskById(task_id)
+  cardioDB
+    .getCardioById(task_id)
     .then((task) => {
       res.status(200).json(task);
     })
@@ -39,8 +39,8 @@ router.get("/:id", (req, res) => {
 
 router.get("/all/my", (req, res) => {
   const user_id = parseInt(req.decodedToken.subject);
-  tasksDB
-    .getAllUserTasks(user_id)
+  cardioDB
+    .getAllUserCardio(user_id)
     .then((tasks) => res.status(200).json(tasks))
     .catch(({ name, code, message, stack }) => {
       res.status(500).json({ name, code, message, stack });
@@ -51,8 +51,8 @@ router.get("/today/my", (req, res) => {
   const user_id = parseInt(req.decodedToken.subject);
   const today = new Date();
   const todayAsString = today.toDateString();
-  tasksDB
-    .getUserDailyTasks(user_id, todayAsString)
+  cardioDB
+    .getUserDailyCardio(user_id, todayAsString)
     .then((tasks) => res.status(200).json(tasks))
     .catch(({ name, code, message, stack }) => {
       res.status(500).json({ name, code, message, stack });
@@ -62,8 +62,8 @@ router.get("/today/my", (req, res) => {
 router.put("/:id", (req, res) => {
   const task_id = parseInt(req.params.id);
   const changes = { ...req.body };
-  tasksDB
-    .editTask(task_id, changes)
+  cardioDB
+    .editCardio(task_id, changes)
     .then((task) => {
       res.status(200).json(task);
     })
@@ -74,8 +74,8 @@ router.put("/:id", (req, res) => {
 
 router.delete("/:id", (req, res) => {
   const task_id = parseInt(req.params.id);
-  tasksDB
-    .deleteTask(task_id)
+  cardioDB
+    .deleteCardio(task_id)
     .then((type) => res.status(200).json(type))
     .catch(({ name, code, message, stack }) => {
       res.status(500).json({ name, code, message, stack });

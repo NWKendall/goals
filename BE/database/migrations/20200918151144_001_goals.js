@@ -99,12 +99,48 @@ exports.up = function (knex) {
         .inTable("dates")
         .onUpdate("CASCADE")
         .onDelete("RESTRICT");
+    })
+    .createTable("cardio", (tbl) => {
+      tbl.increments();
+      tbl.string("name", 255).notNullable().index();
+      tbl.decimal("time", 8, 2).notNullable();
+      tbl.decimal("distance", 8, 2).notNullable();
+      tbl.timestamp("created_at").defaultTo(knex.fn.now());
+      tbl.timestamp("modified_at");
+      tbl.timestamp("deleted_at");
+      tbl
+        .integer("date_id")
+        .unsigned()
+        .notNullable()
+        .references("id")
+        .inTable("dates")
+        .onUpdate("CASCADE")
+        .onDelete("RESTRICT");
+    })
+    .createTable("strength", (tbl) => {
+      tbl.increments();
+      tbl.string("name", 255).notNullable().index();
+      tbl.string("variation", 255).notNullable().index();
+      tbl.integer("sets")
+      tbl.integer("reps")
+      tbl.timestamp("created_at").defaultTo(knex.fn.now());
+      tbl.timestamp("modified_at");
+      tbl.timestamp("deleted_at");
+      tbl
+        .integer("date_id")
+        .unsigned()
+        .notNullable()
+        .references("id")
+        .inTable("dates")
+        .onUpdate("CASCADE")
+        .onDelete("RESTRICT");
     });
-  // when tasks is working, add exercise and cardio tables
 };
 
 exports.down = function (knex) {
   return knex.schema
+    .dropTableIfExists("strength")
+    .dropTableIfExists("cardio")
     .dropTableIfExists("tasks")
     .dropTableIfExists("users_dates")
     .dropTableIfExists("dates")

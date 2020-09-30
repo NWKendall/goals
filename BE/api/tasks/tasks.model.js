@@ -5,7 +5,9 @@ module.exports = {
   getAllTasks,
   getAllUserTasks,
   getTaskById,
-  getUserDailyTasks
+  getUserDailyTasks,
+  editTask,
+  deleteTask
 };
 
 async function addTask(newTask) {
@@ -39,8 +41,6 @@ function getTaskById(id) {
 }
 
 function getUserDailyTasks(user_id, date) {
-  // get specific date
-  // join tasks by date
 
   return db("tasks")
   .join("dates", "tasks.date_id", "dates.id")
@@ -54,14 +54,16 @@ function getUserDailyTasks(user_id, date) {
       )
     .where("dates.user_id", user_id)
     .andWhere("dates.date", date)
-
-//   return db("dates as d")
-//     .join("tasks as t", "t.date_id", "dates.id")
-//     .where("d.user_id", user_id)
-//     .andWhere("d.date", date);
 }
 
-// SELECT t.id as tID, t.name as task, t.completed, t.date_id, d.date, d.user_id from tasks as t
-// join dates as d
-// on d.id = t.date_id
-// where d.user_id = 1
+async function editTask(id, changes) {
+  await db("tasks")
+  .where({ id })
+  .update({ modified_at: new Date(), ...changes });
+
+return getTaskById(id);
+}
+
+function deleteTask(id) {
+  return db("tasks").where({ id }).delete();
+}
