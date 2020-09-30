@@ -50,10 +50,12 @@ router.get("/all/my", (req, res) => {
     });
 });
 
-router.get("/all/today", (req, res) => {
-  const today  = "";
+router.get("/today/my", (req, res) => {
+  const user_id = parseInt(req.decodedToken.subject);
+  const today = new Date;
+  const date = today.toDateString()
   tasksDB
-    .getAllUserTasks(today)
+    .getUserDailyTasks(user_id, date)
     .then((tasks) => res.status(200).json(tasks))
     .catch(({ name, code, message, stack }) => {
       res.status(500).json({ name, code, message, stack });

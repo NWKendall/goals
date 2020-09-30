@@ -71,7 +71,7 @@ exports.up = function (knex) {
     })
     .createTable("dates", (tbl) => {
       tbl.increments();
-      tbl.date("date").notNullable().index();      
+      tbl.string("date", 128).notNullable().index();      
       tbl.timestamp("created_at").defaultTo(knex.fn.now());
       tbl.timestamp("modified_at");
       tbl.timestamp("deleted_at");

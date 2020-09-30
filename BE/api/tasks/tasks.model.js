@@ -38,7 +38,7 @@ function getTaskById(id) {
   return db("tasks").where({ id }).first();
 }
 
-function getUserDailyTasks( date) {
+function getUserDailyTasks(user_id, date) {
   // get specific date
   // join tasks by date
 
@@ -52,7 +52,8 @@ function getUserDailyTasks( date) {
         "dates.date",
         "dates.user_id"
       )
-    .where("dates.id", date);
+    .where("dates.user_id", user_id)
+    .andWhere("dates.date", date)
 
 //   return db("dates as d")
 //     .join("tasks as t", "t.date_id", "dates.id")
