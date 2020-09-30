@@ -1,11 +1,11 @@
 const router = require("express").Router();
-const cardioDB = require("./strength.model.js");
+const exercisesDB = require("./exercises.model.js");
 
 router.post("/:id", (req, res) => {
   const date_id = parseInt(req.params.id);
-  const newTask = { ...req.body, date_id: date_id };
-  cardioDB
-    .addCardio(newTask)
+  const newExercise = { ...req.body, date_id: date_id };
+  exercisesDB
+    .addExercise(newExercise)
     .then((task) => {
       res.status(201).json(task);
     })
@@ -15,8 +15,8 @@ router.post("/:id", (req, res) => {
 });
 
 router.get("/", (req, res) => {
-  cardioDB
-    .getAllCardios()
+  exercisesDB
+    .getAllExercises()
     .then((tasks) => {
       res.status(200).json(tasks);
     })
@@ -26,9 +26,9 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-  const task_id = parseInt(req.params.id);
-  cardioDB
-    .getCardioById(task_id)
+  const exercise_id = parseInt(req.params.id);
+  exercisesDB
+    .getExerciseById(exercise_id)
     .then((task) => {
       res.status(200).json(task);
     })
@@ -39,8 +39,8 @@ router.get("/:id", (req, res) => {
 
 router.get("/all/my", (req, res) => {
   const user_id = parseInt(req.decodedToken.subject);
-  cardioDB
-    .getAllUserCardio(user_id)
+  exercisesDB
+    .getAllUserExercises(user_id)
     .then((tasks) => res.status(200).json(tasks))
     .catch(({ name, code, message, stack }) => {
       res.status(500).json({ name, code, message, stack });
@@ -51,8 +51,8 @@ router.get("/today/my", (req, res) => {
   const user_id = parseInt(req.decodedToken.subject);
   const today = new Date();
   const todayAsString = today.toDateString();
-  cardioDB
-    .getUserDailyCardio(user_id, todayAsString)
+  exercisesDB
+    .getUserDailyExercises(user_id, todayAsString)
     .then((tasks) => res.status(200).json(tasks))
     .catch(({ name, code, message, stack }) => {
       res.status(500).json({ name, code, message, stack });
@@ -60,10 +60,10 @@ router.get("/today/my", (req, res) => {
 });
 
 router.put("/:id", (req, res) => {
-  const task_id = parseInt(req.params.id);
+  const exercise_id = parseInt(req.params.id);
   const changes = { ...req.body };
-  cardioDB
-    .editCardio(task_id, changes)
+  exercisesDB
+    .editExercise(exercise_id, changes)
     .then((task) => {
       res.status(200).json(task);
     })
@@ -73,9 +73,9 @@ router.put("/:id", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
-  const task_id = parseInt(req.params.id);
-  cardioDB
-    .deleteCardio(task_id)
+  const exercise_id = parseInt(req.params.id);
+  exercisesDB
+    .deleteExercise(exercise_id)
     .then((type) => res.status(200).json(type))
     .catch(({ name, code, message, stack }) => {
       res.status(500).json({ name, code, message, stack });

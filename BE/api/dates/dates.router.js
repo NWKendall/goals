@@ -38,7 +38,7 @@ router.get("/my", (req, res) => {
 router.get("/:id", (req, res) => {
   const id = parseInt(req.params.id);
   datesDB
-    .getDatebyId(id)
+    .getDateById(id)
     .then((dates) => {
       res.status(200).json(dates);
     })
@@ -47,18 +47,24 @@ router.get("/:id", (req, res) => {
     });
 });
 
-
-router.get("/tasks", (req, res) => {
-  const user_id = parseInt(req.decodedToken.subject);
-  const date_id = { ...req.body, date_id: date_id }
+router.put("/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+  const changes = { ...req.body };
   datesDB
-    .getUserDailyTasks(user_id)
-    .then((dates) => {
-      res.status(200).json(dates);
-    })
+    .editDate(id, changes)
+    .then((ltos) => res.status(200).json(ltos))
     .catch(({ name, code, message, stack }) => {
       res.status(500).json({ name, code, message, stack });
     });
 });
 
+router.delete("/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+  datesDB
+    .deleteDate(id)
+    .then((ltos) => res.status(200).json(ltos))
+    .catch(({ name, code, message, stack }) => {
+      res.status(500).json({ name, code, message, stack });
+    });
+});
 module.exports = router;

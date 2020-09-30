@@ -117,7 +117,7 @@ exports.up = function (knex) {
         .onUpdate("CASCADE")
         .onDelete("RESTRICT");
     })
-    .createTable("strength", (tbl) => {
+    .createTable("exercises", (tbl) => {
       tbl.increments();
       tbl.string("name", 255).notNullable().index();
       tbl.string("variation", 255).notNullable().index();

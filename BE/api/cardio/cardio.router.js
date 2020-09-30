@@ -3,9 +3,9 @@ const cardioDB = require("./cardio.model.js");
 
 router.post("/:id", (req, res) => {
   const date_id = parseInt(req.params.id);
-  const newTask = { ...req.body, date_id: date_id };
+  const newCardio = { ...req.body, date_id: date_id };
   cardioDB
-    .addCardio(newTask)
+    .addCardio(newCardio)
     .then((task) => {
       res.status(201).json(task);
     })
@@ -26,9 +26,9 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-  const task_id = parseInt(req.params.id);
+  const cardio_id = parseInt(req.params.id);
   cardioDB
-    .getCardioById(task_id)
+    .getCardioById(cardio_id)
     .then((task) => {
       res.status(200).json(task);
     })
@@ -60,10 +60,10 @@ router.get("/today/my", (req, res) => {
 });
 
 router.put("/:id", (req, res) => {
-  const task_id = parseInt(req.params.id);
+  const cardio_id = parseInt(req.params.id);
   const changes = { ...req.body };
   cardioDB
-    .editCardio(task_id, changes)
+    .editCardio(cardio_id, changes)
     .then((task) => {
       res.status(200).json(task);
     })
@@ -73,9 +73,9 @@ router.put("/:id", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
-  const task_id = parseInt(req.params.id);
+  const cardio_id = parseInt(req.params.id);
   cardioDB
-    .deleteCardio(task_id)
+    .deleteCardio(cardio_id)
     .then((type) => res.status(200).json(type))
     .catch(({ name, code, message, stack }) => {
       res.status(500).json({ name, code, message, stack });
