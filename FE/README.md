@@ -1,6 +1,14 @@
 # README
 ## Ideas
 
+- ___need to get Date_id every day, store it so it can be used for api calls___
+
+
+- login / register
+    - route
+    - logout button
+- actions
+    - handle all the BE calls and state
 - schedule
  - daily routine (checkbox) ✅
     - CRUD activities 

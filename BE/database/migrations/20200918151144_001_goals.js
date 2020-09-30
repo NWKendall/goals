@@ -14,6 +14,7 @@ exports.up = function (knex) {
       tbl.increments();
       tbl.string("name", 255).notNullable().index();
       tbl.string("description", 255);
+      tbl.integer("created_by").index();
       tbl.timestamp("created_at").defaultTo(knex.fn.now());
       tbl.timestamp("modified_at");
       tbl.timestamp("deleted_at");
@@ -67,34 +68,88 @@ exports.up = function (knex) {
         .inTable("objective_types")
         .onUpdate("CASCADE")
         .onDelete("RESTRICT");
+    })
+    .createTable("dates", (tbl) => {
+      tbl.increments();
+      tbl.string("date", 128).notNullable().index();      
+      tbl.timestamp("created_at").defaultTo(knex.fn.now());
+      tbl.timestamp("modified_at");
+      tbl.timestamp("deleted_at");
+      tbl
+        .integer("user_id")
+        .unsigned()
+        .notNullable()
+        .references("id")
+        .inTable("users")
+        .onUpdate("CASCADE")
+        .onDelete("RESTRICT");
+    })
+    .createTable("tasks", (tbl) => {
+      tbl.increments();
+      tbl.string("name", 255).notNullable().index();
+      tbl.boolean("completed").defaultTo(false);
+      tbl.timestamp("created_at").defaultTo(knex.fn.now());
+      tbl.timestamp("modified_at");
+      tbl.timestamp("deleted_at");
+      tbl
+        .integer("date_id")
+        .unsigned()
+        .notNullable()
+        .references("id")
+        .inTable("dates")
+        .onUpdate("CASCADE")
+        .onDelete("RESTRICT");
+    })
+    .createTable("cardio", (tbl) => {
+      tbl.increments();
+      tbl.string("name", 255).notNullable().index();
+      tbl.decimal("time", 8, 2).notNullable();
+      tbl.decimal("distance", 8, 2).notNullable();
+      tbl.timestamp("created_at").defaultTo(knex.fn.now());
+      tbl.timestamp("modified_at");
+      tbl.timestamp("deleted_at");
+      tbl
+        .integer("date_id")
+        .unsigned()
+        .notNullable()
+        .references("id")
+        .inTable("dates")
+        .onUpdate("CASCADE")
+        .onDelete("RESTRICT");
+    })
+    .createTable("exercises", (tbl) => {
+      tbl.increments();
+      tbl.string("name", 255).notNullable().index();
+      tbl.string("variation", 255).notNullable().index();
+      tbl.integer("sets")
+      tbl.integer("reps")
+      tbl.timestamp("created_at").defaultTo(knex.fn.now());
+      tbl.timestamp("modified_at");
+      tbl.timestamp("deleted_at");
+      tbl
+        .integer("date_id")
+        .unsigned()
+        .notNullable()
+        .references("id")
+        .inTable("dates")
+        .onUpdate("CASCADE")
+        .onDelete("RESTRICT");
     });
 };
 
 exports.down = function (knex) {
   return knex.schema
+    .dropTableIfExists("strength")
+    .dropTableIfExists("cardio")
+    .dropTableIfExists("tasks")
+    .dropTableIfExists("users_dates")
+    .dropTableIfExists("dates")
     .dropTableIfExists("lto")
     .dropTableIfExists("sto")
     .dropTableIfExists("objective_types")
-
     .dropTableIfExists("users");
 };
 
-// .createTable("activities", (tbl) => {
-//   tbl.increments();
-//   tbl.integer("weight").notNullable();
-//   tbl.date("date");
-//   tbl.boolean("awake").defaultTo(false);
-//   tbl.boolean("stretch").defaultTo(false);
-//   tbl.boolean("exercise").defaultTo(false);
-//   tbl.boolean("mantra").defaultTo(false);
-//   tbl.boolean("study1").defaultTo(false);
-//   tbl.boolean("music").defaultTo(false);
-//   tbl.boolean("study2").defaultTo(false);
-//   tbl.boolean("reading").defaultTo(false);
-//   tbl.timestamp("created_at").defaultTo(knex.fn.now());
-//   tbl.timestamp("modified_at");
-//   tbl.timestamp("deleted_at");
-// })
 // .createTable("fitness", (tbl) => {
 //   tbl.increments();
 //   tbl.string("exercise", 255);

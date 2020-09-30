@@ -6,21 +6,25 @@
 
 - tests
     - auth
+    - STO
+    - LTO
+    - tasks
+    - exercises
+    - cardio
 
 - middleware
     - put request for credentials updates ✅
-    - check for empty objects in activities POST
 
 - tables
     - how to handle different users having different goals ✅ (separate rows / search by day to get all tasks per user)
     - add STO ✅
     - add LTO ✅
-    - add activities
-    - add strength
-    - add cardio
+    - add tasks ✅
+    - add exercises ✅
+    - add cardio ✅
 
 - seed
-    - objective_types
+    - objective_types ✅
         - Fitness
         - Health 
         - Professional
@@ -28,3 +32,6 @@
         - Relationship & Travel
         - Personal
 
+## Open Source
+1. focus on projects you personally use / interested in
+2. quality of documentation, labes identifying first timers

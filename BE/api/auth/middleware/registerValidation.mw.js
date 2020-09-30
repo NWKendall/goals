@@ -1,5 +1,5 @@
-const UsersDB = require("../auth/auth.model.js");
-const regex = require("../../utils/regex.js");
+const UsersDB = require("../auth.model.js");
+const regex = require("./regex.js");
 
 module.exports = async (req, res, next) => {
   
@@ -11,7 +11,7 @@ module.exports = async (req, res, next) => {
     if (key === "email") {
       const emailDuplicate = await UsersDB.getUserByEmail(value);
       if (!value) errorMessages.push("No email provided.");
-      if (!regex.emailRegEx.test(value))
+      else if (!regex.emailRegEx.test(value))
         errorMessages.push("Please provide a valid email address.");
       if (emailDuplicate)
         errorMessages.push(
@@ -28,7 +28,7 @@ module.exports = async (req, res, next) => {
     }
   }
 
-  if (errorMessages.length) return res.status(400).json({ errorMessages });
+  if (errorMessages.length) return res.status(400).json({ errorMessages, MW: "registerValidation" });
 
   next();
 };

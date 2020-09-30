@@ -9,12 +9,10 @@ module.exports = (req, res, next) => {
         res.status(401).json({ Error: err });
       } else {
         req.decodedToken = decodedToken;
-        console.log(req.decodedToken);
-
         next();
       }
     });
   } else {
-    res.status(400).json({ message: "No credentials provided" });
+    res.status(400).json({ message: "No credentials provided", MW: "Authorized" });
   }
 };
