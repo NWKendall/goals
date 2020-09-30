@@ -10,4 +10,9 @@ exports.seed = async knex => {
           });
     }
     
+    await knex("exercises").truncate();
+    await knex("cardio").truncate();
+    await knex("tasks").truncate();
+    await knex("dates").truncate();
+    await knex("users").truncate();
 }
