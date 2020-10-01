@@ -59,7 +59,7 @@ router.delete("/user/:id", updateValidation, (req, res) => {
   let id = parseInt(req.params.id);
  
   UsersDB.deleteUser(id)
-    .then((user) => {
+    .then(() => {
       res
         .status(200)
         .json({ message: `Account successfully removed.` });

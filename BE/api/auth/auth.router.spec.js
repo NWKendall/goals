@@ -29,8 +29,8 @@ describe("Authentication Router", () => {
       const registerPayload = {};
       const response = await request(server)
         .post("/api/auth/register")
-        .send(registerPayload)
-        .set("Accept", "application/json");
+        .set("Content-Type", "application/json")
+        .send(registerPayload);
 
       await expect(response.status).toBe(500);
     });
@@ -45,8 +45,8 @@ describe("Authentication Router", () => {
       const registerPayload = { ...registerUser, first_name: "" };
       const response = await request(server)
         .post("/api/auth/register")
-        .send(registerPayload)
-        .set("Accept", "application/json");
+        .set("Content-Type", "application/json")
+        .send(registerPayload);
 
       await expect(response.status).toBe(400);
     });
@@ -61,8 +61,8 @@ describe("Authentication Router", () => {
       const registerPayload = { ...registerUser, last_name: "" };
       const response = await request(server)
         .post("/api/auth/register")
-        .send(registerPayload)
-        .set("Accept", "application/json");
+        .set("Content-Type", "application/json")
+        .send(registerPayload);
 
       await expect(response.status).toBe(400);
     });
@@ -73,13 +73,12 @@ describe("Authentication Router", () => {
       await expect(testDB).toHaveLength(0);
     });
 
-
     it("POST /register with empty email returns a status code 400", async () => {
       const registerPayload = { ...registerUser, email: "" };
       const response = await request(server)
         .post("/api/auth/register")
-        .send(registerPayload)
-        .set("Accept", "application/json");
+        .set("Content-Type", "application/json")
+        .send(registerPayload);
 
       await expect(response.status).toEqual(400);
     });
@@ -89,14 +88,13 @@ describe("Authentication Router", () => {
 
       await expect(testDB).toHaveLength(0);
     });
-
 
     it("POST /register with incorrect email returns a status code 400", async () => {
       const registerPayload = { ...registerUser, email: "@test2.com" };
       const response = await request(server)
         .post("/api/auth/register")
-        .send(registerPayload)
-        .set("Accept", "application/json");
+        .set("Content-Type", "application/json")
+        .send(registerPayload);
 
       await expect(response.status).toEqual(400);
     });
@@ -107,13 +105,12 @@ describe("Authentication Router", () => {
       await expect(testDB).toHaveLength(0);
     });
 
-
     it("POST /register with empty password returns a status code 400", async () => {
       const registerPayload = { ...registerUser, password: "" };
       const response = await request(server)
         .post("/api/auth/register")
-        .send(registerPayload)
-        .set("Accept", "application/json");
+        .set("Content-Type", "application/json")
+        .send(registerPayload);
 
       await expect(response.status).toEqual(400);
     });
@@ -128,8 +125,8 @@ describe("Authentication Router", () => {
       const registerPayload = { ...registerUser, password: "test" };
       const response = await request(server)
         .post("/api/auth/register")
-        .send(registerPayload)
-        .set("Accept", "application/json");
+        .set("Content-Type", "application/json")
+        .send(registerPayload);
 
       await expect(response.status).toEqual(400);
     });
@@ -143,8 +140,8 @@ describe("Authentication Router", () => {
     it("POST /register with correct payload returns a status code 201", async () => {
       const response = await request(server)
         .post("/api/auth/register")
-        .send(registerUser)
-        .set("Accept", "application/json");
+        .set("Content-Type", "application/json")
+        .send(registerUser);
 
       await expect(response.status).toBe(201);
     });
@@ -158,53 +155,50 @@ describe("Authentication Router", () => {
     it("POST /register with duplicate payload returns a status code 400", async () => {
       const response = await request(server)
         .post("/api/auth/register")
-        .send(registerUser)
-        .set('Accept', 'application/json')
+        .set("Content-Type", "application/json")
+        .send(registerUser);
 
-      await expect(response.status).toBe(400)
-    })
+      await expect(response.status).toBe(400);
+    });
   });
 
-  describe("POST /login",  () => {
-
+  describe("POST /login", () => {
     it("POST /login with empty payload returns a status code 500", async () => {
       const loginPayload = {};
       const response = await request(server)
         .post("/api/auth/login")
-        .send(loginPayload)
-        .set("Accept", "application/json");
+        .set("Content-Type", "application/json")
+        .send(loginPayload);
 
       await expect(response.status).toBe(400);
     });
 
     it("POST /login with empty email returns a status code 400", async () => {
-      statusCode = 400;
       const loginPayload = { ...loginUser, email: "" };
       const response = await request(server)
         .post("/api/auth/login")
-        .send(loginPayload)
-        .set("Accept", "application/json");
+        .set("Content-Type", "application/json")
+        .send(loginPayload);
 
-      await expect(response.status).toEqual(statusCode);
+      await expect(response.status).toEqual(400);
     });
 
     it("POST /login with incorrect email returns a status code 400", async () => {
-      statusCode = 400;
       const loginPayload = { ...loginUser, email: "@test2.com" };
       const response = await request(server)
         .post("/api/auth/login")
-        .send(loginPayload)
-        .set("Accept", "application/json");
+        .set("Content-Type", "application/json")
+        .send(loginPayload);
 
-      await expect(response.status).toEqual(statusCode);
+      await expect(response.status).toEqual(400);
     });
 
     it("POST /login with empty password returns a status code 400", async () => {
       const loginPayload = { ...loginUser, password: "" };
       const response = await request(server)
         .post("/api/auth/login")
-        .send(loginPayload)
-        .set("Accept", "application/json");
+        .set("Content-Type", "application/json")
+        .send(loginPayload);
 
       await expect(response.status).toBe(400);
     });
@@ -213,8 +207,8 @@ describe("Authentication Router", () => {
       const loginPayload = { ...loginUser, password: "test" };
       const response = await request(server)
         .post("/api/auth/login")
-        .send(loginPayload)
-        .set("Accept", "application/json");
+        .set("Content-Type", "application/json")
+        .send(loginPayload);
 
       await expect(response.status).toBe(400);
     });
@@ -222,25 +216,101 @@ describe("Authentication Router", () => {
     it("POST /login with correct payload returns a status code 200", async () => {
       const response = await request(server)
         .post("/api/auth/login")
-        .send(loginUser)
-        .set("Accept", "application/json")
+        .set("Content-Type", "application/json")
+        .send(loginUser);
 
-      await expect(response.status).toBe(200)
+      await expect(response.status).toBe(200);
     });
   });
-  // describe("Put /update/:id", async () => {
 
-  //   statusCode = 200;
-  //   const changedUser = {
-  //     first_name: "Hello",
-  //     last_name: "World",
-  //     email: "test@test.com",
-  //     password: "Test123!"
-  //   }
-  //   const response = await request(server)
-  //     .put("/api/update/1")
-  //     .send(changedUser)
+  describe("PUT /update/:id", () => {
+    const changedUser = {
+      first_name: "Hello",
+      last_name: "World",
+      email: "hello@world.com",
+      password: "H£lloW0rld",
+    };
 
-  //   await expect(response).toEqual(changedUser)
-  // })
+    const changedLogin = {
+      email: "hello@world.com",
+      password: "H£lloW0rld",
+    };
+
+    it("PUT with null email returns a status code 400", async () => {
+      const loginPayload = { ...changedLogin, email: null };
+
+      // const auth = await db("users")
+      const response = await request(server)
+        .put("/api/auth/update/1")
+        .set("Content-Type", "application/json")
+        .auth(loginUser.email, loginUser.password)
+        .send(loginPayload);
+
+      await expect(response.status).toBe(400);
+    });
+
+    it("PUT with no email returns a status code 400", async () => {
+      const loginPayload = { ...changedLogin, email: "" };
+
+      // const auth = await db("users")
+      const response = await request(server)
+        .put("/api/auth/update/1")
+        .set("Content-Type", "application/json")
+        .auth(loginUser.email, loginUser.password)
+        .send(loginPayload);
+
+      await expect(response.status).toBe(400);
+    });
+
+    it("PUT with invalid email returns a status code 400", async () => {
+      const loginPayload = { ...changedLogin, email: "@good" };
+
+      // const auth = await db("users")
+      const response = await request(server)
+        .put("/api/auth/update/1")
+        .set("Content-Type", "application/json")
+        .auth(loginUser.email, loginUser.password)
+        .send(loginPayload);
+
+      await expect(response.status).toBe(400);
+    });
+
+    it("PUT with no password returns a status code 400", async () => {
+      const loginPayload = { ...changedLogin, password: "" };
+
+      // const auth = await db("users")
+      const response = await request(server)
+      .put("/api/auth/update/1")
+      .set('Content-Type', 'application/json')
+      .auth(loginUser.email, loginUser.password)
+      .send(loginPayload)
+
+      await expect(response.status).toBe(400)
+    });
+
+    it("PUT with invalid password returns a status code 400", async () => {
+      const loginPayload = { ...changedLogin, password: "test" };
+
+      // const auth = await db("users")
+      const response = await request(server)
+      .put("/api/auth/update/1")
+      .set('Content-Type', 'application/json')
+      .auth(loginUser.email, loginUser.password)
+      .send(loginPayload)
+
+      await expect(response.status).toBe(400)
+    });
+
+    it("PUT with correct payload returns a status code 200", async () => {
+      const response = await request(server)
+        .put("/api/auth/update/1")
+        .set("Content-Type", "application/json")
+        .auth(loginUser.email, loginUser.password)
+        .send(changedUser);
+
+      await expect(response.status).toBe(200);
+    });
+
+
+  });
 });
