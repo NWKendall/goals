@@ -17,14 +17,24 @@ let loginUser = {
   password: "Test123!",
 };
 
-let statusCode;
+const changedUser = {
+  first_name: "Hello",
+  last_name: "World",
+  email: "hello@world.com",
+  password: "H£lloW0rld",
+};
+
+let changedLogin = {
+  email: "hello@world.com",
+  password: "H£lloW0rld",
+};
 
 describe("Authentication Router", () => {
   beforeAll(async () => {
     await knexCleaner.seed(db);
   });
 
-  describe("Register User", () => {
+  describe("POST /register", () => {
     it("POST /register with empty payload returns a status code 500", async () => {
       const registerPayload = {};
       const response = await request(server)
@@ -224,17 +234,8 @@ describe("Authentication Router", () => {
   });
 
   describe("PUT /update/:id", () => {
-    const changedUser = {
-      first_name: "Hello",
-      last_name: "World",
-      email: "hello@world.com",
-      password: "H£lloW0rld",
-    };
 
-    const changedLogin = {
-      email: "hello@world.com",
-      password: "H£lloW0rld",
-    };
+    
 
     it("PUT with null email returns a status code 400", async () => {
       const loginPayload = { ...changedLogin, email: null };
@@ -305,7 +306,6 @@ describe("Authentication Router", () => {
       const response = await request(server)
         .put("/api/auth/update/1")
         .set("Content-Type", "application/json")
-        .auth(loginUser.email, loginUser.password)
         .send(changedUser);
 
       await expect(response.status).toBe(200);
@@ -313,4 +313,20 @@ describe("Authentication Router", () => {
 
 
   });
+
+  describe("DELETE /user:id", () => {
+    it("DELETE user from database", async () => {
+      const response = await request(server)
+        .delete("/api/auth/user/1")
+        .set("Content-Type", "application/json")
+
+      await expect(response.status).toBe(200);
+    })
+
+    it("Checks for amount of users in database - deletion", async () => {
+      const testDB = await db("users");
+
+      await expect(testDB).toHaveLength(0);
+    });
+  })
 });

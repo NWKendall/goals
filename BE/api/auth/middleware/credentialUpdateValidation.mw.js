@@ -4,22 +4,21 @@ const regex = require("./regex.js");
 module.exports = async (req, res, next) => {
   const id = parseInt(req.params.id);
   const user = await UsersDB.getUserById(id);
-
-  // check to make sure changes and original are different
-
   const { first_name, last_name, email, password } = req.body;
-  const emailCheck = await UsersDB.getUserByEmail(email);
 
-  if (!req.body)
-    return res.status(400).json({ errorMessage: "", MW: "updateValidation" });
 
-  if (req.body === user)
-    return res
-      .status(400)
-      .json({
-        errorMessage: "Please change at least one field.",
-        MW: "updateValidation",
-      });
+  // if (!req.body)
+  //   return res.status(400).json({ errorMessage: "", MW: "updateValidation" });
+
+  if (
+    first_name === user.first_name &&
+    last_name === user.last_name &&
+    email === user.email
+  )
+    return res.status(400).json({
+      errorMessage: "Please change at least one field.",
+      MW: "updateValidation",
+    });
 
   if (!first_name || first_name === "")
     return res
@@ -36,32 +35,32 @@ module.exports = async (req, res, next) => {
       .status(400)
       .json({ errorMessage: "No email provided", MW: "updateValidation" });
 
-  if (emailCheck)
-    return res
-      .status(400)
-      .json({
-        errorMessage: "Email in use. Please choose another.",
-        MW: "updateValidation",
-      });
-
-  if (!regex.emailRegEx.test(email))
-    return res
-      .status(400)
-      .json({ errorMessage: "Invlaid email", MW: "updateValidation" });
-
   if (!password || password === "")
     return res
       .status(400)
       .json({ errorMessage: "No password provided", MW: "updateValidation" });
 
   if (!regex.passwordRegEx.test(password))
-    return res
-      .status(400)
-      .json({
-        errorMessage:
-          "Password must contain: 8 characters minimum, one uppercase, one lowercase, 1 digit and 1 special character.",
+    return res.status(400).json({
+      errorMessage:
+        "Password must contain: 8 characters minimum, one uppercase, one lowercase, 1 digit and 1 special character.",
+      MW: "updateValidation",
+    });
+
+    
+    if (email !== user.email) {
+      const emailCheck = await UsersDB.getUserByEmail(email);
+      if (emailCheck)
+      return res.status(400).json({
+        errorMessage: `${email} in use. Please choose another.`,
         MW: "updateValidation",
       });
+    }
+    
+    if (email != user.email && !regex.emailRegEx.test(email))
+      return res
+        .status(400)
+        .json({ errorMessage: "Invlaid email", MW: "updateValidation" });
 
   next();
 };
