@@ -82,7 +82,7 @@ exports.up = function (knex) {
         .references("id")
         .inTable("users")
         .onUpdate("CASCADE")
-        .onDelete("RESTRICT");
+        .onDelete("CASCADE");
     })
     .createTable("tasks", (tbl) => {
       tbl.increments();
@@ -98,7 +98,7 @@ exports.up = function (knex) {
         .references("id")
         .inTable("dates")
         .onUpdate("CASCADE")
-        .onDelete("RESTRICT");
+        .onDelete("CASCADE");
     })
     .createTable("cardio", (tbl) => {
       tbl.increments();
@@ -115,7 +115,7 @@ exports.up = function (knex) {
         .references("id")
         .inTable("dates")
         .onUpdate("CASCADE")
-        .onDelete("RESTRICT");
+        .onDelete("CASCADE");
     })
     .createTable("exercises", (tbl) => {
       tbl.increments();
@@ -133,16 +133,15 @@ exports.up = function (knex) {
         .references("id")
         .inTable("dates")
         .onUpdate("CASCADE")
-        .onDelete("RESTRICT");
+        .onDelete("CASCADE");
     });
 };
 
 exports.down = function (knex) {
   return knex.schema
-    .dropTableIfExists("strength")
+    .dropTableIfExists("exercises")
     .dropTableIfExists("cardio")
     .dropTableIfExists("tasks")
-    .dropTableIfExists("users_dates")
     .dropTableIfExists("dates")
     .dropTableIfExists("lto")
     .dropTableIfExists("sto")
@@ -150,37 +149,3 @@ exports.down = function (knex) {
     .dropTableIfExists("users");
 };
 
-// .createTable("fitness", (tbl) => {
-//   tbl.increments();
-//   tbl.string("exercise", 255);
-//   tbl.string("variation", 255);
-//   tbl.integer("sets");
-//   tbl.integer("reps");
-//   tbl.timestamp("created_at").defaultTo(knex.fn.now());
-//   tbl.timestamp("modified_at");
-//   tbl.timestamp("deleted_at");
-//   tbl
-//     .integer("day_id")
-//     .unsigned()
-//     .notNullable()
-//     .references("id")
-//     .inTable("activities")
-//     .onUpdate("CASCADE")
-//     .onDelete("RESTRICT");
-// })
-// .createTable("running", (tbl) => {
-//   tbl.increments();
-//   tbl.decimal("distance");
-//   tbl.time("time");
-//   tbl.timestamp("created_at").defaultTo(knex.fn.now());
-//   tbl.timestamp("modified_at");
-//   tbl.timestamp("deleted_at");
-//   tbl
-//     .integer("day_id")
-//     .unsigned()
-//     .notNullable()
-//     .references("id")
-//     .inTable("activities")
-//     .onUpdate("CASCADE")
-//     .onDelete("RESTRICT");
-// });

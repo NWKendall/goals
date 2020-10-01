@@ -55,4 +55,18 @@ router.put("/update/:id", updateValidation, (req, res) => {
     });
 });
 
+router.delete("/user/:id", updateValidation, (req, res) => {
+  let id = parseInt(req.params.id);
+ 
+  UsersDB.deleteUser(id)
+    .then((user) => {
+      res
+        .status(200)
+        .json({ message: `Account successfully removed.` });
+    })
+    .catch(({ name, code, message, stack }) => {
+      res.status(500).json({ name, code, message, stack });
+    });
+});
+
 module.exports = router;

@@ -7,6 +7,7 @@ module.exports = {
   getUser,
   getUserByEmail,
   editUserCredentials,
+  deleteUser
 };
 
 function getAllUsers() {
@@ -27,7 +28,7 @@ function getUser(user) {
   return db("users").select("*").where(user).first();
 }
 
-function getUserByEmail(email) {
+async function getUserByEmail(email) {
   return db("users").where({ email }).first();
 }
 
@@ -37,4 +38,8 @@ async function editUserCredentials(id, changes) {
     .update({ modified_at: new Date(), ...changes});
   
     return getUserById(id);
+}
+
+function deleteUser(id) {
+  return db("users").where({ id }).delete();
 }
