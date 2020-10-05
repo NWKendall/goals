@@ -5,9 +5,10 @@ import { scoreHistory } from "../data.js";
 import DayScoreCard from "./dayScoreCard.js";
 import "./dashboard.styles.css";
 
-const Home = () => {
-  const { today, score, daily } = useContext(DailyContext);
-  let percent = (score / daily.length) * 100;
+const Dashboard = () => {
+  const context = useContext(DailyContext);
+  console.log({ context })
+  let percent = (context.score / context.daily.length) * 100;
 
   return (
     <div>
@@ -16,7 +17,7 @@ const Home = () => {
         Today's Score!{" "}
         {percent % 2 !== 0 ? percent.toFixed(1) : percent.toFixed(0)}%
       </p>
-      <p>{today}</p>
+      <p>{context.today}</p>
       <div className="cardDisplay">
         {Object.values(scoreHistory).map((score, i) => (
           <DayScoreCard data={score} key={i} />
@@ -26,4 +27,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Dashboard;

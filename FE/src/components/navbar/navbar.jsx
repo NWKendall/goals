@@ -65,6 +65,9 @@ const Navbar = () => {
           Schedule
         </NavLink>
       </li>
+      <li className="navItem">
+        Logout
+      </li>
     </ul>
   );
 };
