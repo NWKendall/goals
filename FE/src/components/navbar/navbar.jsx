@@ -9,10 +9,10 @@ const Navbar = () => {
         <NavLink
           className="navItem"
           activeClassName="selectedLink"
-          to="/"
+          to="/dashboard"
           exact
         >
-          Home
+          Dashboard
         </NavLink>
       </li>
       <li className="NavLi">

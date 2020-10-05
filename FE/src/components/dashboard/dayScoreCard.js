@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./home.styles.css";
+import "./dashboard.styles.css";
 
 const DayScoreCard = (props) => {
 //   const { score, date, daily } = data;

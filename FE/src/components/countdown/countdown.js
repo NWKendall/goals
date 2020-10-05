@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import { useForm } from "react-hook-form";
 import alarm from "./alarm.mp3";
 import "./countdown.styles.css";
 
-const CountDown = () => {
+const CountDown = memo(() => {
   const [input, setInput] = useState(0);
   const [timeForm, setTimeForm] = useState(false);
 
@@ -157,6 +157,6 @@ const CountDown = () => {
       </div>
     </div>
   );
-};
+});
 
 export default CountDown;

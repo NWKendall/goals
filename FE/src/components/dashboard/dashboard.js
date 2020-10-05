@@ -3,7 +3,7 @@ import DailyContext from "../../contexts/Daily/DailyContext.js";
 
 import { scoreHistory } from "../data.js";
 import DayScoreCard from "./dayScoreCard.js";
-import "./home.styles.css";
+import "./dashboard.styles.css";
 
 const Home = () => {
   const { today, score, daily } = useContext(DailyContext);
@@ -11,7 +11,7 @@ const Home = () => {
 
   return (
     <div>
-      HOME
+      Dashboard
       <p>
         Today's Score!{" "}
         {percent % 2 !== 0 ? percent.toFixed(1) : percent.toFixed(0)}%
