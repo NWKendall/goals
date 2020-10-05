@@ -9,8 +9,7 @@ const Navbar = () => {
         <NavLink
           className="navItem"
           activeClassName="selectedLink"
-          to="/dashboard"
-          exact
+          exact to="/dashboard"
         >
           Dashboard
         </NavLink>
@@ -19,8 +18,7 @@ const Navbar = () => {
         <NavLink
           className="navItem"
           activeClassName="selectedLink"
-          to="/rules"
-          exact
+          exact to="/rules"
         >
           Rules
         </NavLink>
@@ -29,8 +27,7 @@ const Navbar = () => {
         <NavLink
           className="navItem"
           activeClassName="selectedLink"
-          to="/mantra"
-          exact
+          exact to="/mantra"
         >
           Mantra
         </NavLink>
@@ -39,8 +36,7 @@ const Navbar = () => {
         <NavLink
           className="navItem"
           activeClassName="selectedLink"
-          to="/sto"
-          exact
+          exact to="/sto"
         >
           STOs
         </NavLink>
@@ -49,8 +45,7 @@ const Navbar = () => {
         <NavLink
           className="navItem"
           activeClassName="selectedLink"
-          to="lto"
-          exact
+          exact to="lto"
         >
           LTOs
         </NavLink>
@@ -59,15 +54,12 @@ const Navbar = () => {
         <NavLink
           className="navItem"
           activeClassName="selectedLink"
-          to="schedule"
-          exact
+          exact to="schedule"
         >
           Schedule
         </NavLink>
       </li>
-      <li className="navItem">
-        Logout
-      </li>
+      <li className=" navItem">Logout</li>
     </ul>
   );
 };
