@@ -5,64 +5,76 @@ module.exports = async (req, res, next) => {
   const id = parseInt(req.params.id);
   const user = await UsersDB.getUserById(id);
   const { first_name, last_name, email, password } = req.body;
+  req.body.id = id;
+  // console.log("id", id, "USER", { user }, "PAYLOAD", { ...req.body });
 
+  // if email !== user.email
+  // if first !== user.first
+  // if last !== user.last
+  // password is encrypted, how to change that?
+  //            current rout could be just for password
+  // have different endpoints for email and details?
 
-  // if (!req.body)
-  //   return res.status(400).json({ errorMessage: "", MW: "updateValidation" });
+  if (user && req.body) {
+    if (
+      first_name === user.first_name &&
+      last_name === user.last_name &&
+      email === user.email
+    )
+      return res.status(400).json({
+        errorMessage: "Please change at least one field.",
+        MW: "updateValidation",
+      });
+    if (!first_name || first_name === "")
+      return res.status(400).json({
+        errorMessage: "No first name provided",
+        MW: "updateValidation",
+      });
 
-  if (
-    first_name === user.first_name &&
-    last_name === user.last_name &&
-    email === user.email
-  )
-    return res.status(400).json({
-      errorMessage: "Please change at least one field.",
-      MW: "updateValidation",
-    });
+    if (!last_name || last_name === "")
+      return res.status(400).json({
+        errorMessage: "No last name provided",
+        MW: "updateValidation",
+      });
 
-  if (!first_name || first_name === "")
-    return res
-      .status(400)
-      .json({ errorMessage: "No first name provided", MW: "updateValidation" });
+    if (!email || email === "")
+      return res
+        .status(400)
+        .json({ errorMessage: "No email provided", MW: "updateValidation" });
 
-  if (!last_name || last_name === "")
-    return res
-      .status(400)
-      .json({ errorMessage: "No last name provided", MW: "updateValidation" });
-
-  if (!email || email === "")
-    return res
-      .status(400)
-      .json({ errorMessage: "No email provided", MW: "updateValidation" });
-
-  if (!password || password === "")
-    return res
-      .status(400)
-      .json({ errorMessage: "No password provided", MW: "updateValidation" });
-
-  if (!regex.passwordRegEx.test(password))
-    return res.status(400).json({
-      errorMessage:
-        "Password must contain: 8 characters minimum, one uppercase, one lowercase, 1 digit and 1 special character.",
-      MW: "updateValidation",
-    });
-
-    
     if (email !== user.email) {
       const emailCheck = await UsersDB.getUserByEmail(email);
       if (emailCheck)
-      return res.status(400).json({
-        errorMessage: `${email} in use. Please choose another.`,
-        MW: "updateValidation",
-      });
+        return res.status(400).json({
+          errorMessage: `${email} in use. Please choose another.`,
+          MW: "updateValidation",
+        });
     }
-    
-    if (email != user.email && !regex.emailRegEx.test(email))
+
+    if (!regex.emailRegEx.test(email))
       return res
         .status(400)
         .json({ errorMessage: "Invlaid email", MW: "updateValidation" });
 
-  next();
+    if (!password || password === "")
+      return res
+        .status(400)
+        .json({ errorMessage: "No password provided", MW: "updateValidation" });
+
+    if (!regex.passwordRegEx.test(password))
+      return res.status(400).json({
+        errorMessage:
+          "Password must contain: 8 characters minimum, one uppercase, one lowercase, 1 digit and 1 special character.",
+        MW: "updateValidation",
+      });
+
+    next();
+  } else {
+    return res.status(502).json({
+      errorMessage: "ERRRRRRRRRRRRRRRRRROR",
+      MW: "updateValidation",
+    });
+  }
 };
 
 // for (const [key, value] of Object.entries(req.body)) {

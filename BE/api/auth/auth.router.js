@@ -17,7 +17,7 @@ router.post("/register", registerValidation, (req, res) => {
     })
 
     .catch(({ name, code, message, stack }) => {
-      res.status41(500).json({ name, code, message, stack });
+      res.status(500).json({ name, code, message, stack });
     });
 });
 

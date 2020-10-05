@@ -17,16 +17,16 @@ let loginUser = {
   password: "Test123!",
 };
 
-const changedUser = {
+let changedUser = {
   first_name: "Hello",
   last_name: "World",
   email: "hello@world.com",
-  password: "H£lloW0rld",
+  password: "P@$$word1",
 };
 
-let changedLogin = {
+let changedlogin = {
   email: "hello@world.com",
-  password: "H£lloW0rld",
+  password: "P@$$word1",
 };
 
 describe("Authentication Router", () => {
@@ -234,84 +234,83 @@ describe("Authentication Router", () => {
   });
 
   describe("PUT /update/:id", () => {
-
-    
-
     it("PUT with null email returns a status code 400", async () => {
-      const loginPayload = { ...changedLogin, email: null };
+      const editedPayload = { ...changedUser, email: null };
 
-      // const auth = await db("users")
       const response = await request(server)
         .put("/api/auth/update/1")
         .set("Content-Type", "application/json")
-        .auth(loginUser.email, loginUser.password)
-        .send(loginPayload);
+        .send(editedPayload);
 
       await expect(response.status).toBe(400);
     });
 
     it("PUT with no email returns a status code 400", async () => {
-      const loginPayload = { ...changedLogin, email: "" };
+      const editedPayload = { ...changedUser, email: "" };
 
-      // const auth = await db("users")
       const response = await request(server)
         .put("/api/auth/update/1")
         .set("Content-Type", "application/json")
-        .auth(loginUser.email, loginUser.password)
-        .send(loginPayload);
+        .send(editedPayload);
 
       await expect(response.status).toBe(400);
     });
 
     it("PUT with invalid email returns a status code 400", async () => {
-      const loginPayload = { ...changedLogin, email: "@good" };
+      const editedPayload = { ...changedUser, email: "@good" };
 
-      // const auth = await db("users")
       const response = await request(server)
         .put("/api/auth/update/1")
         .set("Content-Type", "application/json")
-        .auth(loginUser.email, loginUser.password)
-        .send(loginPayload);
+        .send(editedPayload);
+
+      await expect(response.status).toBe(400);
+    });
+
+    it("PUT with null password returns a status code 400", async () => {
+      const editedPayload = { ...changedUser, password: null };
+
+      const response = await request(server)
+        .put("/api/auth/update/1")
+        .set("Content-Type", "application/json")
+        .send(editedPayload);
 
       await expect(response.status).toBe(400);
     });
 
     it("PUT with no password returns a status code 400", async () => {
-      const loginPayload = { ...changedLogin, password: "" };
+      const editedPayload = { ...changedUser, password: "" };
 
-      // const auth = await db("users")
-      const response = await request(server)
-      .put("/api/auth/update/1")
-      .set('Content-Type', 'application/json')
-      .auth(loginUser.email, loginUser.password)
-      .send(loginPayload)
-
-      await expect(response.status).toBe(400)
-    });
-
-    it("PUT with invalid password returns a status code 400", async () => {
-      const loginPayload = { ...changedLogin, password: "test" };
-
-      // const auth = await db("users")
-      const response = await request(server)
-      .put("/api/auth/update/1")
-      .set('Content-Type', 'application/json')
-      .auth(loginUser.email, loginUser.password)
-      .send(loginPayload)
-
-      await expect(response.status).toBe(400)
-    });
-
-    it("PUT with correct payload returns a status code 200", async () => {
       const response = await request(server)
         .put("/api/auth/update/1")
         .set("Content-Type", "application/json")
-        .send(changedUser);
+        .send(editedPayload);
 
-      await expect(response.status).toBe(200);
+      await expect(response.status).toBe(400);
     });
 
+    it("PUT with invalid password returns a status code 400", async () => {
+      const editedPayload = { ...changedUser, password: "test" };
 
+      const response = await request(server)
+        .put("/api/auth/update/1")
+        .set("Content-Type", "application/json")
+        .send(editedPayload);
+
+      await expect(response.status).toBe(400);
+    });
+
+    it("PUT with correct payload returns a status code 200", async () => {
+      const editedPayload = { ...changedUser };
+
+      const response = await request(server)
+        .put("/api/auth/update/1")
+        .set("Content-Type", "application/json")
+        .send(editedPayload);
+
+      console.log({editedPayload}, response.request._data)
+      await expect(response.status).toBe(200);
+    });
   });
 
   describe("DELETE /user:id", () => {
