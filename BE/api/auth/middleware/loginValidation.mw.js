@@ -4,7 +4,6 @@ const regex = require("./regex.js");
 module.exports = async (req, res, next) => {
   const { email, password } = req.body;
 
-  const emailExist = await UsersDB.getUserByEmail(email);
   const errorMessages = [];
 
   if (!email) errorMessages.push("No email provided in request body.");
@@ -21,7 +20,7 @@ module.exports = async (req, res, next) => {
 
   if (errorMessages.length)
     return res.status(400).json({ errorMessages, MW: "loginValidation" });
-  else if (!errorMessages.length && emailExist) next();
+  else if (!errorMessages.length) next();
   else
     return res
       .status(500)
