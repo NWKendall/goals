@@ -1,23 +1,25 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import "./contentPage.styles.css";
-import Mantra from "../mantra/mantra.jsx";
-import Rules from "../rules/rules.jsx";
-import LTObjectives from "../lto/lto";
-import STObjectives from "../sto/sto";
-import Scheduler from "../scheduler/scheduler";
-import dashboard from "../dashboard/dashboard";
+import {
+  Mantra,
+  Rules,
+  LTObjectives,
+  STObjectives,
+  Scheduler,
+  Dashboard,
+} from "../";
 
 function ContentPage() {
   return (
     <div className="contentContainer">
       <Switch>
-        <Route path="/dashboard" component={dashboard} />
-        <Route path="/mantra" component={Mantra} />
-        <Route path="/rules" component={Rules} />
-        <Route path="/sto" component={STObjectives} />
-        <Route path="/lto" component={LTObjectives} />
-        <Route path="/schedule" component={Scheduler} />
+        <Route path="/goals/dashboard" component={Dashboard} />
+        <Route path="/goals/mantra" component={Mantra} />
+        <Route path="/goals/rules" component={Rules} />
+        <Route path="/goals/sto" component={STObjectives} />
+        <Route path="/goals/lto" component={LTObjectives} />
+        <Route path="/goals/schedule" component={Scheduler} />
       </Switch>
     </div>
   );

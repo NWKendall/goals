@@ -1,20 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
+import axios from "axios";
 import { useForm } from "react-hook-form";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { emailRegEx, passwordRegEx } from "../../utils/regex";
 
 import "./loginUser.styles.css";
 
 const LoginUser = () => {
-  const [credentials, setCredentials] = useState({
-    email: "",
-    password: "",
-  });
   const { register, handleSubmit, errors } = useForm();
-
-  const onSubmit = data => {
-    console.log(data)
-  }
+  let history = useHistory();
+  const onSubmit = async (payload) => {
+    await axios.post("http://localhost:4444/api/auth/login", payload)
+    .then((res) => {
+      localStorage.setItem("token", res.data.token)
+      localStorage.setItem("name", res.data.message.split(" ")[1])
+      history.push('/goals')
+    })
+    .catch(err => console.log(err));
+  };
   
   return (
     <div>

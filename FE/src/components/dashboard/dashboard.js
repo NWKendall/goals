@@ -7,7 +7,6 @@ import "./dashboard.styles.css";
 
 const Dashboard = () => {
   const context = useContext(DailyContext);
-  console.log({ context })
   let percent = (context.score / context.daily.length) * 100;
 
   return (

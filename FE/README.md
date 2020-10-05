@@ -6,10 +6,10 @@
 - memoize timers ✅
 
 - login / register
-    - login / register component
-    - private route for logged in user
-    - logout button
-    - api hooks
+    - login / register component ✅
+    - private route for logged in user ✅
+    - logout button ✅
+    - api calls ✅
 - actions
     - handle all the BE calls and state
 - schedule

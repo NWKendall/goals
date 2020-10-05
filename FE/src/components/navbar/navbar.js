@@ -3,13 +3,19 @@ import { NavLink } from "react-router-dom";
 import "./navbar.styles.css";
 
 const Navbar = () => {
+  
+  const logout = () => {
+    localStorage.removeItem("token");
+  };
+
   return (
     <ul className="navBar">
       <li className="NavLi">
         <NavLink
           className="navItem"
           activeClassName="selectedLink"
-          exact to="/dashboard"
+          exact
+          to="/goals/dashboard"
         >
           Dashboard
         </NavLink>
@@ -18,7 +24,8 @@ const Navbar = () => {
         <NavLink
           className="navItem"
           activeClassName="selectedLink"
-          exact to="/rules"
+          exact
+          to="/goals/rules"
         >
           Rules
         </NavLink>
@@ -27,7 +34,8 @@ const Navbar = () => {
         <NavLink
           className="navItem"
           activeClassName="selectedLink"
-          exact to="/mantra"
+          exact
+          to="/goals/mantra"
         >
           Mantra
         </NavLink>
@@ -36,7 +44,8 @@ const Navbar = () => {
         <NavLink
           className="navItem"
           activeClassName="selectedLink"
-          exact to="/sto"
+          exact
+          to="/goals/sto"
         >
           STOs
         </NavLink>
@@ -45,7 +54,8 @@ const Navbar = () => {
         <NavLink
           className="navItem"
           activeClassName="selectedLink"
-          exact to="lto"
+          exact
+          to="/goals/lto"
         >
           LTOs
         </NavLink>
@@ -54,12 +64,22 @@ const Navbar = () => {
         <NavLink
           className="navItem"
           activeClassName="selectedLink"
-          exact to="schedule"
+          exact
+          to="/goals/schedule"
         >
           Schedule
         </NavLink>
       </li>
-      <li className=" navItem">Logout</li>
+
+      <li className="NavLi" onClick={logout}>
+        <NavLink
+          className="navItem"
+          activeClassName="selectedLink"
+          exact
+          to="/login">
+          Logout
+        </NavLink>
+      </li>
     </ul>
   );
 };
