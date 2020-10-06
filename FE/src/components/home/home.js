@@ -1,29 +1,28 @@
-import React, { useContext } from "react";
-import DailyContext from "../../contexts/Daily/DailyContext.js";
+import React from "react";
+import "../../App.css";
+import DailyState from "../../contexts/Daily/DailyState.js";
+import {
+  Header,
+  Navbar,
+  Timer,
+  CountDown,
+  FitnessStats,
+  ContentPage,
+} from "../";
 
-import { scoreHistory } from "../data.js";
-import DayScoreCard from "./dayScoreCard.js";
-import "./home.styles.css";
-
-const Home = () => {
-  const { today, score, daily } = useContext(DailyContext);
-  let percent = (score / daily.length) * 100;
-
+function Home() {
   return (
-    <div>
-      HOME
-      <p>
-        Today's Score!{" "}
-        {percent % 2 !== 0 ? percent.toFixed(1) : percent.toFixed(0)}%
-      </p>
-      <p>{today}</p>
-      <div className="cardDisplay">
-        {Object.values(scoreHistory).map((score, i) => (
-          <DayScoreCard data={score} key={i} />
-        ))}
+    <DailyState>
+      <div className="appContainer">
+        <Header />
+        <Navbar />
+        <Timer />
+        <CountDown />
+        <FitnessStats />
+        <ContentPage />
       </div>
-    </div>
+    </DailyState>
   );
-};
+}
 
 export default Home;

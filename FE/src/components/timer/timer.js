@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import "./timer.styles.css";
 
-const Timer = () => {
+const Timer = memo(() => {
   const [timer, setTimer] = useState({
     seconds: 0,
     minutes: 0,
@@ -87,7 +87,7 @@ const Timer = () => {
         </button>
       </div>
   );
-};
+});
 
 export default Timer;
 
