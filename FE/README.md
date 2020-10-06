@@ -5,6 +5,18 @@
 
 - memoize timers ✅
 
+other features to work on:
+- Now need to update each component to call BE respectively.
+  - fitness
+  - tasks/schedule
+  - sto
+  - lto
+  - mantra ? need BE
+  - rules ? need BE
+- Everyday, send post request for current day to dates table, that way all other tables can be populated with respective daily tasks.
+- todo app for random chores, use state not BE
+
+
 - login / register
     - login / register component ✅
     - private route for logged in user ✅

@@ -25,14 +25,19 @@ router.post("/login", loginValidation, (req, res) => {
   let { email, password } = req.body;
 
   UsersDB.getUserByEmail(email)
-    .then(async (user) => {
-      if (user && bcrypt.compareSync(password, user.password)) {
-        const token = generateToken(user);
-        res.status(200).json({ message: `Welcome ${user.first_name}!`, token });
-      } else {
-        res.status(401).json({ error: "Invalid Credentials" });
-      }
-    })
+  .then(async (user) => {
+    if (user && bcrypt.compareSync(password, user.password)) {
+      const token = generateToken(user);  
+      res.status(200).json({ user: {
+        id: user.id,
+        first_name: user.first_name,
+        last_name: user.last_name,
+        email: user.email
+      }, token });
+    } else {
+      res.status(401).json({ error: "Invalid Credentials" });
+    }
+  })
     .catch(({ name, code, message, stack }) => {
       res.status(500).json({ name, code, message, stack });
     });
