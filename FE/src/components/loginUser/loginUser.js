@@ -13,7 +13,9 @@ const LoginUser = () => {
     await axios.post("http://localhost:4444/api/auth/login", payload)
     .then((res) => {
       localStorage.setItem("token", res.data.token)
-      localStorage.setItem("name", res.data.message.split(" ")[1])
+      // console.log(res.data.message)
+      const { first_name, last_name, email } = res.data.user;
+      localStorage.setItem("user", [first_name, last_name, email])
       history.push('/goals')
     })
     .catch(err => console.log(err));
