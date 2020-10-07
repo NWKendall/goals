@@ -23,7 +23,7 @@ const ChoresList = () => {
           {chores.map((chore, i) => (
             <ChoreItem
               chore={chore}
-              i={i}
+              key={i}
               handleCheckBoxes={handleCheckBoxes}
             />
           ))}

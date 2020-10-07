@@ -29,8 +29,9 @@ const DailyTaskList = () => {
   return (
       <form className="formStyle" onSubmit={handleSubmit(onSubmit)}>
         <ul className="ulStyle">
-          {daily.map((box) => (
+          {daily.map((box, i) => (
             <TaskItem
+              key={i}
               box={box}
               register={register}
               handleCheckBoxes={handleCheckBoxes}
