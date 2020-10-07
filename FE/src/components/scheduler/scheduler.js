@@ -2,9 +2,9 @@ import React from 'react'
 import ChoresList from './chores/choresList.js'
 import DailyTaskList from './tasks/dailyTaskList.js'
 
-import './schedule.styles.css';
+import './scheduler.styles.css';
 
-const Schedule = () => {
+const Scheduler = () => {
   return (
     <div className="container">
       <DailyTaskList />
@@ -13,4 +13,4 @@ const Schedule = () => {
   )
 }
 
-export default Schedule
+export default Scheduler

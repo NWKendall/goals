@@ -1,6 +1,6 @@
 import React from "react";
 
-const Task = ({ box, i, register, handleCheckBoxes }) => {
+const TaskItem = ({ box, i, register, handleCheckBoxes }) => {
   const { name, checked } = box;
   return (
     <li key={i} className="liStyle">
@@ -17,4 +17,4 @@ const Task = ({ box, i, register, handleCheckBoxes }) => {
   );
 };
 
-export default Task;
+export default TaskItem;

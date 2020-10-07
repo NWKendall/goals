@@ -4,7 +4,7 @@ import moment from "moment";
 import DailyContext from "../../../contexts/Daily/DailyContext.js";
 import "./dailyTasks.styles.css";
 import { scoreHistory } from "../../data.js";
-import Task from "./task.js";
+import TaskItem from "./taskItem.js";
 
 const DailyTaskList = () => {
   const { register, handleSubmit } = useForm();
@@ -30,7 +30,7 @@ const DailyTaskList = () => {
       <form className="formStyle" onSubmit={handleSubmit(onSubmit)}>
         <ul className="ulStyle">
           {daily.map((box, i) => (
-            <Task
+            <TaskItem
               box={box}
               i={i}
               register={register}

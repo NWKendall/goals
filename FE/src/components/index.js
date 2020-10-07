@@ -15,7 +15,7 @@ import Mantra from "./mantra/mantra.js";
 import Rules from "./rules/rules.js";
 import LTObjectives from "./lto/lto.js";
 import STObjectives from "./sto/sto.js";
-import Schedule from "./scheduler/schedule.js";
+import Scheduler from "./scheduler/scheduler.js";
 import DailyTaskList from "./scheduler/tasks/dailyTaskList.js";
 import ChoresList from "./scheduler/chores/choresList.js";
 
@@ -29,12 +29,15 @@ export {
   CountDown,
   FitnessStats,
   ContentPage,
+}
+
+export {
   Dashboard,
   Mantra,
   Rules,
   LTObjectives,
   STObjectives,
-  Schedule,
+  Scheduler,
   DailyTaskList,
   ChoresList,
 }

@@ -29,44 +29,43 @@ export default (state, action) => {
           },
         ],
       };
-    // case COMPLETE_CHORE:
-    //   return {
-    //     ...state,
-    //     chores: state.chores.map((chore) => {
-    //       chore.id === payload
-    //         ? { ...chore, completed: true, completed_at: Date.now() }
-    //         : chore;
-    //     }),
-    //   };
-    // case UN_COMPLETE_CHORE:
-    //   return {
-    //     ...state,
-    //     chores: state.chores.map((chore) => {
-    //       chore.id === payload
-    //         ? { ...chore, completed: false, completed_at: "" }
-    //         : chore;
-    //     }),
-    //   };
 
-    // // case ARCHIVE_COMPLETED_CHORES:
-    // //   return {
-    // //     ...state,
-    // //     archive: state.chores.map(chore => {
-    // //       chore.id === payload ?
-    // //       { ... chore, archived: true}
-    // //       : chore;
-    // //     })
-    // //   }
-    // // case UN_ARCHIVE_CHORE:
-    // //   return {
-    // //     ...state,
-    // //     archive: state.chores.map(chore => {
-    // //       chore.id === payload ?
-    // //       { ... chore, archived: false}
-    // //       : chore;
-    // //     })
-    // //   }
-    // // case DELETE_ARCHIVED:
+    case COMPLETE_CHORE:
+      return {
+        ...state,
+        chores: state.chores.map((chore) =>
+          chore.id === payload
+            ? { ...chore, completed: true, completed_at: Date.now() }
+            : chore
+        ),
+      };
+
+    case UN_COMPLETE_CHORE:
+      return {
+        ...state,
+        chores: state.chores.map((chore) =>
+          chore.id === payload
+            ? { ...chore, completed: false, completed_at: "" }
+            : chore
+        ),
+      };
+
+    case ARCHIVE_COMPLETED_CHORES:
+      return {
+        ...state,
+        archive: state.chores.map((chore) =>
+          chore.id === payload ? { ...chore, archived: true } : chore
+        ),
+      };
+
+    case UN_ARCHIVE_CHORE:
+      return {
+        ...state,
+        archive: state.chores.map((chore) =>
+          chore.id === payload ? { ...chore, archived: false } : chore
+        ),
+      };
+    // case DELETE_ARCHIVED:
 
     default:
       return state;
