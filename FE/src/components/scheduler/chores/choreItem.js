@@ -1,11 +1,17 @@
-import React from 'react'
+import React from "react";
 
-const ChoreItem = () => {
+const ChoreItem = ({ chore, i }) => {
+  const { name, completed, } = chore;
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <li key={i} className="">
+      <label>{name}</label>
+      <input
+        type="checkbox"
+        name={name}
+        checked={completed}
+      ></input>
+    </li>
+  );
+};
 
-export default ChoreItem
+export default ChoreItem;

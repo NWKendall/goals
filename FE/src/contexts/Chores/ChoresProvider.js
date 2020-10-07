@@ -25,30 +25,31 @@ const ChoresProvider = (props) => {
 
   // actions
   const addChore = (data) => {
-    dispatch({ type: ADD_CHORE, payload: data });
+    return dispatch({ type: ADD_CHORE, payload: data });
   };
 
   const completeChore = (data) => {
-    dispatch({ type: COMPLETE_CHORE, payload: data });
+    return dispatch({ type: COMPLETE_CHORE, payload: data });
   };
 
   const unCompleteChore = (data) => {
-    dispatch({ type: UN_COMPLETE_CHORE, payload: data });
+    return dispatch({ type: UN_COMPLETE_CHORE, payload: data });
   };
 
   const archiveCompletedChores = (data) => {
-    dispatch({ type: ARCHIVE_COMPLETED_CHORES, payload: data });
+    return dispatch({ type: ARCHIVE_COMPLETED_CHORES, payload: data });
   };
 
   const unArchiveCompletedChore = (data) => {
-    dispatch({ type: UN_ARCHIVE_CHORE, payload: data });
+    return dispatch({ type: UN_ARCHIVE_CHORE, payload: data });
   };
 
   const deleteArchivedChores = (data) => {
-    dispatch({ type: DELETE_ARCHIVED, payload: data });
+    return dispatch({ type: DELETE_ARCHIVED, payload: data });
   };
 
   useEffect(() => {
+    // need custom hook for localStorage
     localStorage.setItem("StoredState2", JSON.stringify(state));
   }, [state]);
 

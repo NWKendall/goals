@@ -13,9 +13,13 @@ import {
 
 export default (state, action) => {
   const { type, payload } = action;
+  console.log( "CHORES REDUCER - payload", payload)
+
+  console.log( "CHORES REDUCER", state, payload)
 
   switch (type) {
     case ADD_CHORE:
+      console.log("reducer", payload)
       return {
         ...state,
         chores: [
