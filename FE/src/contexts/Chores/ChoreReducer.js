@@ -13,9 +13,6 @@ import {
 
 export default (state, action) => {
   const { type, payload } = action;
-  console.log( "CHORES REDUCER - payload", payload)
-
-  console.log( "CHORES REDUCER", state, payload)
 
   switch (type) {
     case ADD_CHORE:
@@ -26,7 +23,7 @@ export default (state, action) => {
           ...state.chores,
           {
             name: payload,
-            completed: false,
+            checked: false,
             id: Date.now(),
             completed_at: "",
             archived: false,
