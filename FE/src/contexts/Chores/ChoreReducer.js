@@ -31,7 +31,6 @@ export default (state, action) => {
       };
 
     case COMPLETE_CHORE:
-      console.log("Complete CHore Payload", payload)
       return {
         ...state,
         chores: state.chores.map((chore) =>

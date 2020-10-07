@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { useForm } from "react-hook-form";
+import React, { useState, useContext } from "react";
 
 import ChoresContext from "../../../contexts/Chores/ChoresContext";
 import ChoreItem from "./choreItem";
@@ -7,19 +6,24 @@ import ChoresForm from "./choresForm";
 import "./choresList.styles.css";
 
 const ChoresList = () => {
-  const { chores, completeChore, unCompleteChore } = useContext(ChoresContext);
+  const { chores, archived, completeChore, unCompleteChore } = useContext(ChoresContext);
+
+  const [display, setDisplay] = useState("active");
 
   const handleCheckBoxes = (e, id) =>
     e.target.checked ? completeChore(id) : unCompleteChore(id);
 
   return (
-    <div className="mainStyle">
-      <h2>Chores</h2>
+    <div className="choresStyle">
+      <h2 className="choresH2">Chores</h2>
       <ChoresForm />
+      <button onClick={() => setDisplay("active")}>Active</button>
+      <button onClick={() => setDisplay("completed")}>Completed</button>
+      <button onClick={() => setDisplay("Archived")}>Archived</button>
       {!chores.length ? (
         <p>You have nothing else to do...?</p>
-      ) : (
-        <ul>
+      ) : chores.length && display === "active" ? (
+        <ul className="choresUlStyle">
           {chores.map((chore, i) => (
             <ChoreItem
               chore={chore}
@@ -28,7 +32,17 @@ const ChoresList = () => {
             />
           ))}
         </ul>
-      )}
+      ) : chores.length && display === "archived" ? (
+        <ul className="choresUlStyle">
+          {archived.map((archive, i) => (
+            <ChoreItem
+              archive={archive}
+              key={i}
+              handleCheckBoxes={handleCheckBoxes}
+            />
+          ))}
+        </ul>
+      ) : null}
     </div>
   );
 };

@@ -1,4 +1,37 @@
-.mainStyle {
+.choresStyle {
   background-color: var(--button-hover-color);
   grid-column: 4 / -1;
+  padding-left: .5em;
+}
+.choresFormStyle {
+  display: flex;
+  justify-content: center;
+  column-gap: .2em;
+  
+}
+
+.choreInput:focus {
+  outline: 2px solid limegreen
+}
+
+.choresUlStyle {
+  padding-left: .5em;
+  padding-right: .5em;
+  display: flex;
+  flex-direction: column;
+
+
+}
+.liStyle {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  font-size: 1.5rem;
+  align-items: center;
+}
+
+.checkBoxStyle {
+  width: 1.3rem;
+  height: 1.3rem;
+  cursor: pointer;
 }

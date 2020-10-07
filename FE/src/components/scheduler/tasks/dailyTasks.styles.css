@@ -1,8 +1,10 @@
-
-
 .formStyle {
     grid-column: 1/4;
+    padding-right: .5em;
+
 }
+
+
 
 .ulStyle {
     display: flex;

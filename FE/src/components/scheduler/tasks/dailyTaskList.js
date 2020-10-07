@@ -23,27 +23,28 @@ const DailyTaskList = () => {
 
   const handleCheckBoxes = (e) => {
     if (e.target.checked) scoreIncrease(e.target.name);
-    else scoreDecrease(e.target.name);    
+    else scoreDecrease(e.target.name);
   };
 
   return (
-      <form className="formStyle" onSubmit={handleSubmit(onSubmit)}>
-        <ul className="ulStyle">
-          {daily.map((box, i) => (
-            <TaskItem
-              key={i}
-              box={box}
-              register={register}
-              handleCheckBoxes={handleCheckBoxes}
-            />
-          ))}
-        </ul>
-        <h2>
-          Today's Score:{" "}
-          {percent % 2 !== 0 ? percent.toFixed(1) : percent.toFixed(0)}%
-        </h2>
-        <input type="submit" />
-      </form>
+    <form className="formStyle" onSubmit={handleSubmit(onSubmit)} >
+      <h2>Daily Tasks</h2>
+      <ul className="ulStyle">
+        {daily.map((box, i) => (
+          <TaskItem
+            key={i}
+            box={box}
+            register={register}
+            handleCheckBoxes={handleCheckBoxes}
+          />
+        ))}
+      </ul>
+      <h2>
+        Today's Score:{" "}
+        {percent % 2 !== 0 ? percent.toFixed(1) : percent.toFixed(0)}%
+      </h2>
+      <input type="submit" />
+    </form>
   );
 };
 
