@@ -1,18 +1,16 @@
 import React from "react";
 
-
-const ChoreItem = ({ chore, i, handleCheckBoxes }) => {
+const ChoreItem = ({ chore, handleCheckBoxes }) => {
   const { name, checked, id } = chore;
-  
+
   return (
-    <li key={i} className="">
+    <li key={id} className="">
       <label>{name}</label>
       <input
-        id={id}
         type="checkbox"
         name={name}
         checked={checked}
-        onChange={e => handleCheckBoxes(e)}
+        onChange={(e) => handleCheckBoxes(e, id)}
       ></input>
     </li>
   );

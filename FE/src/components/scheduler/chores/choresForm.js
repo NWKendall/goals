@@ -4,12 +4,11 @@ import ChoresContext from "../../../contexts/Chores/ChoresContext";
 
 const ChoresForm = () => {
   const { addChore } = useContext(ChoresContext);
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, setValue, errors } = useForm();
   const onSubmit = (data) => {
     addChore(data.newChore);
   };
   return (
-    // all, active, completed, archived
     <form onSubmit={handleSubmit(onSubmit)}>
       <input
         name="newChore"
@@ -18,9 +17,6 @@ const ChoresForm = () => {
         ref={register({required: true, minLength: 1})}
       />
       <button type="submit">+</button>
-      {/* {errors.newChore && (
-        <span style={{ color: "red", marginLeft: "5%" }}></span>
-      )} */}
     </form>
   );
 };

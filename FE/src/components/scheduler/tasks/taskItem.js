@@ -1,9 +1,9 @@
 import React from "react";
 
-const TaskItem = ({ box, i, register, handleCheckBoxes }) => {
+const TaskItem = ({ box, key, register, handleCheckBoxes }) => {
   const { name, checked } = box;
   return (
-    <li key={i} className="liStyle">
+    <li key={key} className="liStyle">
       <label>{name}</label>
       <input
         className="checkBoxStyle"

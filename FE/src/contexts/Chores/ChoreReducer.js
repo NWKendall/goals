@@ -16,7 +16,6 @@ export default (state, action) => {
 
   switch (type) {
     case ADD_CHORE:
-      console.log("reducer", payload)
       return {
         ...state,
         chores: [
@@ -32,11 +31,12 @@ export default (state, action) => {
       };
 
     case COMPLETE_CHORE:
+      console.log("Complete CHore Payload", payload)
       return {
         ...state,
         chores: state.chores.map((chore) =>
           chore.id === payload
-            ? { ...chore, completed: true, completed_at: Date.now() }
+            ? { ...chore, checked: true, completed_at: Date.now() }
             : chore
         ),
       };
@@ -46,7 +46,7 @@ export default (state, action) => {
         ...state,
         chores: state.chores.map((chore) =>
           chore.id === payload
-            ? { ...chore, completed: false, completed_at: "" }
+            ? { ...chore, checked: false, completed_at: "" }
             : chore
         ),
       };
