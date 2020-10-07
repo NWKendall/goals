@@ -1,10 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
-import LoginUser from "./components/loginUser/loginUser.js";
-import RegisterUser from "./components/registerUser/registerUser.js";
+import  { LoginUser, RegisterUser, Home }  from "./components";
 import PrivateRoute from './utils/privateRoute.js';
-import Home from "./components/home/home";
 
 function App() {
   (function () {

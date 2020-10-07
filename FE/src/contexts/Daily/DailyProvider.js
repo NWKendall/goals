@@ -1,10 +1,10 @@
 import React, { useEffect, useReducer } from "react";
 import moment from 'moment';
-import DailyContext from "./DailyContext.js";
-import DailyReducer from "./DailyReducer.js";
+import { DailyContext, DailyReducer, } from "./";
 import { SCORE_INCREASE, SCORE_DECREASE } from "../../types.js";
 
-const DailyState = (props) => {
+
+const DailyProvider = (props) => {
   let initialState = {
     date: moment().format('L'),
     daily: [
@@ -63,18 +63,21 @@ const DailyState = (props) => {
   };
 
   let [state, dispatch] = useReducer(DailyReducer, initialState, () => {
+    // custom localStorage hook needed
     const storedState = localStorage.getItem("StoredState");
     return storedState ? JSON.parse(storedState) : initialState;
   });
 
-  const scoreIncrease = (data) => {
+
+  // actions 
+   const scoreIncrease = (data) => {
     dispatch({ type: SCORE_INCREASE, payload: data });
   };
-
-  const scoreDecrease = (data) => {
+  
+   const scoreDecrease = (data) => {
     dispatch({ type: SCORE_DECREASE, payload: data });
   };
-
+  
   useEffect(() => {
     localStorage.setItem("StoredState", JSON.stringify(state));
 
@@ -95,4 +98,4 @@ const DailyState = (props) => {
   );
 };
 
-export default DailyState;
+export default DailyProvider;

@@ -6,7 +6,7 @@ import {
   Rules,
   LTObjectives,
   STObjectives,
-  Scheduler,
+  Schedule,
   Dashboard,
 } from "../";
 
@@ -19,7 +19,7 @@ function ContentPage() {
         <Route path="/goals/rules" component={Rules} />
         <Route path="/goals/sto" component={STObjectives} />
         <Route path="/goals/lto" component={LTObjectives} />
-        <Route path="/goals/schedule" component={Scheduler} />
+        <Route path="/goals/schedule" component={Schedule} />
       </Switch>
     </div>
   );

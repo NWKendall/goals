@@ -1,2 +1,11 @@
+// Daily Context
 export const SCORE_INCREASE = "SCORE_INCREASE";
-export const SCORE_DECREASE = "SCORE_DECREASE"; 
+export const SCORE_DECREASE = "SCORE_DECREASE";
+
+// Chores Context
+export const ADD_CHORE = "ADD_CHORE";
+export const COMPLETE_CHORE = "COMPLETE_CHORE";
+export const UN_COMPLETE_CHORE = "UN_COMPLETE_CHORE";
+export const ARCHIVE_COMPLETED_CHORES = "ARCHIVE_COMPLETED_CHORES";
+export const DELETE_ARCHIVED = "CLEAR_ARCHIVE";
+export const UN_ARCHIVE_CHORE = "UN_ARCHIVE";
