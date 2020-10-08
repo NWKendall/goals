@@ -66,7 +66,7 @@ const CountDown = memo(() => {
     }
 
     return () => clearInterval(interval);
-  }, [isActive, timer]);
+  }, [isActive, timer, playAudio]);
 
   const onSubmit = (data) => {
     setTimer({

@@ -6,40 +6,73 @@ import ChoresForm from "./choresForm";
 import "./choresList.styles.css";
 
 const ChoresList = () => {
-  const { chores, archived, completeChore, unCompleteChore } = useContext(ChoresContext);
+  const {
+    chores,
+    archive,
+    completeChore,
+    unCompleteChore,
+    archiveChore,
+    unArchiveChore,
+    deleteArchived
+  } = useContext(ChoresContext);
 
-  const [display, setDisplay] = useState("active");
+  const [display, setDisplay] = useState("all");
 
   const handleCheckBoxes = (e, id) =>
     e.target.checked ? completeChore(id) : unCompleteChore(id);
 
+  const toggleArchive = (e, id) => {
+      !e.target.archived ? archiveChore(id) : unArchiveChore(id);
+  }
+
+  console.log(archive.length)
   return (
     <div className="choresStyle">
       <h2 className="choresH2">Chores</h2>
       <ChoresForm />
-      <button onClick={() => setDisplay("active")}>Active</button>
+      <button onClick={() => setDisplay("all")}>All</button>
       <button onClick={() => setDisplay("completed")}>Completed</button>
-      <button onClick={() => setDisplay("Archived")}>Archived</button>
+      <button onClick={() => setDisplay("archived")}>Archived</button>
       {!chores.length ? (
         <p>You have nothing else to do...?</p>
-      ) : chores.length && display === "active" ? (
+      ) : chores.length && display === "all" ? (
         <ul className="choresUlStyle">
-          {chores.map((chore, i) => (
-            <ChoreItem
-              chore={chore}
-              key={i}
-              handleCheckBoxes={handleCheckBoxes}
-            />
+          {chores.map((item, i) => (
+            !item.archived ? (
+              <ChoreItem
+                item={item}
+                key={i}
+                display={display}
+                handler={handleCheckBoxes}
+              />
+            ) : null
           ))}
         </ul>
-      ) : chores.length && display === "archived" ? (
+      ) : chores.length && display === "completed" ? (
         <ul className="choresUlStyle">
-          {archived.map((archive, i) => (
-            <ChoreItem
-              archive={archive}
-              key={i}
-              handleCheckBoxes={handleCheckBoxes}
-            />
+          {chores.map((item, i) =>
+            item.checked && !item.archived ? (
+              <ChoreItem
+                item={item}
+                key={i}
+                display={display}
+                handler={toggleArchive}
+              />
+            ) : null
+          )}
+        </ul>
+      ) : display === "archived" ? (
+        <ul className="choresUlStyle">
+          {archive.map((item, i) => (
+            item.archived ? (
+              <ChoreItem
+                item={item}
+                key={i}
+                display={display}
+                handler={toggleArchive}
+              />
+            ) : null
+            
           ))}
         </ul>
       ) : null}

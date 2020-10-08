@@ -5,7 +5,7 @@ import "./choresList.styles.css";
 
 const ChoresForm = () => {
   const { addChore } = useContext(ChoresContext);
-  const { register, handleSubmit, setValue, errors } = useForm();
+  const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {
     addChore(data.newChore);
   };

@@ -6,7 +6,7 @@ import {
   ADD_CHORE,
   COMPLETE_CHORE,
   UN_COMPLETE_CHORE,
-  ARCHIVE_COMPLETED_CHORES,
+  ARCHIVE_CHORE,
   DELETE_ARCHIVED,
   UN_ARCHIVE_CHORE,
 } from "../../types.js";
@@ -36,15 +36,15 @@ const ChoresProvider = (props) => {
     return dispatch({ type: UN_COMPLETE_CHORE, payload: data });
   };
 
-  const archiveCompletedChores = (data) => {
-    return dispatch({ type: ARCHIVE_COMPLETED_CHORES, payload: data });
+  const archiveChore = (data) => {
+    return dispatch({ type: ARCHIVE_CHORE, payload: data });
   };
 
-  const unArchiveCompletedChore = (data) => {
+  const unArchiveChore = (data) => {
     return dispatch({ type: UN_ARCHIVE_CHORE, payload: data });
   };
 
-  const deleteArchivedChores = (data) => {
+  const deleteArchived = (data) => {
     return dispatch({ type: DELETE_ARCHIVED, payload: data });
   };
 
@@ -61,9 +61,9 @@ const ChoresProvider = (props) => {
         addChore,
         completeChore,
         unCompleteChore,
-        archiveCompletedChores,
-        unArchiveCompletedChore,
-        deleteArchivedChores,
+        archiveChore,
+        unArchiveChore,
+        deleteArchived
       }}
     >
       {props.children}

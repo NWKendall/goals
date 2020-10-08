@@ -2,9 +2,9 @@ import {
   ADD_CHORE,
   COMPLETE_CHORE,
   UN_COMPLETE_CHORE,
-  ARCHIVE_COMPLETED_CHORES,
-  DELETE_ARCHIVED,
+  ARCHIVE_CHORE,
   UN_ARCHIVE_CHORE,
+  DELETE_ARCHIVED,
 } from "../../types.js";
 
 // COMPLETE_CHORE - checkbox and strikethrough, marked as complete
@@ -13,7 +13,7 @@ import {
 
 export default (state, action) => {
   const { type, payload } = action;
-
+  let item;
   switch (type) {
     case ADD_CHORE:
       return {
@@ -50,24 +50,35 @@ export default (state, action) => {
         ),
       };
 
-    case ARCHIVE_COMPLETED_CHORES:
+    case ARCHIVE_CHORE:
+      // get item from chores
+      // add to archive
+      // remove from chores
+      [item] = state.chores.filter((chore) => chore.id === payload)
+      item.archived = true
       return {
         ...state,
-        archive: state.chores.map((chore) =>
-          chore.id === payload ? { ...chore, archived: true } : chore
-        ),
+        chores: state.chores.filter((chore) => chore.id !== payload),
+        archive: [...state.archive, item]
       };
 
     case UN_ARCHIVE_CHORE:
+
+      [item] = state.chores.filter((chore) => chore.id === payload)
+      item.archived = false
       return {
         ...state,
-        archive: state.chores.map((chore) =>
-          chore.id === payload ? { ...chore, archived: false } : chore
-        ),
+        chores: [...state.chores, item],
+        archive: state.archive.filter((chore) => chore.id !== payload)
       };
-    // case DELETE_ARCHIVED:
+
+    case DELETE_ARCHIVED:
+      break;
 
     default:
       return state;
   }
 };
+
+// state.archive.map((chore) =>
+// chore.id === payload ? { ...chore, archived: true } : chore
