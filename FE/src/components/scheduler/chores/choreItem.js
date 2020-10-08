@@ -1,35 +1,35 @@
 import React from "react";
 import "./choresList.styles.css";
 
-const ChoreItem = ({ display, item, handler }) => {
-  const { name, checked, id } = item;
+const ChoreItem = (props) => {
+  const { name, checked, id } = props.item;
 
   return (
     <li key={id} className="liStyle">
       <label>{name}</label>
-      {display === "all" ? (
+      {props.display === "all" ? (
         <input
           className="checkBoxStyle"
           type="checkbox"
           name={name}
           checked={checked}
-          onChange={(e) => handler(e, id)}
+          onChange={(e) => props.handler(e, id)}
         />
-      ) : display === "completed" ? (
+      ) : props.display === "completed" ? (
         <div>
-          <span className="iconStyle" onClick={(e) => handler(e, id)}>
+          <span className="iconStyle" onClick={(e) =>props. handler(e, id)}>
             ◀
           </span>
-          <span className="iconStyle" onClick={(e) => handler(e, id)}>
+          <span className="iconStyle" onClick={() => props.handler2(id)}>
             📚
           </span>
         </div>
-      ) : display === "archived" ? (
+      ) : props.display === "archived" ? (
         <div>
-          <span className="iconStyle" onClick={(e) => handler(e, id)}>
+          <span className="iconStyle" onClick={() =>props. handler(id)}>
             ◀
           </span>
-          <span className="iconStyle" onClick={(e) => handler(e, id)}>
+          <span className="iconStyle" onClick={() => props.handler2(id)}>
             🗑
           </span>
         </div>
