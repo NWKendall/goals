@@ -10,20 +10,24 @@ const RegisterUser = () => {
   let history = useHistory();
 
   const onSubmit = async (payload) => {
-    await axios.post("http://localhost:4444/api/auth/register", payload)
-    .then((res) => {
-      // not a viable alternative as id only provided on register, needs to be on login and saved to state
-      localStorage.setItem("id", res.data.id)
-      history.push('/login')
-    })
-    .catch(err => console.log(err));
+    await axios
+      .post("http://localhost:4444/api/auth/register", payload)
+      .then((res) => {
+        // not a viable alternative as id only provided on register, needs to be on login and saved to state
+        localStorage.setItem("id", res.data.id);
+        history.push("/login");
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
-    <div>
-      <h2 style={{ color: "white" }}>Register</h2>
-      <NavLink exact to="/login">
+    <div className="registerContaniner">
+      <h2 className="registerHeader" >Register</h2>
+      <NavLink className="registerItem" exact to="/login">
         Already have an account? Login here
+      </NavLink>
+      <NavLink className="registerItem" exact to="/">
+        Home{" "}
       </NavLink>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input

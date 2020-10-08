@@ -22,13 +22,16 @@ const LoginUser = () => {
   };
   
   return (
-    <div>
-      <h2 style={{ color: "white" }}>Login</h2>
-      <NavLink exact to="/register">
+    <div className="loginContaniner">
+      <h2 className="loginHeader">Login</h2>
+      <NavLink className="loginItem" exact to="/register">
         Need an account? Register here
       </NavLink>
-
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <NavLink className="loginItem" exact to="/">
+        Home{" "}
+      </NavLink>
+    
+      <form className ="loginFormStyle" onSubmit={handleSubmit(onSubmit)}>
         <input
           name="email"
           ref={register({

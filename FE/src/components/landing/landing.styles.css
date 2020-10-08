@@ -1,18 +1,16 @@
-.loginContaniner {
+.landingContaniner {
   display: flex;
   flex-direction: column;
 }
-.loginHeader {
-  color: var(--button-hover-color);
 
+.landingH1 {
+  color: var(--button-hover-color);
 }
 
-.loginItem {
+
+.landingItem {
   text-decoration: none;
+  font-size: 1.5rem;
   color: var(--text-color);
   /* border: 1px solid blueviolet; */
-}
-
-.loginFormStyle {
-
 }
