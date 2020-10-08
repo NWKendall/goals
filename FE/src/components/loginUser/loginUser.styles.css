@@ -1,6 +1,8 @@
 .loginContaniner {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  /* border: 1px solid pink; */
 }
 .loginHeader {
   color: var(--button-hover-color);
@@ -13,6 +15,13 @@
   /* border: 1px solid blueviolet; */
 }
 
-.loginFormStyle {
+.loginItem:hover {
+  color: var(--button-hover-color);
+}
 
+.loginFormStyle {
+margin: 2em 0 0 0;
+width: 15em;
+display: flex;
+flex-direction: column;
 }

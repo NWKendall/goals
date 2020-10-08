@@ -28,7 +28,7 @@
     /* border: 1px solid blueviolet; */
 }
 
-.nevItem ::before {
+.navItem ::before {
     color: var(--button-hover-color);
 }
 

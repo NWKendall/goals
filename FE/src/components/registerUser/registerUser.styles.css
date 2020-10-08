@@ -1,6 +1,8 @@
 .registerContaniner {
   display: flex;
   flex-direction: column;
+  align-items: center;
+
 }
 .registerHeader {
   color: var(--button-hover-color);
@@ -12,6 +14,13 @@
   /* border: 1px solid blueviolet; */
 }
 
-.loginFormStyle {
-  
+.registerItem:hover {
+  color: var(--button-hover-color);
+}
+
+.registerFormStyle {
+  margin: 2em 0 0 0;
+  width: 15em;
+  display: flex;
+  flex-direction: column;
 }

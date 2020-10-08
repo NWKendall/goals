@@ -76,7 +76,7 @@ const Navbar = () => {
           className="navItem"
           activeClassName="selectedLink"
           exact
-          to="/login">
+          to="/">
           Logout
         </NavLink>
       </li>

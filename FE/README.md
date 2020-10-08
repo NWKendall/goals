@@ -1,21 +1,66 @@
 # README
+
+## Bugs
+- styling
+    - Mantra oiption has different styles
+    - re format so options are in top left of screen, alligned left 
+    - cound down buttons different sizes
+    - dropdown for countdown is off
+
+## Other TODOs, Feats to add
+- localStorage hook
+    - deconstruct object?
+- how best to save user information
+- theme change
+- weather call
+
+### Pre Login
+- logo & name
+- some artwork or pictures to use
+- refactor so all on one page?
+
+
+### Logged-In
+    After login, send post request for current day to dates table, that way all other tables can be populated with respective daily tasks.
+    - try / catch based on state (turns true after initial post request, thereby all other requests are PUT not POST) ?
+
+- Dashboard
+    - BE API Calls
+    - show chores scores?
+    - graphs... 😱
+
+
+- Rules
+    - need a BE or local storage?
+
+- Mantra
+    - need a BE or local storage?
+
+- STOs
+    - BE API Calls
+
+- LTOs
+    - BE API Calls
+
+- Schedule
+    - Daily
+        - BE API Calls
+    - Chores
+        - BE API Calls?
+        - delete
+        - remove
+
 ## Ideas
 
 - ___need to get Date_id every day, store it so it can be used for api calls___
 
-- memoize timers ✅
-
 other features to work on:
-- Now need to update each component to call BE respectively.
-  - fitness
-  - tasks/schedule
-  - sto
-  - lto
-  - mantra ? need BE
-  - rules ? need BE
-- Everyday, send post request for current day to dates table, that way all other tables can be populated with respective daily tasks.
-- todo app for random chores, use state not BE
+- user account (topright?)
+    - details
+    - update
+    - logout
 
+- todo app for random chores, use state not BE
 
 - login / register
     - login / register component ✅
@@ -73,23 +118,6 @@ other features to work on:
 
 
 
-## Bugs
-- Mantra oiption has different styles
-    - re format so options are in top left of screen, alligned left 
-
-
-
-
-
-
-slack pallette 
-
-rgb(209,210,211)    light green grey
-rgb(26,29,33)       background
-#19171D             border
-                    whitesmoke
-#106ba3             light gry blue
-#202b33             gun metal
 
 
 

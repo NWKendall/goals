@@ -29,7 +29,7 @@ const RegisterUser = () => {
       <NavLink className="registerItem" exact to="/">
         Home{" "}
       </NavLink>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form className="registerFormStyle" onSubmit={handleSubmit(onSubmit)}>
         <input
           name="first_name"
           ref={register({ required: true, minLength: 1 })}
