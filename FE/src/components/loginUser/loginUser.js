@@ -63,7 +63,7 @@ const LoginUser = () => {
         {errors.password && (
           <span style={{ color: "red" }}>Enter a proper password.</span>
         )}
-        <button type="submit">Submit</button>
+        <button className="submitLoginButton" type="submit">Submit</button>
       </form>
     </div>
   );

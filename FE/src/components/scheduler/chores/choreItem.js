@@ -5,7 +5,7 @@ const ChoreItem = (props) => {
   const { name, checked, id } = props.item;
 
   return (
-    <li key={id} className="liStyle">
+    <li key={id} className="liChoreStyle">
       <label>{name}</label>
       {props.display === "all" ? (
         <input
@@ -16,8 +16,8 @@ const ChoreItem = (props) => {
           onChange={(e) => props.handler(e, id)}
         />
       ) : props.display === "completed" ? (
-        <div>
-          <span className="iconStyle" onClick={(e) =>props. handler(e, id)}>
+        <div className="choreActionDiv">
+          <span className="iconStyle" onClick={(e) => props.handler(e, id)}>
             ◀
           </span>
           <span className="iconStyle" onClick={() => props.handler2(id)}>
@@ -25,12 +25,12 @@ const ChoreItem = (props) => {
           </span>
         </div>
       ) : props.display === "archived" ? (
-        <div>
-          <span className="iconStyle" onClick={() =>props. handler(id)}>
+        <div className="choreActionDiv">
+          <span className="iconStyle" onClick={() => props.handler(id)}>
             ◀
           </span>
           <span className="iconStyle" onClick={() => props.handler2(id)}>
-            🗑
+            🚮
           </span>
         </div>
       ) : null}

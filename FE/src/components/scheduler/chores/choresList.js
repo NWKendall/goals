@@ -24,7 +24,7 @@ const ChoresList = () => {
   return (
     <div className="choresStyle">
       <h2 className="choresH2">Chores</h2>
-      <div>
+      <div className="chorePanel">
       <ChoresForm />
         <button onClick={() => setDisplay("all")}>All</button>
         <button onClick={() => setDisplay("completed")}>Completed</button>

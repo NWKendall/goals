@@ -84,7 +84,7 @@ const RegisterUser = () => {
           <span style={{ color: "red" }}>Enter a proper password.</span>
         )}
 
-        <button type="submit">Submit</button>
+        <button className=" submitRegisterButton" type="submit">Submit</button>
       </form>
     </div>
   );

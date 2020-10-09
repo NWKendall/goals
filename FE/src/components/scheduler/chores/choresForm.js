@@ -5,14 +5,20 @@ import "./choresList.styles.css";
 
 const ChoresForm = () => {
   const { addChore } = useContext(ChoresContext);
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, reset, errors } = useForm();
   const onSubmit = (data) => {
+    console.log(data.newChore)
     addChore(data.newChore);
+    reset(data.newChore)
   };
   return (
-    <form className="choresFormStyle" onSubmit={handleSubmit(onSubmit)} autocomplete="off">
+    <form
+      className="choresFormStyle"
+      onSubmit={handleSubmit(onSubmit)}
+      autocomplete="off"
+    >
       <input
-      className="choreInput"
+        className="choreInput"
         name="newChore"
         type="text"
         placeholder={
@@ -20,7 +26,7 @@ const ChoresForm = () => {
         }
         ref={register({ required: true, minLength: 1 })}
       />
-      <button type="submit">+</button>
+      <button className="submitChoreButton" type="submit">+</button>
     </form>
   );
 };
