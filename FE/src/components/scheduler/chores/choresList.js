@@ -51,7 +51,7 @@ const ChoresList = () => {
         <ul className="choresUlStyle">
           {chores.map((item, i) =>
             !item.archived && editID === item.id ? (
-              <li>
+              <li className="liChoreStyle">
                 <input
                   type="text"
                   value={itemValue}

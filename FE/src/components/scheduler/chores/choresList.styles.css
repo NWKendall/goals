@@ -43,12 +43,10 @@
 .liChoreStyle {
   display: flex;
   padding: 0 0.5em 0 0.5em;
-
   justify-content: space-between;
   list-style-type: none;
   font-size: 1.5rem;
   align-items: center;
-  border: 1px solid pink;
 
 }
 
@@ -71,5 +69,4 @@
   cursor: pointer;
   background-color: var(--button-bg-color);
   color: var(--text-color)
-
 }
