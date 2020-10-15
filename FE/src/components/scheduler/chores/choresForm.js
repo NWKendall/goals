@@ -15,7 +15,7 @@ const ChoresForm = () => {
     <form
       className="choresFormStyle"
       onSubmit={handleSubmit(onSubmit)}
-      autocomplete="off"
+      autoComplete="off"
     >
       <input
         className="choreInput"

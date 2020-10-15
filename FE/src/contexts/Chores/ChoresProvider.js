@@ -4,6 +4,7 @@ import ChoresContext from "./ChoresContext.js";
 
 import {
   ADD_CHORE,
+  EDIT_CHORE,
   COMPLETE_CHORE,
   UN_COMPLETE_CHORE,
   ARCHIVE_CHORE,
@@ -27,6 +28,10 @@ const ChoresProvider = (props) => {
   const addChore = (data) => {
     return dispatch({ type: ADD_CHORE, payload: data });
   };
+
+  const editChore = (id, text) => {
+    return dispatch({ type: EDIT_CHORE, payload: {id, text} });
+  }
 
   const completeChore = (data) => {
     return dispatch({ type: COMPLETE_CHORE, payload: data });
@@ -59,6 +64,7 @@ const ChoresProvider = (props) => {
         chores: state.chores,
         archive: state.archive,
         addChore,
+        editChore,
         completeChore,
         unCompleteChore,
         archiveChore,

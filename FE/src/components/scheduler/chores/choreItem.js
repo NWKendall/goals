@@ -5,11 +5,13 @@ const ChoreItem = (props) => {
   const { name, checked, id } = props.item;
 
   return (
-    <li key={id} className="liChoreStyle">
-      <label>{name}</label>
+    <li id={id} className="liChoreStyle">
+      {name}
       {props.display === "all" ? (
         <div className="choreActionDiv">
-          <span className="iconStyle">🔧</span>
+          <span className="iconStyle" onClick={() => props.handleEdit(id, name)}>
+            🔧
+          </span>
           <input
             className="checkBoxStyle"
             type="checkbox"

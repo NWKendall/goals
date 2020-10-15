@@ -26,14 +26,13 @@ export default (state, action) => {
           },
         ],
       };
-      case EDIT_CHORE:
+    case EDIT_CHORE:
+      const { id, text } = payload
       return {
         ...state,
         chores: state.chores.map((chore) =>
-        chore.id === payload
-          ? { ...chore, name: payload,}
-          : chore
-      ),
+          chore.id === id ? { ...chore, name: text } : chore
+        ),
       };
 
     case COMPLETE_CHORE:

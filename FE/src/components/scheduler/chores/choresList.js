@@ -9,6 +9,7 @@ const ChoresList = () => {
   const {
     chores,
     archive,
+    editChore,
     completeChore,
     unCompleteChore,
     archiveChore,
@@ -17,9 +18,21 @@ const ChoresList = () => {
   } = useContext(ChoresContext);
 
   const [display, setDisplay] = useState("all");
+  const [editID, setEdit] = useState(false);
+  const [itemValue, setItemValue] = useState("");
 
   const handleCheckBoxes = (e, id) =>
     e.target.checked ? completeChore(id) : unCompleteChore(id);
+
+  const handleEdit = (id, text) => {
+    setEdit(id);
+    setItemValue(text);
+  };
+
+  const submitEdit = (id, text) => {
+    editChore(id, text)
+    setEdit(false);
+  }
 
   return (
     <div className="choresStyle">
@@ -37,14 +50,26 @@ const ChoresList = () => {
       ) : chores.length && display === "all" ? (
         <ul className="choresUlStyle">
           {chores.map((item, i) =>
-            !item.archived ? (
+            !item.archived && editID === item.id ? (
+              <li>
+                <input
+                  type="text"
+                  value={itemValue}
+                  onChange={(e) => setItemValue(e.target.value)}
+                />
+                <button onClick={() => submitEdit(item.id, itemValue)}>
+                  Edit
+                </button>
+              </li>
+            ) : (
               <ChoreItem
                 item={item}
                 key={i}
                 display={display}
                 handler={handleCheckBoxes}
+                handleEdit={handleEdit}
               />
-            ) : null
+            )
           )}
         </ul>
       ) : chores.length && display === "completed" ? (
