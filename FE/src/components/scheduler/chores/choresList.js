@@ -25,10 +25,12 @@ const ChoresList = () => {
     <div className="choresStyle">
       <h2 className="choresH2">Chores</h2>
       <div className="chorePanel">
-      <ChoresForm />
-        <button onClick={() => setDisplay("all")}>All</button>
-        <button onClick={() => setDisplay("completed")}>Completed</button>
-        <button onClick={() => setDisplay("archived")}>Archived</button>
+        <ChoresForm />
+        <div>
+          <button onClick={() => setDisplay("all")}>All</button>
+          <button onClick={() => setDisplay("completed")}>Completed</button>
+          <button onClick={() => setDisplay("archived")}>Archived</button>
+        </div>
       </div>
       {!chores.length && display === "all" ? (
         <p>You have nothing else to do...?</p>

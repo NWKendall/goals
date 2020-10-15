@@ -1,5 +1,6 @@
 import {
   ADD_CHORE,
+  EDIT_CHORE,
   COMPLETE_CHORE,
   UN_COMPLETE_CHORE,
   ARCHIVE_CHORE,
@@ -24,6 +25,15 @@ export default (state, action) => {
             archived: false,
           },
         ],
+      };
+      case EDIT_CHORE:
+      return {
+        ...state,
+        chores: state.chores.map((chore) =>
+        chore.id === payload
+          ? { ...chore, name: payload,}
+          : chore
+      ),
       };
 
     case COMPLETE_CHORE:

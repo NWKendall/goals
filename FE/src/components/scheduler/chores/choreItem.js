@@ -8,13 +8,16 @@ const ChoreItem = (props) => {
     <li key={id} className="liChoreStyle">
       <label>{name}</label>
       {props.display === "all" ? (
-        <input
-          className="checkBoxStyle"
-          type="checkbox"
-          name={name}
-          checked={checked}
-          onChange={(e) => props.handler(e, id)}
-        />
+        <div className="choreActionDiv">
+          <span className="iconStyle">🔧</span>
+          <input
+            className="checkBoxStyle"
+            type="checkbox"
+            name={name}
+            checked={checked}
+            onChange={(e) => props.handler(e, id)}
+          />
+        </div>
       ) : props.display === "completed" ? (
         <div className="choreActionDiv">
           <span className="iconStyle" onClick={(e) => props.handler(e, id)}>
