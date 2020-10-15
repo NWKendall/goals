@@ -1,6 +1,6 @@
 import React from "react";
 import "../../App.css";
-import DailyState from "../../contexts/Daily/DailyState.js";
+import DailyProvider from "../../contexts/Daily/DailyProvider.js";
 import {
   Header,
   Navbar,
@@ -9,19 +9,22 @@ import {
   FitnessStats,
   ContentPage,
 } from "../";
+import ChoresProvider from "../../contexts/Chores/ChoresProvider";
 
 function Home() {
   return (
-    <DailyState>
-      <div className="appContainer">
-        <Header />
-        <Navbar />
-        <Timer />
-        <CountDown />
-        <FitnessStats />
-        <ContentPage />
-      </div>
-    </DailyState>
+    <DailyProvider>
+      <ChoresProvider>
+        <div className="appContainer">
+          <Header />
+          <Navbar />
+          <Timer />
+          <CountDown />
+          <FitnessStats />
+          <ContentPage />
+        </div>
+      </ChoresProvider>
+    </DailyProvider>
   );
 }
 

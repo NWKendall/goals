@@ -1,5 +1,4 @@
 import React from "react";
-import { ltoData } from "../data.js";
 
 const LTObjectives = () => {
   return (

@@ -2,11 +2,7 @@ import React, { useState } from "react";
 import "./dashboard.styles.css";
 
 const DayScoreCard = (props) => {
-
-  console.log("dayScoreCard", props);
-
   const [toggleScore, setToggleScore] = useState(false);
-
   return (
     <div key={props.index} className="scoreCard">
       <h4 className="dateStyle">{String(props.data.date)}</h4>
@@ -17,7 +13,7 @@ const DayScoreCard = (props) => {
         onClick={() => setToggleScore(!toggleScore)}
         className="buttonStyle"
       >
-        <span>👀</span>
+        <span role="img">👀</span>
       </button>
       <div>
         {toggleScore
@@ -25,7 +21,7 @@ const DayScoreCard = (props) => {
               <div key={i} className="activityRow">
                 <p>{activity[0]}</p>
                 <p>
-                  <span>{activity[1] ? `✅` : `❌`}</span>
+                  {activity[1] ? <span role="img">✅</span> : <span role="img">❌</span>}
                 </p>
               </div>
             ))

@@ -3,32 +3,35 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { NavLink, useHistory } from "react-router-dom";
 import { emailRegEx, passwordRegEx } from "../../utils/regex";
-
 import "./loginUser.styles.css";
+
 
 const LoginUser = () => {
   const { register, handleSubmit, errors } = useForm();
   let history = useHistory();
   const onSubmit = async (payload) => {
-    await axios.post("http://localhost:4444/api/auth/login", payload)
-    .then((res) => {
-      localStorage.setItem("token", res.data.token)
-      // console.log(res.data.message)
-      const { first_name, last_name, email } = res.data.user;
-      localStorage.setItem("user", [first_name, last_name, email])
-      history.push('/goals')
-    })
-    .catch(err => console.log(err));
+    await axios
+      .post("http://localhost:4444/api/auth/login", payload)
+      .then(async (res) => {
+        await localStorage.setItem("token", res.data.token);
+        const { first_name, last_name, email } = await res.data.user;
+        localStorage.setItem("user", JSON.stringify({first_name, last_name, email}))
+        history.push("/goals");
+      })
+      .catch((err) => console.log(err));
   };
-  
+
   return (
-    <div>
-      <h2 style={{ color: "white" }}>Login</h2>
-      <NavLink exact to="/register">
+    <div className="loginContaniner">
+      <h2 className="loginHeader">Login</h2>
+      <NavLink className="loginItem" exact to="/register">
         Need an account? Register here
       </NavLink>
+      <NavLink className="loginItem" exact to="/">
+        Home{" "}
+      </NavLink>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form className="loginFormStyle" onSubmit={handleSubmit(onSubmit)}>
         <input
           name="email"
           ref={register({
@@ -60,7 +63,9 @@ const LoginUser = () => {
         {errors.password && (
           <span style={{ color: "red" }}>Enter a proper password.</span>
         )}
-        <button type="submit">Submit</button>
+        <button className="submitLoginButton" type="submit" onSubmit={handleSubmit(onSubmit)}>
+          Submit
+        </button>
       </form>
     </div>
   );

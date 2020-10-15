@@ -1,12 +1,21 @@
 import React, { useEffect, useReducer } from "react";
 import moment from 'moment';
-import DailyContext from "./DailyContext.js";
-import DailyReducer from "./DailyReducer.js";
-import { SCORE_INCREASE, SCORE_DECREASE } from "../../types.js";
+import { DailyContext, DailyReducer, } from "./";
+import { USER_INFO_TO_STATE, SCORE_INCREASE, SCORE_DECREASE } from "../../types.js";
 
-const DailyState = (props) => {
+
+const DailyProvider = (props) => {
+  // need to get date from BE post
+  // call BE and get all task names using date
+  // add checked forEach task name
+  // do the same for every category (cardio, strength etc)
   let initialState = {
     date: moment().format('L'),
+    user: {
+      first_name: "",
+      last_name: "",
+      email: "",
+    },
     daily: [
       {
         name: "Awake",
@@ -63,21 +72,27 @@ const DailyState = (props) => {
   };
 
   let [state, dispatch] = useReducer(DailyReducer, initialState, () => {
+    // custom localStorage hook needed ??
     const storedState = localStorage.getItem("StoredState");
     return storedState ? JSON.parse(storedState) : initialState;
   });
 
-  const scoreIncrease = (data) => {
+
+  // actions 
+  const userInfoToState = (data) => {
+    dispatch({ type: USER_INFO_TO_STATE, payload: data });
+  };
+   const scoreIncrease = (data) => {
     dispatch({ type: SCORE_INCREASE, payload: data });
   };
-
-  const scoreDecrease = (data) => {
+  
+   const scoreDecrease = (data) => {
     dispatch({ type: SCORE_DECREASE, payload: data });
   };
-
+  
   useEffect(() => {
     localStorage.setItem("StoredState", JSON.stringify(state));
-
+    // console.log({state})
   }, [state]);
 
   return (
@@ -86,6 +101,7 @@ const DailyState = (props) => {
         daily: state.daily,
         score: state.score,
         fitness: state.fitness,
+        userInfoToState,
         scoreIncrease,
         scoreDecrease,
       }}
@@ -95,4 +111,4 @@ const DailyState = (props) => {
   );
 };
 
-export default DailyState;
+export default DailyProvider;

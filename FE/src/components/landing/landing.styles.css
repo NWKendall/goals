@@ -1,31 +1,26 @@
-.registerContaniner {
+.landingContaniner {
   display: flex;
   flex-direction: column;
   align-items: center;
 
 }
-.registerHeader {
+
+.landingH1 {
   color: var(--button-hover-color);
 }
 
-.registerItem {
+
+.landingItem {
   text-decoration: none;
+  font-size: 1.5rem;
   color: var(--text-color);
   /* border: 1px solid blueviolet; */
 }
-
-.registerItem:hover {
+.landingItem:hover {
   color: var(--button-hover-color);
 }
 
-.registerFormStyle {
-  margin: 2em 0 0 0;
-  width: 15em;
-  display: flex;
-  flex-direction: column;
-}
-
-.submitRegisterButton:hover {
+.submitLoginButton:hover {
   cursor: pointer;
   background-color: var(--button-hover-color);
   color: var(--text-color);

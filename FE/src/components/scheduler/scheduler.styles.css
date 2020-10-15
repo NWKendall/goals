@@ -1,35 +1,7 @@
 .container {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-gap: 1em;
-}
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 1em;  
+  /* border: 1px pink solid; */
 
-.formStyle {
-    grid-column: 1/4;
-}
-
-.ulStyle {
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-}
-.liStyle {
-    display: flex;
-    justify-content: space-between;
-    list-style-type: none;
-    font-size: 1.5rem;
-    align-items: center;
-}
-
-.checkBoxStyle {
-    width: 1.3rem;
-    height: 1.3rem;
-    cursor: pointer;
-}
-
-
-
-.otherStyle {
-    background-color: var(--button-hover-color);
-    grid-column: 4 / -1;
 }
