@@ -11,7 +11,7 @@ function App() {
       time_now = new Date().getTime();
 
     if (time_now - lastclear > 1000 * 60 * 60 * 24) {
-      localStorage.clear();
+      localStorage.removeItem("lastClear");
 
       localStorage.setItem("lastclear", time_now);
     }

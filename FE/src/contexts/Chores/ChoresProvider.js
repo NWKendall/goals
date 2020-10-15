@@ -19,8 +19,8 @@ const ChoresProvider = (props) => {
 
   let [state, dispatch] = useReducer(ChoresReducer, initialState, () => {
     // custom localStorage hook needed!!!
-    const storedState2 = localStorage.getItem("StoredState2");
-    return storedState2 ? JSON.parse(storedState2) : initialState;
+    const choresState = localStorage.getItem("Chores");
+    return choresState ? JSON.parse(choresState) : initialState;
   });
 
   // actions
@@ -50,7 +50,7 @@ const ChoresProvider = (props) => {
 
   useEffect(() => {
     // need custom hook for localStorage
-    localStorage.setItem("StoredState2", JSON.stringify(state));
+    localStorage.setItem("Chores", JSON.stringify(state));
   }, [state]);
 
   return (

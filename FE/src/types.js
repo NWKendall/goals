@@ -1,4 +1,5 @@
 // Daily Context
+export const USER_INFO_TO_STATE = "USER_INFO_TO_STATE"
 export const SCORE_INCREASE = "SCORE_INCREASE";
 export const SCORE_DECREASE = "SCORE_DECREASE";
 

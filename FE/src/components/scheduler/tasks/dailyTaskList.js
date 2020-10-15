@@ -27,7 +27,7 @@ const DailyTaskList = () => {
   };
 
   return (
-    <form className="formStyle" onSubmit={handleSubmit(onSubmit)} >
+    <form className="formStyle" onSubmit={handleSubmit(onSubmit)}>
       <h2>Daily Tasks</h2>
       <ul className="ulStyle">
         {daily.map((box, i) => (
