@@ -1,21 +1,23 @@
 import React from "react";
-import axios from "axios";
-import { useForm } from "react-hook-form";
+  import { useForm } from "react-hook-form";
 import { NavLink, useHistory } from "react-router-dom";
 import { emailRegEx, passwordRegEx } from "../../utils/regex";
 import "./loginUser.styles.css";
+import axiosWithAuth from "../../utils/axiosWithAuth";
 
 
 const LoginUser = () => {
   const { register, handleSubmit, errors } = useForm();
   let history = useHistory();
+
+
   const onSubmit = async (payload) => {
-    await axios
+    axiosWithAuth()
       .post("http://localhost:4444/api/auth/login", payload)
       .then(async (res) => {
-        await localStorage.setItem("token", res.data.token);
-        const { first_name, last_name, email } = await res.data.user;
-        localStorage.setItem("user", JSON.stringify({first_name, last_name, email}))
+        localStorage.setItem("token", await res.data.token);
+        // const { first_name, last_name, email } = await res.data.user;
+        localStorage.setItem("user", JSON.stringify(await res.data.user))
         history.push("/goals");
       })
       .catch((err) => console.log(err));

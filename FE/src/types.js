@@ -1,3 +1,9 @@
+export const LOGIN_LOADING = 'LOGIN_LOADING';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAILURE = 'LOGIN_FAILURE';
+
+
+
 // Daily Context
 export const USER_INFO_TO_STATE = "USER_INFO_TO_STATE"
 export const SCORE_INCREASE = "SCORE_INCREASE";

@@ -6,9 +6,11 @@
     - re format so options are in top left of screen, alligned left 
     - cound down buttons different sizes
     - dropdown for countdown is off
+- login / register
+    - buggy, get 400s ???
 
 ## Other TODOs, Feats to add
-- localStorage hook
+- localStorage hook ✅
     - deconstruct object?
 - how best to save user information
 - theme change
@@ -46,9 +48,10 @@
     - Daily
         - BE API Calls
     - Chores
+        - edit ✅
+        - delete ✅
+        - remove ✅
         - BE API Calls?
-        - delete
-        - remove
 
 ## Ideas
 

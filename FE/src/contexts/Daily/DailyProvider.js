@@ -92,7 +92,7 @@ const DailyProvider = (props) => {
   
   useEffect(() => {
     localStorage.setItem("StoredState", JSON.stringify(state));
-    // console.log({state})
+    console.log({state})
   }, [state]);
 
   return (

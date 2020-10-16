@@ -17,9 +17,17 @@
 }
 
 .headerStyle h4:nth-of-type(2) {
-    margin: auto 0 auto 30%;
+    margin: auto 0 auto 10%;
 }
 
-.headerStyle h4:nth-of-type(3) {
-    margin: auto 0 auto 20%;
+.weatherInfo {
+    width: 30%;
+    margin: auto auto auto 15%;
+    display: flex;
+    justify-content: space-between;
+}
+.searchForm{
+    color: var(--text-color);
+    margin: auto 0 auto 30%;
+    display: flex;
 }

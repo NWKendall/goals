@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../../App.css";
 import DailyProvider from "../../contexts/Daily/DailyProvider.js";
 import {
@@ -10,8 +10,13 @@ import {
   ContentPage,
 } from "../";
 import ChoresProvider from "../../contexts/Chores/ChoresProvider";
+import DailyContext from "../../contexts/Daily/DailyContext.js";
 
 function Home() {
+
+  const context = useContext(DailyContext)
+  console.log(context)
+  // call BE API with user data to make a new date entry
   return (
     <DailyProvider>
       <ChoresProvider>
