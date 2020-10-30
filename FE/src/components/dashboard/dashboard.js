@@ -12,26 +12,36 @@ const Dashboard = () => {
   let percent = (context.score / context.daily.length) * 100;
   const date = { date: JSON.parse(localStorage.getItem("StoredState")).date };
   let dateObj;
-  console.log(typeof date);
 
   useEffect(async () => {
     // check DB for record with today's date
     // if exists ignore (timer)
     // otherwise post request
     let haveToday;
-
     await axiosWithAuth()
-      .post("/goals/dates", date)
+      .post("/goals/dates/today", date)
       .then((res) => {
-        dateObj = {
-          date_id: res.data.id,
-          date: res.data.date,
-          user_id: res.data.user_id,
-        };
+        console.log(res)
+        haveToday = res.data;
+        console.log(0, haveToday)
       })
       .catch((err) => console.log(err));
+
+    if (!haveToday) {
+      await axiosWithAuth()
+        .post("/goals/dates", date)
+        .then((res) => {
+          dateObj = {
+            date_id: res.data.id,
+            date: res.data.date,
+            user_id: res.data.user_id,
+          };
+          console.log({dateObj})
+          localStorage.setItem("date", JSON.stringify(dateObj))
+        })
+        .catch((err) => console.log(err));
+    }
   }, []);
-  // useLocalStorage("date", dateObj)
 
   return (
     <div>
