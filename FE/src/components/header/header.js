@@ -5,8 +5,9 @@ import moment from "moment";
 import "./header.styles.css";
 
 const Header = () => {
-  let today = moment().format("MMMM Do YYYY");
-  const { register, handleSubmit } = useForm();
+  // need weather icon. Maybe modal??
+    const { register, handleSubmit } = useForm();
+  const today = moment().format("MMMM Do YYYY");
   let [weatherDisplay, setWeatherDisplay] = useState(false);
   const nameInfo = JSON.parse(localStorage.getItem("user"));
   let [weatherInfo, setWeatherInfo] = useState({
@@ -15,6 +16,7 @@ const Header = () => {
     weather: "",
     dayOrNight: "",
   });
+  let iconSrc;
 
   const onSubmit = async ({ city }) => {
     const { cityDetails, weather } = await updateCity(city);
@@ -25,10 +27,13 @@ const Header = () => {
       temp: Temperature.Metric.Value,
       weather: WeatherText,
       dayOrNight: isDayTime,
+      icon: WeatherIcon
     });
+    iconSrc = `../../img/icons/${weatherInfo.icon}.svg`;
     setWeatherDisplay(!weatherDisplay);
     localStorage.setItem("loc", city);
   };
+
 
   useEffect(() => {
     if (localStorage.getItem("loc")) {
@@ -60,6 +65,7 @@ const Header = () => {
           <h5>{weatherInfo.city}</h5>
           <h5>{weatherInfo.temp} &deg;C</h5>
           <h5>{weatherInfo.weather}</h5>
+          <img src="" />
           <button onClick={() => setWeatherDisplay(!weatherDisplay)}>
             Search?
           </button>

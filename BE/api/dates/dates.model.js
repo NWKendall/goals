@@ -4,6 +4,7 @@ module.exports = {
   getDates,
   getAllUserDates,
   getDateById,
+  checkToday,
   addDate,
   editDate,
   deleteDate
@@ -18,6 +19,14 @@ function getAllUserDates(id) {
 
 function getDateById(id) {
   return db("dates").where({ id }).first();
+}
+
+async function checkToday(id, date){
+  const dates = getAllUserDates(id).where({date}).first();
+  let bool = false;
+  if(dates) bool = true;
+
+  return bool;
 }
 
 async function addDate(date) {

@@ -22,11 +22,26 @@ const getCity = async (city) => {
 
 export const updateCity = async (city) => {
   // can call functions here due to cascading order of app.js and forecast.js scripts
-
   const cityDetails = await getCity(city);
   const weather = await getWeather(cityDetails.Key);
-
+  console.log( cityDetails, weather )
   return { cityDetails, weather };
 };
 
 
+
+// const submitWeather = (e) => {
+//   e.preventDefault();
+
+//   // get cvalue from input (city) in form
+//   const city = cityForm.city.value.trim();
+
+//   cityForm.reset();
+
+//   updateCity(city)
+//     .then((data) => updateUI(data))
+//     .catch((err) => console.log(err));
+
+//   // set localStorage
+//   localStorage.setItem("loc", city);
+// };

@@ -47,6 +47,19 @@ router.get("/:id", (req, res) => {
     });
 });
 
+router.post("/today", (req, res) => {
+  const userId = parseInt(req.decodedToken.subject);
+  console.log(req.body)
+  datesDB
+    .checkToday(userId, req.body)
+    .then((dates) => {
+      res.status(200).json(dates);
+    })
+    .catch(({ name, code, message, stack }) => {
+      res.status(500).json({ name, code, message, stack });
+    });
+});
+
 router.put("/:id", (req, res) => {
   const id = parseInt(req.params.id);
   const changes = { ...req.body };
